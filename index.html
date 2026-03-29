@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" data-accent="single">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KINETIC MONO — Design System</title>
+  <meta name="description" content="A high-end editorial design system bridging brutalist structuralism and luxury precision.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <style>
+    .km-hero__kinetic-line {
+      position: absolute;
+      right: var(--sp-5);
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: var(--a1);
+      transition: background var(--dur-quick);
+    }
+    .km-landing-ticker {
+      display: flex;
+      gap: var(--sp-5);
+      padding: var(--sp-2) var(--sp-5);
+      background: var(--palette-black);
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .km-ticker-item {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.4);
+      flex-shrink: 0;
+    }
+    .km-ticker-item span {
+      color: var(--a1);
+      margin-right: var(--sp-2);
+    }
+    .km-feature-number {
+      font-size: var(--t-hero);
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      line-height: 1;
+      color: var(--surface-3);
+      position: absolute;
+      bottom: var(--sp-2);
+      right: var(--sp-2);
+      z-index: 0;
+    }
+    .km-cell { position: relative; }
+    .km-cell > * { position: relative; z-index: 1; }
+
+    @media (max-width: 768px) {
+      .km-landing-ticker { gap: var(--sp-3); padding: var(--sp-2) var(--sp-3); }
+      .km-feature-number { font-size: var(--t-3xl); }
+    }
+
+    @media (max-width: 480px) {
+      .km-landing-ticker { gap: var(--sp-2); padding: var(--sp-1) var(--sp-2); }
+      .km-feature-number { font-size: var(--t-2xl); }
+    }
+  </style>
+</head>
+<body data-page="index">
+  <div id="km-nav"></div>
+
+  <main class="km-main">
+
+    <!-- TICKER BAR -->
+    <div class="km-landing-ticker" aria-hidden="true">
+      <div class="km-ticker-item"><svg class="km-icon km-icon--xs km-icon--fill" aria-hidden="true"><use href="#km-icon-dot"></use></svg>KINETIC MONO v2.0</div>
+      <div class="km-ticker-item"><span>—</span>BRUTALIST × PRECISION</div>
+      <div class="km-ticker-item"><svg class="km-icon km-icon--xs km-icon--fill" aria-hidden="true"><use href="#km-icon-dot"></use></svg>ZERO RADIUS GEOMETRY</div>
+      <div class="km-ticker-item"><span>—</span>4 ACCENT MODES</div>
+      <div class="km-ticker-item"><svg class="km-icon km-icon--xs km-icon--fill" aria-hidden="true"><use href="#km-icon-dot"></use></svg>√2 TYPE SCALE</div>
+      <div class="km-ticker-item"><span>—</span>THE CLINICAL CURATOR</div>
+      <div class="km-ticker-item"><svg class="km-icon km-icon--xs km-icon--fill" aria-hidden="true"><use href="#km-icon-dot"></use></svg>KINETIC SNAP MOTION</div>
+      <div class="km-ticker-item"><span>—</span>WHITE BASE SYSTEM</div>
+    </div>
+
+    <!-- HERO -->
+    <section class="km-hero" style="position:relative;overflow:hidden">
+      <div style="position:absolute;top:0;right:0;width:40%;height:100%;background:url('images/hero/hero.png') center/cover no-repeat;opacity:0.12;pointer-events:none" aria-hidden="true"></div>
+      <div class="km-hero__kinetic-line" aria-hidden="true"></div>
+
+      <div class="km-hero__eyebrow">
+        <span class="km-micro-label" data-i18n="index.design_system">DESIGN SYSTEM</span>
+        <span class="km-micro-label" data-i18n="index.year">2025</span>
+        <span class="km-micro-label km-micro-label--accent" data-i18n="index.clinical_curator">CLINICAL CURATOR</span>
+      </div>
+
+      <div class="km-hero__title-wrap">
+        <h1 class="km-hero__title">
+          <span class="km-hero__line--1" style="display:block">KINETIC</span>
+          <span class="km-hero__line--2">MONO</span>
+        </h1>
+      </div>
+
+      <div class="km-hero__split">
+        <div class="km-hero__desc" data-i18n="index.hero_desc">
+          A high-end editorial design system bridging<br>
+          brutalist structuralism and luxury precision.<br>
+          Curated, not calibrated.
+        </div>
+        <div class="km-hero__cta-area">
+          <a href="dashboard.html" class="km-btn km-btn--primary"><span data-i18n="common.explore_system">EXPLORE SYSTEM</span> <svg class="km-icon" aria-hidden="true"><use href="#km-icon-arrow-right"></use></svg></a>
+          <a href="docs.html" class="km-btn km-btn--outline" data-i18n="common.read_docs">READ DOCS</a>
+          <a href="gallery.html" class="km-btn km-btn--outline" data-i18n="common.view_gallery">VIEW GALLERY</a>
+        </div>
+      </div>
+
+      <div class="km-hero__metrics">
+        <div class="km-hero__metric">
+          <span class="km-hero__metric-val">6</span>
+          <span class="km-micro-label" data-i18n="index.pages">PAGES</span>
+        </div>
+        <div class="km-hero__metric" style="padding-left:var(--sp-4)">
+          <span class="km-hero__metric-val">4</span>
+          <span class="km-micro-label" data-i18n="index.accent_modes">ACCENT MODES</span>
+        </div>
+        <div class="km-hero__metric" style="padding-left:var(--sp-4)">
+          <span class="km-hero__metric-val">0px</span>
+          <span class="km-micro-label" data-i18n="index.border_radius">BORDER RADIUS</span>
+        </div>
+        <div class="km-hero__metric" style="padding-left:var(--sp-4)">
+          <span class="km-hero__metric-val">√2</span>
+          <span class="km-micro-label" data-i18n="index.type_scale">TYPE SCALE</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CORE PRINCIPLES BENTO -->
+    <section class="km-section">
+      <div class="km-section-header">
+        <span class="km-micro-label" data-i18n="index.core_principles">CORE PRINCIPLES</span>
+        <span class="km-micro-label" style="color:var(--text-4)" data-i18n="index.axioms">05 AXIOMS</span>
+      </div>
+
+      <div class="km-bento km-bento--3col">
+
+        <div class="km-cell km-cell--a1">
+          <span class="km-micro-label" data-i18n="index.typo_label">01 — TYPOGRAPHY</span>
+          <h2 class="km-cell__title" data-i18n="index.typo_title">80px<br>or Nothing</h2>
+          <p class="km-cell__body" data-i18n="index.typo_body">Extreme type scales create unmistakable focal points. Plus Jakarta Sans Black weight, −0.05em tracking.</p>
+          <span class="km-feature-number" aria-hidden="true">T</span>
+        </div>
+
+        <div class="km-cell">
+          <span class="km-micro-label" data-i18n="index.color_label">02 — COLOR</span>
+          <h2 class="km-cell__title" data-i18n="index.color_title">The No-Line<br>Rule</h2>
+          <p class="km-cell__body" data-i18n="index.color_body">Visual sectioning via background shifts. 1px borders are prohibited for layout containment. Depth through surface tiers.</p>
+          <span class="km-feature-number" aria-hidden="true">C</span>
+        </div>
+
+        <div class="km-cell">
+          <span class="km-micro-label" data-i18n="index.motion_label">03 — MOTION</span>
+          <h2 class="km-cell__title" data-i18n="index.motion_title">Kinetic<br>Snap</h2>
+          <p class="km-cell__body" data-i18n="index.motion_body">Sudden state shifts + 4px translation. Three named curves: Kinetic, Editorial, Snap.</p>
+          <div class="km-hover-demo"><span data-i18n="index.hover_me">HOVER ME</span> <svg class="km-icon" aria-hidden="true"><use href="#km-icon-arrow-right"></use></svg></div>
+          <span class="km-feature-number" aria-hidden="true">M</span>
+        </div>
+
+        <div class="km-cell km-cell--wide">
+          <span class="km-micro-label" data-i18n="index.grid_label">04 — GRID</span>
+          <h2 class="km-cell__title" data-i18n="index.grid_title">Bento Architecture</h2>
+          <p class="km-cell__body" data-i18n="index.grid_body">Rectangular containers of varying sizes that lock together with 24px gutters. Zero-radius geometry throughout the system.</p>
+          <div class="km-mini-bento" aria-hidden="true">
+            <div class="km-mini-cell" style="grid-column: span 2"></div>
+            <div class="km-mini-cell"></div>
+            <div class="km-mini-cell"></div>
+            <div class="km-mini-cell km-mini-cell--accent"></div>
+            <div class="km-mini-cell" style="grid-column: span 2"></div>
+          </div>
+        </div>
+
+        <div class="km-cell km-cell--accent">
+          <span class="km-micro-label" data-i18n="index.identity_label">05 — IDENTITY</span>
+          <h2 class="km-cell__title" style="color:var(--a1)" data-i18n="index.identity_title">Your<br>System</h2>
+          <p class="km-cell__body" data-i18n="index.identity_body">Accent mode switching from single-color authority to full-spectrum editorial expression.</p>
+          <div style="display:flex;gap:4px;margin-top:auto">
+            <span style="width:16px;height:16px;background:var(--palette-yellow)"></span>
+            <span style="width:16px;height:16px;background:var(--palette-blue)"></span>
+            <span style="width:16px;height:16px;background:var(--palette-red)"></span>
+            <span style="width:16px;height:16px;background:var(--palette-green)"></span>
+            <span style="width:16px;height:16px;background:var(--palette-purple)"></span>
+            <span style="width:16px;height:16px;background:var(--palette-orange)"></span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ACCENT MODE SHOWCASE -->
+    <section class="km-section km-section--dark">
+      <div class="km-section-header">
+        <span class="km-micro-label" style="color:rgba(255,255,255,0.3)" data-i18n="index.accent_modes_section">ACCENT MODES</span>
+        <span class="km-micro-label" style="color:rgba(255,255,255,0.3)"><span data-i18n="index.switch_in_nav">SWITCH IN LEFT NAV</span> <svg class="km-icon" aria-hidden="true"><use href="#km-icon-arrow-right"></use></svg></span>
+      </div>
+
+      <div class="km-accent-showcase">
+        <div class="km-accent-row">
+          <span class="km-micro-label" style="color:rgba(255,255,255,0.4);min-width:72px" data-i18n="common.single">SINGLE</span>
+          <div class="km-accent-strip" style="background:var(--palette-yellow)"></div>
+        </div>
+        <div class="km-accent-row">
+          <span class="km-micro-label" style="color:rgba(255,255,255,0.4);min-width:72px" data-i18n="common.dual">DUAL</span>
+          <div class="km-accent-strip" style="background:var(--palette-yellow)"></div>
+          <div class="km-accent-strip" style="background:var(--palette-blue)"></div>
+        </div>
+        <div class="km-accent-row">
+          <span class="km-micro-label" style="color:rgba(255,255,255,0.4);min-width:72px" data-i18n="common.tri">TRI</span>
+          <div class="km-accent-strip" style="background:var(--palette-yellow)"></div>
+          <div class="km-accent-strip" style="background:var(--palette-blue)"></div>
+          <div class="km-accent-strip" style="background:var(--palette-red)"></div>
+        </div>
+        <div class="km-accent-row">
+          <span class="km-micro-label" style="color:rgba(255,255,255,0.4);min-width:72px" data-i18n="common.full">FULL</span>
+          <div class="km-accent-strip" style="background:var(--palette-yellow)"></div>
+          <div class="km-accent-strip" style="background:var(--palette-blue)"></div>
+          <div class="km-accent-strip" style="background:var(--palette-red)"></div>
+          <div class="km-accent-strip" style="background:var(--palette-green)"></div>
+          <div class="km-accent-strip" style="background:var(--palette-purple)"></div>
+          <div class="km-accent-strip" style="background:var(--palette-orange)"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY PREVIEW -->
+    <section class="km-section">
+      <div class="km-section-header">
+        <span class="km-micro-label" data-i18n="index.featured_works">FEATURED WORKS</span>
+        <a href="gallery.html" class="km-micro-label" style="color:var(--text-3)"><span data-i18n="index.view_all">VIEW ALL 100+</span> <svg class="km-icon" aria-hidden="true"><use href="#km-icon-arrow-right"></use></svg></a>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-3)">
+        <a href="gallery-detail.html?id=KM-4291&amp;art=km-art-1" style="aspect-ratio:1;display:block">
+          <div class="km-art-1" style="width:100%;height:100%"></div>
+        </a>
+        <a href="gallery-detail.html?id=KM-4289&amp;art=km-art-3" style="aspect-ratio:1;display:block">
+          <div class="km-art-3" style="width:100%;height:100%"></div>
+        </a>
+        <a href="gallery-detail.html?id=KM-4287&amp;art=km-art-5" style="aspect-ratio:1;display:block">
+          <div class="km-art-5" style="width:100%;height:100%"></div>
+        </a>
+        <a href="gallery-detail.html?id=KM-4283&amp;art=km-art-9" style="aspect-ratio:1;display:block">
+          <div class="km-art-9" style="width:100%;height:100%"></div>
+        </a>
+      </div>
+    </section>
+
+    <!-- MANIFESTO -->
+    <section class="km-section km-manifesto">
+      <div class="km-manifesto__quote">
+        <span class="km-micro-label" data-i18n="index.manifesto">MANIFESTO</span>
+        <blockquote data-i18n="index.manifesto_quote">
+          "Complexity deserves clarity.<br>
+          Authority through restraint.<br>
+          Every pixel intentional.<br>
+          No decoration without purpose."
+        </blockquote>
+      </div>
+      <div class="km-manifesto__nav">
+        <a href="dashboard.html" class="km-page-link">
+          <span class="km-micro-label" data-i18n="index.next_page">NEXT PAGE</span>
+          <span class="km-page-link__name">DASHBOARD <svg class="km-icon" aria-hidden="true"><use href="#km-icon-arrow-right"></use></svg></span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="js/nav.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/icons.js"></script>
+</body>
+</html>

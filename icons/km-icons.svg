@@ -1,0 +1,550 @@
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="display:none">
+
+  <!-- ============================================================
+       KINETIC MONO Icon System — "Kinetic Glyphs"
+
+       Construction rules:
+       - viewBox: 0 0 24 24, safe zone 1px inset
+       - stroke-width: 1.5 (default) / 2 (emphasis)
+       - stroke-linecap: square (never round)
+       - stroke-linejoin: miter (never round)
+       - fill: none (default), currentColor (status only)
+       - All coords on whole or 0.5 grid
+       - Angles: 0°, 45°, 90° only
+       - Signature: 2px notch top-right on structural icons
+       ============================================================ -->
+
+  <!-- ── A. Navigation ── -->
+
+  <symbol id="km-icon-arrow-right" viewBox="0 0 24 24">
+    <line x1="4" y1="12" x2="20" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+    <polyline points="15,7 20,12 15,17" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+  </symbol>
+
+  <symbol id="km-icon-arrow-left" viewBox="0 0 24 24">
+    <line x1="20" y1="12" x2="4" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+    <polyline points="9,7 4,12 9,17" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+  </symbol>
+
+  <symbol id="km-icon-arrow-up" viewBox="0 0 24 24">
+    <line x1="12" y1="20" x2="12" y2="4" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+    <polyline points="7,9 12,4 17,9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+  </symbol>
+
+  <symbol id="km-icon-arrow-down" viewBox="0 0 24 24">
+    <line x1="12" y1="4" x2="12" y2="20" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+    <polyline points="7,15 12,20 17,15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+  </symbol>
+
+  <symbol id="km-icon-chevron-right" viewBox="0 0 24 24">
+    <polyline points="9,6 15,12 9,18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+  </symbol>
+
+  <symbol id="km-icon-chevron-down" viewBox="0 0 24 24">
+    <polyline points="6,9 12,15 18,9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+  </symbol>
+
+  <symbol id="km-icon-external" viewBox="0 0 24 24">
+    <polyline points="10,4 20,4 20,14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+    <line x1="20" y1="4" x2="10" y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+    <polyline points="18,14 18,20 4,20 4,6 10,6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+  </symbol>
+
+  <symbol id="km-icon-menu" viewBox="0 0 24 24">
+    <line x1="4" y1="6" x2="20" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+    <line x1="4" y1="12" x2="20" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+    <line x1="4" y1="18" x2="20" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+  </symbol>
+
+  <!-- ── B. Status ── -->
+
+  <symbol id="km-icon-check" viewBox="0 0 24 24">
+    <polyline points="4,13 9,18 20,6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
+  </symbol>
+
+  <symbol id="km-icon-close" viewBox="0 0 24 24">
+    <line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+    <line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+  </symbol>
+
+  <symbol id="km-icon-warning" viewBox="0 0 24 24">
+    <polygon points="12,3 22,21 2,21" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+    <line x1="12" y1="10" x2="12" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+    <line x1="12" y1="17.5" x2="12" y2="18.5" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+  </symbol>
+
+  <symbol id="km-icon-info" viewBox="0 0 24 24">
+    <rect x="3" y="3" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <line x1="12" y1="11" x2="12" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+    <line x1="12" y1="7" x2="12" y2="8" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+  </symbol>
+
+  <symbol id="km-icon-dot" viewBox="0 0 24 24">
+    <rect x="9" y="9" width="6" height="6" fill="currentColor"/>
+  </symbol>
+
+  <symbol id="km-icon-live" viewBox="0 0 24 24">
+    <rect x="10" y="10" width="4" height="4" fill="currentColor"/>
+    <rect x="7" y="7" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter" opacity="0.5"/>
+    <rect x="4" y="4" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter" opacity="0.25"/>
+  </symbol>
+
+  <!-- ── C. Action ── -->
+
+  <symbol id="km-icon-search" viewBox="0 0 24 24">
+    <rect x="3" y="3" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <line x1="16" y1="16" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+  </symbol>
+
+  <symbol id="km-icon-filter" viewBox="0 0 24 24">
+    <polygon points="3,4 21,4 14,13 14,20 10,22 10,13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+  </symbol>
+
+  <symbol id="km-icon-sort" viewBox="0 0 24 24">
+    <line x1="8" y1="4" x2="8" y2="20" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+    <polyline points="4,8 8,4 12,8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+    <line x1="16" y1="4" x2="16" y2="20" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+    <polyline points="12,16 16,20 20,16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+  </symbol>
+
+  <symbol id="km-icon-refresh" viewBox="0 0 24 24">
+    <polyline points="4,8 4,4 8,4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+    <path d="M4,4 L12,12" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+    <polyline points="20,16 20,20 16,20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+    <path d="M20,20 L12,12" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+    <polyline points="4,14 4,20 10,20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" opacity="0.4"/>
+    <polyline points="20,10 20,4 14,4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" opacity="0.4"/>
+  </symbol>
+
+  <symbol id="km-icon-copy" viewBox="0 0 24 24">
+    <rect x="8" y="8" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <polyline points="5,16 3,16 3,3 16,3 16,5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+  </symbol>
+
+  <symbol id="km-icon-edit" viewBox="0 0 24 24">
+    <path d="M16,3 L21,8 L8,21 L3,21 L3,16 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <line x1="13" y1="6" x2="18" y2="11" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+  </symbol>
+
+  <symbol id="km-icon-delete" viewBox="0 0 24 24">
+    <polyline points="5,7 5,21 19,21 19,7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+    <line x1="3" y1="7" x2="21" y2="7" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+    <polyline points="9,7 9,3 15,3 15,7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+    <line x1="9" y1="11" x2="9" y2="17" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+    <line x1="15" y1="11" x2="15" y2="17" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+  </symbol>
+
+  <symbol id="km-icon-add" viewBox="0 0 24 24">
+    <line x1="12" y1="4" x2="12" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+    <line x1="4" y1="12" x2="20" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+  </symbol>
+
+  <!-- ── D. Data / Content ── -->
+
+  <symbol id="km-icon-trend-up" viewBox="0 0 24 24">
+    <polyline points="4,18 10,12 14,16 20,6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
+    <polyline points="15,6 20,6 20,11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
+  </symbol>
+
+  <symbol id="km-icon-trend-down" viewBox="0 0 24 24">
+    <polyline points="4,6 10,12 14,8 20,18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
+    <polyline points="15,18 20,18 20,13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
+  </symbol>
+
+  <symbol id="km-icon-chart" viewBox="0 0 24 24">
+    <line x1="4" y1="20" x2="4" y2="10" stroke="currentColor" stroke-width="3" stroke-linecap="square"/>
+    <line x1="10" y1="20" x2="10" y2="4" stroke="currentColor" stroke-width="3" stroke-linecap="square"/>
+    <line x1="16" y1="20" x2="16" y2="12" stroke="currentColor" stroke-width="3" stroke-linecap="square"/>
+    <line x1="22" y1="20" x2="22" y2="7" stroke="currentColor" stroke-width="3" stroke-linecap="square"/>
+  </symbol>
+
+  <symbol id="km-icon-grid" viewBox="0 0 24 24">
+    <rect x="3" y="3" width="7" height="7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <rect x="14" y="3" width="7" height="7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <rect x="3" y="14" width="7" height="7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <rect x="14" y="14" width="7" height="7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+  </symbol>
+
+  <symbol id="km-icon-list" viewBox="0 0 24 24">
+    <rect x="3" y="5" width="3" height="3" fill="currentColor"/>
+    <line x1="10" y1="6.5" x2="21" y2="6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+    <rect x="3" y="10.5" width="3" height="3" fill="currentColor"/>
+    <line x1="10" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+    <rect x="3" y="16" width="3" height="3" fill="currentColor"/>
+    <line x1="10" y1="17.5" x2="21" y2="17.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+  </symbol>
+
+  <symbol id="km-icon-calendar" viewBox="0 0 24 24">
+    <rect x="3" y="5" width="18" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+    <line x1="8" y1="3" x2="8" y2="7" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+    <line x1="16" y1="3" x2="16" y2="7" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+    <rect x="7" y="13" width="3" height="3" fill="currentColor"/>
+  </symbol>
+
+  <!-- ── E. System / UI ── -->
+
+  <symbol id="km-icon-settings" viewBox="0 0 24 24">
+    <!-- Square gear with rectangular notches — no circles -->
+    <path d="M10,2 L14,2 L14,5 L18,5 L18,2 L18,2 L21,5 L21,5 L21,10 L21,10 L18,10 L18,14 L21,14 L21,18 L18,18 L18,21 L14,21 L14,18 L10,18 L10,21 L6,21 L6,18 L3,18 L3,14 L6,14 L6,10 L3,10 L3,6 L6,6 L6,2 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <rect x="9" y="9" width="6" height="6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+  </symbol>
+
+  <symbol id="km-icon-user" viewBox="0 0 24 24">
+    <rect x="8" y="3" width="8" height="8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <path d="M3,21 L3,17 L8,14 L16,14 L21,17 L21,21" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+  </symbol>
+
+  <symbol id="km-icon-mail" viewBox="0 0 24 24">
+    <rect x="3" y="5" width="18" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <polyline points="3,5 12,13 21,5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+  </symbol>
+
+  <symbol id="km-icon-lock" viewBox="0 0 24 24">
+    <rect x="4" y="11" width="16" height="10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <polyline points="8,11 8,7 8,5 12,3 16,5 16,7 16,11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+    <line x1="12" y1="15" x2="12" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+  </symbol>
+
+  <symbol id="km-icon-eye" viewBox="0 0 24 24">
+    <!-- Angular eye — diamond shape, no curves -->
+    <polygon points="12,5 22,12 12,19 2,12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <rect x="9" y="9" width="6" height="6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+  </symbol>
+
+  <symbol id="km-icon-download" viewBox="0 0 24 24">
+    <line x1="12" y1="3" x2="12" y2="16" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+    <polyline points="7,11 12,16 17,11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+    <polyline points="4,19 4,21 20,21 20,19" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+  </symbol>
+
+  <symbol id="km-icon-upload" viewBox="0 0 24 24">
+    <line x1="12" y1="16" x2="12" y2="3" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+    <polyline points="7,8 12,3 17,8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+    <polyline points="4,19 4,21 20,21 20,19" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+  </symbol>
+
+  <symbol id="km-icon-link" viewBox="0 0 24 24">
+    <path d="M10,14 L6,14 L3,14 L3,10 L6,10 L10,10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+    <path d="M14,14 L18,14 L21,14 L21,10 L18,10 L14,10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+    <line x1="9" y1="12" x2="15" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+  </symbol>
+
+  <!-- ── F. Feedback / State ── -->
+
+  <symbol id="km-icon-loading" viewBox="0 0 24 24">
+    <!-- Square-based loading: 4 blocks rotating position -->
+    <rect x="3" y="3" width="7" height="7" fill="currentColor" opacity="1"/>
+    <rect x="14" y="3" width="7" height="7" fill="currentColor" opacity="0.25"/>
+    <rect x="14" y="14" width="7" height="7" fill="currentColor" opacity="0.5"/>
+    <rect x="3" y="14" width="7" height="7" fill="currentColor" opacity="0.75"/>
+  </symbol>
+
+  <symbol id="km-icon-empty" viewBox="0 0 24 24">
+    <rect x="3" y="3" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter" stroke-dasharray="4 3"/>
+    <line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+  </symbol>
+
+  <symbol id="km-icon-error-page" viewBox="0 0 24 24">
+    <rect x="3" y="3" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <line x1="8" y1="8" x2="16" y2="16" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+    <line x1="16" y1="8" x2="8" y2="16" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+  </symbol>
+
+  <symbol id="km-icon-notification" viewBox="0 0 24 24">
+    <!-- Angular bell shape -->
+    <path d="M6,10 L6,5 L12,2 L18,5 L18,10 L20,16 L4,16 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+    <line x1="4" y1="16" x2="20" y2="16" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+    <line x1="10" y1="19" x2="14" y2="19" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+    <!-- Notch -->
+    <rect x="20" y="2" width="2" height="2" fill="currentColor"/>
+  </symbol>
+
+  <!-- ============================================================
+       Extended Icon Set — 30+ additional icons
+       ============================================================ -->
+
+  <!-- ── G. Social & Communication ── -->
+
+  <symbol id="km-icon-heart" viewBox="0 0 24 24">
+    <path d="M12,20 L3,11 L3,6 L7,3 L12,7 L17,3 L21,6 L21,11 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+  </symbol>
+
+  <symbol id="km-icon-bookmark" viewBox="0 0 24 24">
+    <path d="M5,3 L19,3 L19,21 L12,16 L5,21 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+  </symbol>
+
+  <symbol id="km-icon-share" viewBox="0 0 24 24">
+    <rect x="15" y="3" width="6" height="6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <rect x="3" y="9" width="6" height="6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <rect x="15" y="15" width="6" height="6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <line x1="9" y1="11" x2="15" y2="7" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+    <line x1="9" y1="13" x2="15" y2="17" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+  </symbol>
+
+  <symbol id="km-icon-comment" viewBox="0 0 24 24">
+    <path d="M3,3 L21,3 L21,16 L10,16 L5,21 L5,16 L3,16 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <line x1="7" y1="8" x2="17" y2="8" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+    <line x1="7" y1="12" x2="13" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+  </symbol>
+
+  <symbol id="km-icon-send" viewBox="0 0 24 24">
+    <polygon points="3,3 21,12 3,21 7,12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+  </symbol>
+
+  <symbol id="km-icon-at" viewBox="0 0 24 24">
+    <rect x="8" y="8" width="8" height="8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <path d="M20,16 L20,4 L4,4 L4,20 L14,20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+    <line x1="16" y1="8" x2="16" y2="16" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+  </symbol>
+
+  <!-- ── H. File & Document ── -->
+
+  <symbol id="km-icon-file" viewBox="0 0 24 24">
+    <path d="M5,2 L15,2 L20,7 L20,22 L5,22 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <polyline points="15,2 15,7 20,7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+  </symbol>
+
+  <symbol id="km-icon-folder" viewBox="0 0 24 24">
+    <path d="M3,5 L3,20 L21,20 L21,8 L12,8 L10,5 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+  </symbol>
+
+  <symbol id="km-icon-image" viewBox="0 0 24 24">
+    <rect x="3" y="3" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <polyline points="3,17 8,12 12,16 16,11 21,17" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+    <rect x="14" y="6" width="4" height="4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+  </symbol>
+
+  <symbol id="km-icon-archive" viewBox="0 0 24 24">
+    <rect x="3" y="3" width="18" height="5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <path d="M5,8 L5,21 L19,21 L19,8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+    <line x1="10" y1="13" x2="14" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+  </symbol>
+
+  <symbol id="km-icon-clipboard" viewBox="0 0 24 24">
+    <rect x="4" y="4" width="16" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <rect x="8" y="2" width="8" height="4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <line x1="8" y1="11" x2="16" y2="11" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+    <line x1="8" y1="15" x2="14" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+  </symbol>
+
+  <!-- ── I. Time & Schedule ── -->
+
+  <symbol id="km-icon-clock" viewBox="0 0 24 24">
+    <rect x="3" y="3" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <polyline points="12,7 12,12 16,12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
+  </symbol>
+
+  <symbol id="km-icon-timer" viewBox="0 0 24 24">
+    <rect x="4" y="6" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <line x1="10" y1="2" x2="14" y2="2" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+    <line x1="12" y1="2" x2="12" y2="6" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+    <polyline points="12,10 12,14 15,14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+  </symbol>
+
+  <symbol id="km-icon-history" viewBox="0 0 24 24">
+    <polyline points="3,10 3,4 9,4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+    <path d="M3,4 L9,10" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+    <rect x="6" y="6" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <polyline points="14,10 14,14 17,14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+  </symbol>
+
+  <!-- ── J. Toggle & Controls ── -->
+
+  <symbol id="km-icon-toggle-on" viewBox="0 0 24 24">
+    <rect x="2" y="7" width="20" height="10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <rect x="13" y="9" width="7" height="6" fill="currentColor"/>
+  </symbol>
+
+  <symbol id="km-icon-toggle-off" viewBox="0 0 24 24">
+    <rect x="2" y="7" width="20" height="10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <rect x="4" y="9" width="7" height="6" fill="currentColor" opacity="0.3"/>
+  </symbol>
+
+  <symbol id="km-icon-sliders" viewBox="0 0 24 24">
+    <line x1="4" y1="6" x2="20" y2="6" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+    <line x1="4" y1="12" x2="20" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+    <line x1="4" y1="18" x2="20" y2="18" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+    <rect x="13" y="4" width="4" height="4" fill="currentColor"/>
+    <rect x="7" y="10" width="4" height="4" fill="currentColor"/>
+    <rect x="15" y="16" width="4" height="4" fill="currentColor"/>
+  </symbol>
+
+  <symbol id="km-icon-expand" viewBox="0 0 24 24">
+    <polyline points="4,9 4,4 9,4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+    <polyline points="20,15 20,20 15,20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+    <line x1="4" y1="4" x2="10" y2="10" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+    <line x1="20" y1="20" x2="14" y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+  </symbol>
+
+  <symbol id="km-icon-collapse" viewBox="0 0 24 24">
+    <polyline points="14,4 14,10 20,10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+    <polyline points="10,20 10,14 4,14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+    <line x1="14" y1="10" x2="20" y2="4" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+    <line x1="10" y1="14" x2="4" y2="20" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+  </symbol>
+
+  <symbol id="km-icon-minus" viewBox="0 0 24 24">
+    <line x1="4" y1="12" x2="20" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+  </symbol>
+
+  <!-- ── K. Security & Auth ── -->
+
+  <symbol id="km-icon-shield" viewBox="0 0 24 24">
+    <path d="M12,2 L21,6 L21,12 L12,22 L3,12 L3,6 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+  </symbol>
+
+  <symbol id="km-icon-key" viewBox="0 0 24 24">
+    <rect x="3" y="9" width="8" height="6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <line x1="11" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+    <line x1="19" y1="12" x2="19" y2="8" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+    <line x1="16" y1="12" x2="16" y2="9" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+  </symbol>
+
+  <symbol id="km-icon-unlock" viewBox="0 0 24 24">
+    <rect x="4" y="11" width="16" height="10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <polyline points="8,11 8,6 12,3 16,6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+    <line x1="12" y1="15" x2="12" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+  </symbol>
+
+  <symbol id="km-icon-logout" viewBox="0 0 24 24">
+    <polyline points="13,3 3,3 3,21 13,21" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+    <line x1="8" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+    <polyline points="17,8 21,12 17,16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+  </symbol>
+
+  <!-- ── L. Device & Display ── -->
+
+  <symbol id="km-icon-monitor" viewBox="0 0 24 24">
+    <rect x="3" y="3" width="18" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <line x1="8" y1="21" x2="16" y2="21" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+    <line x1="12" y1="17" x2="12" y2="21" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+  </symbol>
+
+  <symbol id="km-icon-phone" viewBox="0 0 24 24">
+    <rect x="6" y="2" width="12" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <line x1="10" y1="18" x2="14" y2="18" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+  </symbol>
+
+  <symbol id="km-icon-printer" viewBox="0 0 24 24">
+    <rect x="6" y="2" width="12" height="6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <rect x="3" y="8" width="18" height="9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <rect x="6" y="15" width="12" height="7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+  </symbol>
+
+  <!-- ── M. Development & Code ── -->
+
+  <symbol id="km-icon-code" viewBox="0 0 24 24">
+    <polyline points="8,6 3,12 8,18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+    <polyline points="16,6 21,12 16,18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+    <line x1="14" y1="4" x2="10" y2="20" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+  </symbol>
+
+  <symbol id="km-icon-terminal" viewBox="0 0 24 24">
+    <rect x="3" y="4" width="18" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <polyline points="7,10 10,13 7,16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+    <line x1="13" y1="16" x2="17" y2="16" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+  </symbol>
+
+  <symbol id="km-icon-database" viewBox="0 0 24 24">
+    <rect x="4" y="3" width="16" height="6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <rect x="4" y="9" width="16" height="6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <rect x="4" y="15" width="16" height="6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <line x1="8" y1="5" x2="8" y2="7" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+    <line x1="8" y1="11" x2="8" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+    <line x1="8" y1="17" x2="8" y2="19" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+  </symbol>
+
+  <symbol id="km-icon-server" viewBox="0 0 24 24">
+    <rect x="3" y="3" width="18" height="8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <rect x="3" y="13" width="18" height="8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <rect x="6" y="6" width="2" height="2" fill="currentColor"/>
+    <rect x="6" y="16" width="2" height="2" fill="currentColor"/>
+    <line x1="11" y1="7" x2="18" y2="7" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+    <line x1="11" y1="17" x2="18" y2="17" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+  </symbol>
+
+  <!-- ── N. Layout & View ── -->
+
+  <symbol id="km-icon-sidebar" viewBox="0 0 24 24">
+    <rect x="3" y="3" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <line x1="9" y1="3" x2="9" y2="21" stroke="currentColor" stroke-width="1.5"/>
+  </symbol>
+
+  <symbol id="km-icon-columns" viewBox="0 0 24 24">
+    <rect x="3" y="3" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <line x1="12" y1="3" x2="12" y2="21" stroke="currentColor" stroke-width="1.5"/>
+  </symbol>
+
+  <symbol id="km-icon-layers" viewBox="0 0 24 24">
+    <polygon points="12,3 21,9 12,15 3,9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <polyline points="3,13 12,19 21,13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+  </symbol>
+
+  <symbol id="km-icon-maximize" viewBox="0 0 24 24">
+    <rect x="4" y="4" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <polyline points="4,4 10,4 4,10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
+  </symbol>
+
+  <!-- ── O. Indicators & Misc ── -->
+
+  <symbol id="km-icon-star" viewBox="0 0 24 24">
+    <polygon points="12,3 14,10 21,10 16,14 18,21 12,17 6,21 8,14 3,10 10,10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+  </symbol>
+
+  <symbol id="km-icon-pin" viewBox="0 0 24 24">
+    <path d="M8,2 L16,2 L16,10 L20,14 L14,14 L14,22 L10,22 L10,14 L4,14 L8,10 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+  </symbol>
+
+  <symbol id="km-icon-tag" viewBox="0 0 24 24">
+    <path d="M3,3 L13,3 L21,12 L12,21 L3,12 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <rect x="7" y="7" width="2" height="2" fill="currentColor"/>
+  </symbol>
+
+  <symbol id="km-icon-hash" viewBox="0 0 24 24">
+    <line x1="9" y1="3" x2="7" y2="21" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+    <line x1="17" y1="3" x2="15" y2="21" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+    <line x1="4" y1="9" x2="20" y2="9" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+    <line x1="4" y1="15" x2="20" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+  </symbol>
+
+  <symbol id="km-icon-zap" viewBox="0 0 24 24">
+    <polygon points="13,2 4,14 12,14 11,22 20,10 12,10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+  </symbol>
+
+  <symbol id="km-icon-compass" viewBox="0 0 24 24">
+    <rect x="3" y="3" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <polygon points="8,16 10,10 16,8 14,14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+  </symbol>
+
+  <symbol id="km-icon-crop" viewBox="0 0 24 24">
+    <polyline points="6,2 6,18 22,18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+    <polyline points="18,22 18,6 2,6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+  </symbol>
+
+  <symbol id="km-icon-palette" viewBox="0 0 24 24">
+    <rect x="3" y="3" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <rect x="6" y="6" width="4" height="4" fill="currentColor"/>
+    <rect x="14" y="6" width="4" height="4" fill="currentColor" opacity="0.6"/>
+    <rect x="6" y="14" width="4" height="4" fill="currentColor" opacity="0.3"/>
+  </symbol>
+
+  <symbol id="km-icon-eye-off" viewBox="0 0 24 24">
+    <polygon points="12,7 20,12 12,17 4,12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <line x1="4" y1="4" x2="20" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+  </symbol>
+
+  <symbol id="km-icon-power" viewBox="0 0 24 24">
+    <line x1="12" y1="3" x2="12" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+    <path d="M7,6 L4,9 L4,18 L20,18 L20,9 L17,6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
+  </symbol>
+
+  <symbol id="km-icon-globe" viewBox="0 0 24 24">
+    <rect x="3" y="3" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+    <line x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="1.5"/>
+    <line x1="12" y1="3" x2="12" y2="21" stroke="currentColor" stroke-width="1.5"/>
+    <line x1="3" y1="8" x2="21" y2="8" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+    <line x1="3" y1="16" x2="21" y2="16" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+  </symbol>
+
+</svg>

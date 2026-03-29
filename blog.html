@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en" data-accent="single">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KINETIC MONO — Blog</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <style>
+    /* ── Blog Page Styles ── */
+    .blog-header {
+      padding: var(--sp-6) var(--sp-5);
+      border-bottom: 1px solid var(--surface-3);
+    }
+
+    .blog-header__meta {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-2);
+      margin-top: var(--sp-3);
+      flex-wrap: wrap;
+    }
+
+    .blog-header__author {
+      font-size: var(--t-sm);
+      font-weight: 600;
+      color: var(--text-2);
+    }
+
+    .blog-header__date {
+      font-family: var(--font-mono);
+      font-size: var(--t-sm);
+      color: var(--text-3);
+    }
+
+    .blog-header__sep {
+      width: 4px;
+      height: 4px;
+      background: var(--surface-4);
+    }
+
+    .blog-header__title {
+      font-size: var(--t-3xl);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      margin-top: var(--sp-2);
+      color: var(--text-1);
+    }
+
+    .blog-accent-line {
+      width: 80px;
+      height: 4px;
+      background: var(--a1);
+      margin-top: var(--sp-3);
+    }
+
+    /* ── Two-column layout ── */
+    .blog-layout {
+      display: grid;
+      grid-template-columns: 1fr 240px;
+      gap: var(--sp-5);
+      padding: var(--sp-5);
+    }
+
+    /* ── Sidebar ── */
+    .blog-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-4);
+    }
+
+    .blog-sidebar__section {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-2);
+    }
+
+    .blog-sidebar__card {
+      background: var(--surface-0);
+      padding: var(--sp-2);
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .blog-sidebar__card-title {
+      font-size: var(--t-sm);
+      font-weight: 700;
+      color: var(--text-1);
+      line-height: 1.3;
+    }
+
+    .blog-sidebar__card-date {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-3);
+    }
+
+    .blog-sidebar__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-1);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .blog-layout {
+        grid-template-columns: 1fr;
+        padding: var(--sp-3);
+      }
+
+      .blog-header__title {
+        font-size: var(--t-2xl);
+      }
+
+      .km-toc {
+        position: static;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .blog-layout {
+        padding: var(--sp-2);
+      }
+
+      .blog-header {
+        padding: var(--sp-4) var(--sp-3);
+      }
+
+      .blog-header__title {
+        font-size: var(--t-xl);
+      }
+
+      .blog-header__meta {
+        gap: var(--sp-1);
+      }
+    }
+  </style>
+</head>
+<body data-page="blog">
+  <div id="km-nav"></div>
+
+  <main class="km-main">
+
+    <!-- Article Header -->
+    <section class="blog-header km-section">
+      <span class="km-tag km-tag--a2" data-i18n="blog.tag_engineering">ENGINEERING</span>
+      <h1 class="blog-header__title" data-i18n="blog.title">Building Design Systems That Scale</h1>
+      <div class="blog-header__meta">
+        <span class="blog-header__author" data-i18n="blog.author">Jun Kimura</span>
+        <span class="blog-header__sep"></span>
+        <span class="blog-header__date" data-i18n="blog.date">2025.03.15</span>
+        <span class="blog-header__sep"></span>
+        <span class="km-micro-label" data-i18n="blog.reading_time">8 MIN READ</span>
+      </div>
+      <div class="blog-accent-line"></div>
+    </section>
+
+    <!-- Two-Column Layout -->
+    <div class="blog-layout">
+
+      <!-- Left: Article Body -->
+      <article class="km-article">
+        <p class="km-article__dropcap" data-i18n="blog.intro">Design systems are the connective tissue of modern product development. They bridge the gap between design intent and engineering output, ensuring that every pixel, every interaction, and every moment of feedback adheres to a shared vocabulary. Building one that scales across teams, products, and platforms requires more than a component library. It demands a philosophy rooted in constraint, clarity, and composability. The most successful design systems do not try to anticipate every use case; instead, they provide a grammar flexible enough to express any interface while maintaining coherence across the entire product surface.</p>
+
+        <h2 data-i18n="blog.heading_foundation">The Foundation</h2>
+        <p data-i18n="blog.para_foundation">Every durable design system begins with tokens: the atomic values that define color, spacing, typography, and motion. Tokens are not merely variables; they are decisions codified. When you define <code>--sp-2: 16px</code>, you are not just setting a number. You are establishing a unit of spatial rhythm that will echo through every layout, every card, every interaction target. The token layer must be rigorous yet minimal. Too few tokens and teams invent their own values, fragmenting the system. Too many and the cognitive overhead defeats the purpose of constraint. The ideal token set fits on a single reference card that any engineer can memorize within a week.</p>
+
+        <h2 data-i18n="blog.heading_typography">Typography at Scale</h2>
+        <p data-i18n="blog.para_typography">Type is the primary carrier of information in any interface. A robust type scale does not merely list font sizes; it encodes hierarchy, rhythm, and reading ergonomics. The best scales follow a mathematical ratio, allowing each step to feel inevitable rather than arbitrary. In Kinetic Mono, we use a root-two ratio of 1.414, mirroring the proportions of A-series paper, a nod to Swiss precision and Japanese standardization alike. Each step in the scale serves a distinct semantic role: micro-labels at 10px anchor metadata, body at 16px carries long-form content, and display sizes at 57px and 80px command attention on hero surfaces.</p>
+
+        <blockquote data-i18n="blog.blockquote_typography">Precision in typography is not about rigidity. It is about creating a framework where every size, every weight, every letter-spacing value has earned its place through function, not decoration.</blockquote>
+
+        <pre><code>:root {
+  --t-xs:   10px;   /* Micro-label */
+  --t-sm:   14px;   /* Caption, metadata */
+  --t-base: 16px;   /* Body copy */
+  --t-lg:   20px;   /* Subtitle */
+  --t-xl:   28px;   /* H3 */
+  --t-2xl:  40px;   /* H2 */
+  --t-3xl:  57px;   /* H1 */
+  --t-hero: 80px;   /* Display hero */
+}</code></pre>
+
+        <h2 data-i18n="blog.heading_motion">Motion as Language</h2>
+        <p data-i18n="blog.para_motion">Animation in a design system is not ornamentation. It is a communication channel. Motion conveys state changes, guides attention, and establishes spatial relationships between elements. Without a motion language, interfaces feel either static and lifeless or chaotic with competing animations. A well-defined motion system uses named curves and durations that map to interaction intent, making it as easy to specify an animation as it is to choose a color token.</p>
+
+        <ul>
+          <li data-i18n="blog.motion_kinetic"><strong>Kinetic:</strong> Sharp entrance with gentle settle. Used for primary actions and page transitions where immediacy matters.</li>
+          <li data-i18n="blog.motion_editorial"><strong>Editorial:</strong> Slow start, deliberate acceleration. Used for content reveals and narrative sequences where pacing builds anticipation.</li>
+          <li data-i18n="blog.motion_snap"><strong>Snap:</strong> Fast with intentional overshoot. Used for micro-interactions like toggles, checkboxes, and toast appearances.</li>
+          <li data-i18n="blog.motion_instant"><strong>Instant:</strong> Sub-100ms response. Used for hover states and focus indicators where perceived latency must be zero.</li>
+        </ul>
+
+        <h2 data-i18n="blog.heading_color">Color Architecture</h2>
+        <p data-i18n="blog.para_color">Color in a scalable design system operates in layers. The raw palette is immutable: these are the brand colors that never change regardless of context. Above that sits the semantic layer, where palette values are mapped to roles like accent, surface, and feedback. This separation means a single toggle can shift the entire interface from a monochromatic yellow-accent mode to a full six-color editorial palette without touching a single component. The architecture must also account for contrast ratios, dark mode inversions, and the practical reality that yellow on white fails WCAG guidelines for text but works perfectly as a field color.</p>
+
+        <ol>
+          <li data-i18n="blog.color_raw_palette"><strong>Raw palette:</strong> Immutable brand colors. Yellow, blue, red, green, purple, orange, black, white. These never change.</li>
+          <li data-i18n="blog.color_semantic_tokens"><strong>Semantic tokens:</strong> Role-based mappings. Accent 1 through 6, surface scale, text scale. These change per mode.</li>
+          <li data-i18n="blog.color_component_tokens"><strong>Component tokens:</strong> Contextual overrides. Button background, card shadow, input border. These inherit from semantic tokens.</li>
+          <li data-i18n="blog.color_instance_overrides"><strong>Instance overrides:</strong> One-off adjustments for specific contexts. A hero section with inverted colors, a promotional banner with a seasonal accent.</li>
+        </ol>
+
+        <h2 data-i18n="blog.heading_conclusion">Conclusion</h2>
+        <p data-i18n="blog.para_conclusion">A design system that scales is not one that has the most components. It is one where every decision, from the smallest spacing token to the broadest layout pattern, follows a coherent logic that teams can internalize and extend. The goal is not to eliminate creativity but to channel it. When the foundation is solid, designers and engineers spend less time debating pixels and more time solving problems that matter. The system becomes invisible, and the product becomes the focus. That is the measure of success: not how impressive the system looks in isolation, but how effortlessly it disappears into the work it enables.</p>
+      </article>
+
+      <!-- Right: Sidebar -->
+      <aside class="blog-sidebar">
+        <nav class="km-toc">
+          <span class="km-micro-label" style="margin-bottom: var(--sp-1);" data-i18n="blog.toc_heading">TABLE OF CONTENTS</span>
+          <a href="#" class="km-toc__link km-toc__link--active" data-i18n="blog.toc_foundation">The Foundation</a>
+          <a href="#" class="km-toc__link" data-i18n="blog.toc_typography">Typography at Scale</a>
+          <a href="#" class="km-toc__link" data-i18n="blog.toc_motion">Motion as Language</a>
+          <a href="#" class="km-toc__link" data-i18n="blog.toc_color">Color Architecture</a>
+          <a href="#" class="km-toc__link" data-i18n="blog.toc_conclusion">Conclusion</a>
+        </nav>
+
+        <div class="blog-sidebar__section">
+          <span class="km-micro-label" data-i18n="blog.related_articles">RELATED ARTICLES</span>
+
+          <div class="blog-sidebar__card">
+            <span class="km-tag km-tag--a1" style="align-self: flex-start;" data-i18n="blog.related_1_tag">DESIGN</span>
+            <span class="blog-sidebar__card-title" data-i18n="blog.related_1_title">Zero-Radius Aesthetics in Modern UI</span>
+            <span class="blog-sidebar__card-date" data-i18n="blog.related_1_date">2025.02.28</span>
+          </div>
+
+          <div class="blog-sidebar__card">
+            <span class="km-tag km-tag--a2" style="align-self: flex-start;" data-i18n="blog.related_2_tag">ENGINEERING</span>
+            <span class="blog-sidebar__card-title" data-i18n="blog.related_2_title">CSS Custom Properties at Scale</span>
+            <span class="blog-sidebar__card-date" data-i18n="blog.related_2_date">2025.01.14</span>
+          </div>
+
+          <div class="blog-sidebar__card">
+            <span class="km-tag km-tag--a3" style="align-self: flex-start;" data-i18n="blog.related_3_tag">PROCESS</span>
+            <span class="blog-sidebar__card-title" data-i18n="blog.related_3_title">Token-Driven Design Handoff</span>
+            <span class="blog-sidebar__card-date" data-i18n="blog.related_3_date">2024.12.03</span>
+          </div>
+        </div>
+
+        <div class="blog-sidebar__section">
+          <span class="km-micro-label" data-i18n="blog.tags">TAGS</span>
+          <div class="blog-sidebar__tags">
+            <span class="km-tag km-tag--outline" data-i18n="blog.tag_design_systems">DESIGN SYSTEMS</span>
+            <span class="km-tag km-tag--outline" data-i18n="blog.tag_css">CSS</span>
+            <span class="km-tag km-tag--outline" data-i18n="blog.tag_tokens">TOKENS</span>
+            <span class="km-tag km-tag--outline" data-i18n="blog.tag_typography">TYPOGRAPHY</span>
+            <span class="km-tag km-tag--outline" data-i18n="blog.tag_motion">MOTION</span>
+            <span class="km-tag km-tag--outline" data-i18n="blog.tag_color">COLOR</span>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+
+  </main>
+
+  <script src="js/nav.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/icons.js"></script>
+</body>
+</html>

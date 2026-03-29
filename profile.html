@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en" data-accent="single">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KINETIC MONO — Profile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <style>
+    .profile-header {
+      display: flex;
+      gap: var(--sp-4);
+      align-items: center;
+      padding: var(--sp-4) var(--sp-5);
+    }
+
+    .profile-avatar {
+      width: 96px;
+      height: 96px;
+      background: var(--c-accent);
+      color: var(--c-surface-0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 28px;
+      font-weight: 700;
+      border-radius: 0px;
+      flex-shrink: 0;
+    }
+
+    .profile-info {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-1);
+    }
+
+    .profile-name {
+      font-size: var(--t-2xl);
+      font-weight: 800;
+      color: var(--c-text-0);
+      line-height: 1.1;
+    }
+
+    .profile-role {
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--c-accent);
+    }
+
+    .profile-joined {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--c-text-2);
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--sp-2);
+      padding: var(--sp-3) var(--sp-5);
+    }
+
+    .stats-row .km-stat {
+      background: var(--c-surface-0);
+      padding: var(--sp-3);
+      box-shadow: var(--shadow-card);
+      border-radius: 0px;
+      text-align: center;
+    }
+
+    .stats-row .km-stat__value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--c-text-0);
+      line-height: 1;
+      margin-bottom: var(--sp-1);
+    }
+
+    .stats-row .km-stat__label {
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--c-text-2);
+    }
+
+    .profile-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-4);
+      padding: var(--sp-2) var(--sp-5) var(--sp-4);
+    }
+
+    .profile-col {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-4);
+    }
+
+    .micro-label {
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--c-text-2);
+      margin-bottom: var(--sp-2);
+    }
+
+    /* Feed */
+    .km-feed {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .km-feed__item {
+      display: grid;
+      grid-template-columns: 10px 1fr auto;
+      gap: var(--sp-2);
+      align-items: start;
+      padding: var(--sp-2) 0;
+      border-bottom: 1px solid var(--c-border);
+    }
+
+    .km-feed__item:last-child {
+      border-bottom: none;
+    }
+
+    .km-feed__dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 0px;
+      margin-top: 4px;
+    }
+
+    .km-feed__dot--a1 { background: var(--c-a1); }
+    .km-feed__dot--a2 { background: var(--c-a2); }
+    .km-feed__dot--a3 { background: var(--c-a3); }
+
+    .km-feed__body {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .km-feed__title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--c-text-0);
+    }
+
+    .km-feed__desc {
+      font-size: 11px;
+      color: var(--c-text-2);
+    }
+
+    .km-feed__time {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: var(--c-text-2);
+      white-space: nowrap;
+    }
+
+    /* Chart */
+    .km-chart {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-2);
+    }
+
+    .km-chart__row {
+      display: grid;
+      grid-template-columns: 120px 1fr 40px;
+      gap: var(--sp-2);
+      align-items: center;
+    }
+
+    .km-chart__label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--c-text-1);
+      text-align: right;
+    }
+
+    .km-chart__track {
+      height: 6px;
+      background: var(--c-border);
+      border-radius: 0px;
+      overflow: hidden;
+    }
+
+    .km-chart__bar {
+      height: 100%;
+      background: var(--c-accent);
+      border-radius: 0px;
+      transition: width 0.6s ease;
+    }
+
+    .km-chart__val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--c-text-0);
+    }
+
+    /* Tags */
+    .tags-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-1);
+    }
+
+    .km-tag {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: var(--sp-1) var(--sp-2);
+      background: var(--c-surface-1);
+      color: var(--c-text-1);
+      border: 1px solid var(--c-border);
+      border-radius: 0px;
+    }
+
+    /* Toggles */
+    .toggle-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-2);
+    }
+
+    .km-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--sp-2) 0;
+      border-bottom: 1px solid var(--c-border);
+      cursor: pointer;
+    }
+
+    .km-toggle:last-child {
+      border-bottom: none;
+    }
+
+    .km-toggle__label {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--c-text-0);
+    }
+
+    .km-toggle__track {
+      width: 36px;
+      height: 18px;
+      background: var(--c-border);
+      border-radius: 0px;
+      position: relative;
+      transition: background 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .km-toggle__track::after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 14px;
+      height: 14px;
+      background: var(--c-surface-0);
+      border-radius: 0px;
+      transition: transform 0.2s ease;
+    }
+
+    .km-toggle__track--on {
+      background: var(--c-accent);
+    }
+
+    .km-toggle__track--on::after {
+      transform: translateX(18px);
+    }
+
+    /* Settings form */
+    .settings-form {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-3);
+    }
+
+    .settings-section {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-2);
+    }
+
+    @media (max-width: 900px) {
+      .profile-header, .stats-row, .profile-body {
+        padding-left: var(--sp-3);
+        padding-right: var(--sp-3);
+      }
+
+      .profile-header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .stats-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .profile-body {
+        grid-template-columns: 1fr;
+      }
+
+      .km-chart__row {
+        grid-template-columns: 90px 1fr 36px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .profile-header, .stats-row, .profile-body {
+        padding-left: var(--sp-2);
+        padding-right: var(--sp-2);
+      }
+
+      .stats-row {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .km-chart__row {
+        grid-template-columns: 80px 1fr 32px;
+      }
+
+      .km-feed__item {
+        grid-template-columns: 8px 1fr;
+      }
+
+      .km-feed__time {
+        grid-column: 2;
+      }
+    }
+  </style>
+</head>
+<body data-page="profile">
+  <div id="km-nav"></div>
+
+  <main class="km-main">
+    <!-- Profile Header -->
+    <div class="km-section profile-header">
+      <div class="km-avatar km-avatar--xl profile-avatar">KM</div>
+      <div class="profile-info">
+        <div class="profile-name" data-i18n="profile.name">KINETIC MONOTARO</div>
+        <div class="profile-role" data-i18n="profile.role">SENIOR ENGINEER</div>
+        <div class="profile-joined" data-i18n="profile.member_since">MEMBER SINCE 2023.04</div>
+      </div>
+    </div>
+
+    <!-- Stats Row -->
+    <div class="stats-row">
+      <div class="km-stat">
+        <div class="km-stat__value" data-i18n="profile.stats_projects_value">142</div>
+        <div class="km-stat__label" data-i18n="profile.stats_projects_label">PROJECTS</div>
+      </div>
+      <div class="km-stat">
+        <div class="km-stat__value" data-i18n="profile.stats_commits_value">1,247</div>
+        <div class="km-stat__label" data-i18n="profile.stats_commits_label">COMMITS</div>
+      </div>
+      <div class="km-stat">
+        <div class="km-stat__value" data-i18n="profile.stats_uptime_value">98.2%</div>
+        <div class="km-stat__label" data-i18n="profile.stats_uptime_label">UPTIME</div>
+      </div>
+      <div class="km-stat">
+        <div class="km-stat__value" data-i18n="profile.stats_rank_value">LVL 12</div>
+        <div class="km-stat__label" data-i18n="profile.stats_rank_label">RANK</div>
+      </div>
+    </div>
+
+    <!-- Two-Column Body -->
+    <div class="profile-body">
+      <!-- Left: Activity & Skills -->
+      <div class="profile-col">
+        <div class="settings-section">
+          <div class="micro-label" data-i18n="profile.recent_activity">RECENT ACTIVITY</div>
+          <div class="km-feed">
+            <div class="km-feed__item">
+              <span class="km-feed__dot km-feed__dot--a1"></span>
+              <div class="km-feed__body">
+                <span class="km-feed__title" data-i18n="profile.activity_1_title">Deployed v2.4.1</span>
+                <span class="km-feed__desc" data-i18n="profile.activity_1_desc">Production release with performance fixes</span>
+              </div>
+              <span class="km-feed__time" data-i18n="profile.activity_1_time">2h ago</span>
+            </div>
+            <div class="km-feed__item">
+              <span class="km-feed__dot km-feed__dot--a2"></span>
+              <div class="km-feed__body">
+                <span class="km-feed__title" data-i18n="profile.activity_2_title">Merged PR #847</span>
+                <span class="km-feed__desc" data-i18n="profile.activity_2_desc">Refactored token system for dark mode</span>
+              </div>
+              <span class="km-feed__time" data-i18n="profile.activity_2_time">5h ago</span>
+            </div>
+            <div class="km-feed__item">
+              <span class="km-feed__dot km-feed__dot--a3"></span>
+              <div class="km-feed__body">
+                <span class="km-feed__title" data-i18n="profile.activity_3_title">Created branch feature/auth</span>
+                <span class="km-feed__desc" data-i18n="profile.activity_3_desc">OAuth2 integration with SSO providers</span>
+              </div>
+              <span class="km-feed__time" data-i18n="profile.activity_3_time">1d ago</span>
+            </div>
+            <div class="km-feed__item">
+              <span class="km-feed__dot km-feed__dot--a1"></span>
+              <div class="km-feed__body">
+                <span class="km-feed__title" data-i18n="profile.activity_4_title">Reviewed PR #841</span>
+                <span class="km-feed__desc" data-i18n="profile.activity_4_desc">Added input validation to contact forms</span>
+              </div>
+              <span class="km-feed__time" data-i18n="profile.activity_4_time">2d ago</span>
+            </div>
+            <div class="km-feed__item">
+              <span class="km-feed__dot km-feed__dot--a2"></span>
+              <div class="km-feed__body">
+                <span class="km-feed__title" data-i18n="profile.activity_5_title">Updated design tokens</span>
+                <span class="km-feed__desc" data-i18n="profile.activity_5_desc">Spacing scale adjusted from 4px to 8px base</span>
+              </div>
+              <span class="km-feed__time" data-i18n="profile.activity_5_time">3d ago</span>
+            </div>
+            <div class="km-feed__item">
+              <span class="km-feed__dot km-feed__dot--a3"></span>
+              <div class="km-feed__body">
+                <span class="km-feed__title" data-i18n="profile.activity_6_title">Closed issue #302</span>
+                <span class="km-feed__desc" data-i18n="profile.activity_6_desc">Fixed nav collapse on mobile viewports</span>
+              </div>
+              <span class="km-feed__time" data-i18n="profile.activity_6_time">4d ago</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="settings-section">
+          <div class="micro-label" data-i18n="profile.skills">SKILLS</div>
+          <div class="km-chart">
+            <div class="km-chart__row">
+              <span class="km-chart__label" data-i18n="profile.skill_systems_design">Systems Design</span>
+              <div class="km-chart__track">
+                <div class="km-chart__bar" style="width: 92%"></div>
+              </div>
+              <span class="km-chart__val">92%</span>
+            </div>
+            <div class="km-chart__row">
+              <span class="km-chart__label" data-i18n="profile.skill_typography">Typography</span>
+              <div class="km-chart__track">
+                <div class="km-chart__bar" style="width: 78%"></div>
+              </div>
+              <span class="km-chart__val">78%</span>
+            </div>
+            <div class="km-chart__row">
+              <span class="km-chart__label" data-i18n="profile.skill_motion">Motion</span>
+              <div class="km-chart__track">
+                <div class="km-chart__bar" style="width: 85%"></div>
+              </div>
+              <span class="km-chart__val">85%</span>
+            </div>
+            <div class="km-chart__row">
+              <span class="km-chart__label" data-i18n="profile.skill_color_theory">Color Theory</span>
+              <div class="km-chart__track">
+                <div class="km-chart__bar" style="width: 71%"></div>
+              </div>
+              <span class="km-chart__val">71%</span>
+            </div>
+            <div class="km-chart__row">
+              <span class="km-chart__label" data-i18n="profile.skill_architecture">Architecture</span>
+              <div class="km-chart__track">
+                <div class="km-chart__bar" style="width: 88%"></div>
+              </div>
+              <span class="km-chart__val">88%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Settings -->
+      <div class="profile-col">
+        <div class="settings-form">
+          <div class="micro-label" data-i18n="profile.profile_settings">PROFILE SETTINGS</div>
+
+          <div class="km-form-group">
+            <label class="km-form-label" data-i18n="profile.label_display_name">Display Name</label>
+            <input type="text" class="km-form-input" value="Jun Kimura" data-i18n-placeholder="profile.placeholder_display_name">
+          </div>
+
+          <div class="km-form-group">
+            <label class="km-form-label" data-i18n="profile.label_email">Email</label>
+            <input type="email" class="km-form-input" value="monotaro@kinetic.mono" style="font-family: 'JetBrains Mono', monospace;" data-i18n-placeholder="profile.placeholder_email">
+          </div>
+
+          <div class="km-form-group">
+            <label class="km-form-label" data-i18n="profile.label_bio">Bio</label>
+            <textarea class="km-form-textarea" rows="4" data-i18n-placeholder="profile.placeholder_bio">Senior engineer focused on design systems, motion, and brutalist interfaces. Building tools that bridge the gap between design and engineering at scale.</textarea>
+          </div>
+
+          <div class="km-form-group">
+            <label class="km-form-label" data-i18n="profile.label_timezone">Timezone</label>
+            <select class="km-form-select">
+              <option value="asia-tokyo" selected data-i18n="profile.tz_asia_tokyo">Asia/Tokyo (JST, UTC+9)</option>
+              <option value="us-pacific" data-i18n="profile.tz_us_pacific">US/Pacific (PST, UTC-8)</option>
+              <option value="us-eastern" data-i18n="profile.tz_us_eastern">US/Eastern (EST, UTC-5)</option>
+              <option value="europe-london" data-i18n="profile.tz_europe_london">Europe/London (GMT, UTC+0)</option>
+              <option value="europe-berlin" data-i18n="profile.tz_europe_berlin">Europe/Berlin (CET, UTC+1)</option>
+            </select>
+          </div>
+
+          <div class="settings-section">
+            <div class="micro-label" data-i18n="profile.tags">TAGS</div>
+            <div class="tags-row">
+              <span class="km-tag" data-i18n="profile.tag_design_systems">DESIGN SYSTEMS</span>
+              <span class="km-tag" data-i18n="profile.tag_css">CSS</span>
+              <span class="km-tag" data-i18n="profile.tag_motion">MOTION</span>
+              <span class="km-tag" data-i18n="profile.tag_brutalism">BRUTALISM</span>
+            </div>
+          </div>
+
+          <div class="settings-section">
+            <div class="micro-label" data-i18n="profile.notifications">NOTIFICATIONS</div>
+            <div class="toggle-list">
+              <div class="km-toggle">
+                <span class="km-toggle__label" data-i18n="profile.toggle_email_notifications">Email notifications</span>
+                <span class="km-toggle__track km-toggle__track--on"></span>
+              </div>
+              <div class="km-toggle">
+                <span class="km-toggle__label" data-i18n="profile.toggle_push_alerts">Push alerts</span>
+                <span class="km-toggle__track km-toggle__track--on"></span>
+              </div>
+              <div class="km-toggle">
+                <span class="km-toggle__label" data-i18n="profile.toggle_weekly_digest">Weekly digest</span>
+                <span class="km-toggle__track"></span>
+              </div>
+            </div>
+          </div>
+
+          <button class="km-btn km-btn--primary" style="align-self: flex-start;" data-i18n="profile.save_changes">SAVE CHANGES</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/nav.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/icons.js"></script>
+</body>
+</html>

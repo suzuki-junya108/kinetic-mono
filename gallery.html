@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en" data-accent="single">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KINETIC MONO — Gallery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <style>
+    .km-gallery-item[data-hidden="true"] {
+      display: none;
+    }
+    .km-gallery-item {
+      animation: itemIn 0.3s var(--ease-kinetic) both;
+    }
+    @keyframes itemIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .km-gallery-count {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-3);
+    }
+  </style>
+</head>
+<body data-page="gallery">
+  <div id="km-nav"></div>
+
+  <main class="km-main">
+
+    <!-- PAGE HEADER -->
+    <div class="km-page-header">
+      <div>
+        <h1 class="km-page-title" data-i18n="gallery.title">GALLERY</h1>
+        <p class="km-page-sub" data-i18n="gallery.subtitle">Generative works collection — all series</p>
+      </div>
+      <div style="display:flex;align-items:center;gap:var(--sp-3)">
+        <span class="km-gallery-count" id="km-count">100 <span data-i18n="common.works">WORKS</span></span>
+        <a href="gallery-detail.html" class="km-btn km-btn--outline km-btn--sm" data-i18n="common.detail_view">DETAIL VIEW</a>
+      </div>
+    </div>
+
+    <!-- FILTER BAR -->
+    <div class="km-gallery-filters" role="group" aria-label="Filter by category">
+      <button class="km-gallery-filter km-gallery-filter--active" data-filter="all" data-i18n="common.all">ALL</button>
+      <button class="km-gallery-filter" data-filter="yellow" style="border-left:3px solid var(--palette-yellow)"><svg class="km-icon km-icon--xs km-icon--fill" style="color:var(--palette-yellow)" aria-hidden="true"><use href="#km-icon-dot"></use></svg> <span data-i18n="gallery.geometric">GEOMETRIC</span></button>
+      <button class="km-gallery-filter" data-filter="blue" style="border-left:3px solid var(--palette-blue)"><svg class="km-icon km-icon--xs km-icon--fill" style="color:var(--palette-blue)" aria-hidden="true"><use href="#km-icon-dot"></use></svg> <span data-i18n="gallery.abstract">ABSTRACT</span></button>
+      <button class="km-gallery-filter" data-filter="red" style="border-left:3px solid var(--palette-red)"><svg class="km-icon km-icon--xs km-icon--fill" style="color:var(--palette-red)" aria-hidden="true"><use href="#km-icon-dot"></use></svg> <span data-i18n="gallery.portrait">PORTRAIT</span></button>
+      <button class="km-gallery-filter" data-filter="green" style="border-left:3px solid var(--palette-green)"><svg class="km-icon km-icon--xs km-icon--fill" style="color:var(--palette-green)" aria-hidden="true"><use href="#km-icon-dot"></use></svg> <span data-i18n="gallery.organic">ORGANIC</span></button>
+      <button class="km-gallery-filter" data-filter="purple" style="border-left:3px solid var(--palette-purple)"><svg class="km-icon km-icon--xs km-icon--fill" style="color:var(--palette-purple)" aria-hidden="true"><use href="#km-icon-dot"></use></svg> <span data-i18n="gallery.typographic">TYPOGRAPHIC</span></button>
+      <button class="km-gallery-filter" data-filter="orange" style="border-left:3px solid var(--palette-orange)"><svg class="km-icon km-icon--xs km-icon--fill" style="color:var(--palette-orange)" aria-hidden="true"><use href="#km-icon-dot"></use></svg> <span data-i18n="gallery.landscape">LANDSCAPE</span></button>
+    </div>
+
+    <!-- GALLERY GRID -->
+    <div class="km-gallery-grid" id="km-gallery-grid" role="list">
+
+      <a href="gallery-detail.html?id=KM-4291&amp;art=km-art-1"
+         class="km-gallery-item" data-cat="yellow" role="listitem">
+        <div class="km-gallery-item__thumb km-art-1" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4291</div>
+          <div class="km-gallery-item__name">Geometric Flow #48</div>
+          <span class="km-gallery-item__cat">GEOMETRIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4290&amp;art=km-art-2"
+         class="km-gallery-item" data-cat="blue" role="listitem">
+        <div class="km-gallery-item__thumb km-art-2" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4290</div>
+          <div class="km-gallery-item__name">Recursive Void #12</div>
+          <span class="km-gallery-item__cat">ABSTRACT</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4289&amp;art=km-art-3"
+         class="km-gallery-item" data-cat="red" role="listitem">
+        <div class="km-gallery-item__thumb km-art-3" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4289</div>
+          <div class="km-gallery-item__name">Portrait Zero III</div>
+          <span class="km-gallery-item__cat">PORTRAIT</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4288&amp;art=km-art-4"
+         class="km-gallery-item" data-cat="green" role="listitem">
+        <div class="km-gallery-item__thumb km-art-4" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4288</div>
+          <div class="km-gallery-item__name">Bloom Sequence #7</div>
+          <span class="km-gallery-item__cat">ORGANIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4287&amp;art=km-art-5"
+         class="km-gallery-item" data-cat="purple" role="listitem">
+        <div class="km-gallery-item__thumb km-art-5" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4287</div>
+          <div class="km-gallery-item__name">Cipher Grid #19</div>
+          <span class="km-gallery-item__cat">TYPOGRAPHIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4286&amp;art=km-art-6"
+         class="km-gallery-item" data-cat="orange" role="listitem">
+        <div class="km-gallery-item__thumb km-art-6" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4286</div>
+          <div class="km-gallery-item__name">Horizon Scan #3</div>
+          <span class="km-gallery-item__cat">LANDSCAPE</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4285&amp;art=km-art-7"
+         class="km-gallery-item" data-cat="yellow" role="listitem">
+        <div class="km-gallery-item__thumb km-art-7" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4285</div>
+          <div class="km-gallery-item__name">Stratum #22</div>
+          <span class="km-gallery-item__cat">GEOMETRIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4284&amp;art=km-art-8"
+         class="km-gallery-item" data-cat="blue" role="listitem">
+        <div class="km-gallery-item__thumb km-art-8" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4284</div>
+          <div class="km-gallery-item__name">Drift Study #44</div>
+          <span class="km-gallery-item__cat">ABSTRACT</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4283&amp;art=km-art-9"
+         class="km-gallery-item" data-cat="green" role="listitem">
+        <div class="km-gallery-item__thumb km-art-9" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4283</div>
+          <div class="km-gallery-item__name">Mycelium #8</div>
+          <span class="km-gallery-item__cat">ORGANIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4282&amp;art=km-art-10"
+         class="km-gallery-item" data-cat="red" role="listitem">
+        <div class="km-gallery-item__thumb km-art-10" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4282</div>
+          <div class="km-gallery-item__name">Fragment Face #6</div>
+          <span class="km-gallery-item__cat">PORTRAIT</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4281&amp;art=km-art-11"
+         class="km-gallery-item" data-cat="purple" role="listitem">
+        <div class="km-gallery-item__thumb km-art-11" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4281</div>
+          <div class="km-gallery-item__name">Glitch Type #31</div>
+          <span class="km-gallery-item__cat">TYPOGRAPHIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4280&amp;art=km-art-12"
+         class="km-gallery-item" data-cat="orange" role="listitem">
+        <div class="km-gallery-item__thumb km-art-12" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4280</div>
+          <div class="km-gallery-item__name">Nebula Shore #2</div>
+          <span class="km-gallery-item__cat">LANDSCAPE</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4279&amp;art=km-art-13"
+         class="km-gallery-item" data-cat="yellow" role="listitem">
+        <div class="km-gallery-item__thumb km-art-13" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4279</div>
+          <div class="km-gallery-item__name">Checker Matrix #5</div>
+          <span class="km-gallery-item__cat">GEOMETRIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4278&amp;art=km-art-14"
+         class="km-gallery-item" data-cat="blue" role="listitem">
+        <div class="km-gallery-item__thumb km-art-14" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4278</div>
+          <div class="km-gallery-item__name">Spiral Descent #9</div>
+          <span class="km-gallery-item__cat">ABSTRACT</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4277&amp;art=km-art-15"
+         class="km-gallery-item" data-cat="red" role="listitem">
+        <div class="km-gallery-item__thumb km-art-15" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4277</div>
+          <div class="km-gallery-item__name">Wire Mesh #14</div>
+          <span class="km-gallery-item__cat">PORTRAIT</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4276&amp;art=km-art-16"
+         class="km-gallery-item" data-cat="green" role="listitem">
+        <div class="km-gallery-item__thumb km-art-16" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4276</div>
+          <div class="km-gallery-item__name">Spore Field #11</div>
+          <span class="km-gallery-item__cat">ORGANIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4275&amp;art=km-art-17"
+         class="km-gallery-item" data-cat="purple" role="listitem">
+        <div class="km-gallery-item__thumb km-art-17" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4275</div>
+          <div class="km-gallery-item__name">Scan Line #27</div>
+          <span class="km-gallery-item__cat">TYPOGRAPHIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4274&amp;art=km-art-18"
+         class="km-gallery-item" data-cat="orange" role="listitem">
+        <div class="km-gallery-item__thumb km-art-18" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4274</div>
+          <div class="km-gallery-item__name">Dusk Valley #6</div>
+          <span class="km-gallery-item__cat">LANDSCAPE</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4273&amp;art=km-art-19"
+         class="km-gallery-item" data-cat="yellow" role="listitem">
+        <div class="km-gallery-item__thumb km-art-19" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4273</div>
+          <div class="km-gallery-item__name">Diagonal Pulse #33</div>
+          <span class="km-gallery-item__cat">GEOMETRIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4272&amp;art=km-art-20"
+         class="km-gallery-item" data-cat="blue" role="listitem">
+        <div class="km-gallery-item__thumb km-art-20" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4272</div>
+          <div class="km-gallery-item__name">Eclipse Form #21</div>
+          <span class="km-gallery-item__cat">ABSTRACT</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4271&amp;art=km-art-21"
+         class="km-gallery-item" data-cat="red" role="listitem">
+        <div class="km-gallery-item__thumb km-art-21" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4271</div>
+          <div class="km-gallery-item__name">Grid Portrait #10</div>
+          <span class="km-gallery-item__cat">PORTRAIT</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4270&amp;art=km-art-22"
+         class="km-gallery-item" data-cat="green" role="listitem">
+        <div class="km-gallery-item__thumb km-art-22" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4270</div>
+          <div class="km-gallery-item__name">Petal Rotation #4</div>
+          <span class="km-gallery-item__cat">ORGANIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4269&amp;art=km-art-23"
+         class="km-gallery-item" data-cat="purple" role="listitem">
+        <div class="km-gallery-item__thumb km-art-23" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4269</div>
+          <div class="km-gallery-item__name">Slash Mono #15</div>
+          <span class="km-gallery-item__cat">TYPOGRAPHIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4268&amp;art=km-art-24"
+         class="km-gallery-item" data-cat="orange" role="listitem">
+        <div class="km-gallery-item__thumb km-art-24" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4268</div>
+          <div class="km-gallery-item__name">Twin Sun #8</div>
+          <span class="km-gallery-item__cat">LANDSCAPE</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4267&amp;art=km-art-25"
+         class="km-gallery-item" data-cat="yellow" role="listitem">
+        <div class="km-gallery-item__thumb km-art-25" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4267</div>
+          <div class="km-gallery-item__name">Tessellation #41</div>
+          <span class="km-gallery-item__cat">GEOMETRIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4266&amp;art=km-art-26"
+         class="km-gallery-item" data-cat="blue" role="listitem">
+        <div class="km-gallery-item__thumb km-art-26" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4266</div>
+          <div class="km-gallery-item__name">Hex Weave #17</div>
+          <span class="km-gallery-item__cat">ABSTRACT</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4265&amp;art=km-art-27"
+         class="km-gallery-item" data-cat="red" role="listitem">
+        <div class="km-gallery-item__thumb km-art-27" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4265</div>
+          <div class="km-gallery-item__name">Pixel Mask #23</div>
+          <span class="km-gallery-item__cat">PORTRAIT</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4264&amp;art=km-art-28"
+         class="km-gallery-item" data-cat="green" role="listitem">
+        <div class="km-gallery-item__thumb km-art-28" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4264</div>
+          <div class="km-gallery-item__name">Ring Growth #16</div>
+          <span class="km-gallery-item__cat">ORGANIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4263&amp;art=km-art-29"
+         class="km-gallery-item" data-cat="purple" role="listitem">
+        <div class="km-gallery-item__thumb km-art-29" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4263</div>
+          <div class="km-gallery-item__name">Bold Slab #38</div>
+          <span class="km-gallery-item__cat">TYPOGRAPHIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4262&amp;art=km-art-30"
+         class="km-gallery-item" data-cat="orange" role="listitem">
+        <div class="km-gallery-item__thumb km-art-30" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4262</div>
+          <div class="km-gallery-item__name">Crosshatch Peak #5</div>
+          <span class="km-gallery-item__cat">LANDSCAPE</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4261&amp;art=km-art-31"
+         class="km-gallery-item" data-cat="yellow" role="listitem">
+        <div class="km-gallery-item__thumb km-art-31" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4261</div>
+          <div class="km-gallery-item__name">Hex Symmetry #52</div>
+          <span class="km-gallery-item__cat">GEOMETRIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4260&amp;art=km-art-32"
+         class="km-gallery-item" data-cat="blue" role="listitem">
+        <div class="km-gallery-item__thumb km-art-32" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4260</div>
+          <div class="km-gallery-item__name">Gradient Merge #29</div>
+          <span class="km-gallery-item__cat">ABSTRACT</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4259&amp;art=km-art-33"
+         class="km-gallery-item" data-cat="red" role="listitem">
+        <div class="km-gallery-item__thumb km-art-33" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4259</div>
+          <div class="km-gallery-item__name">Scanline Face #18</div>
+          <span class="km-gallery-item__cat">PORTRAIT</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4258&amp;art=km-art-34"
+         class="km-gallery-item" data-cat="green" role="listitem">
+        <div class="km-gallery-item__thumb km-art-34" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4258</div>
+          <div class="km-gallery-item__name">Split Leaf #13</div>
+          <span class="km-gallery-item__cat">ORGANIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4257&amp;art=km-art-35"
+         class="km-gallery-item" data-cat="purple" role="listitem">
+        <div class="km-gallery-item__thumb km-art-35" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4257</div>
+          <div class="km-gallery-item__name">Corner Glyph #42</div>
+          <span class="km-gallery-item__cat">TYPOGRAPHIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4256&amp;art=km-art-36"
+         class="km-gallery-item" data-cat="orange" role="listitem">
+        <div class="km-gallery-item__thumb km-art-36" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4256</div>
+          <div class="km-gallery-item__name">Chromatic Ring #1</div>
+          <span class="km-gallery-item__cat">LANDSCAPE</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4255&amp;art=km-art-37"
+         class="km-gallery-item" data-cat="yellow" role="listitem">
+        <div class="km-gallery-item__thumb km-art-37" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4255</div>
+          <div class="km-gallery-item__name">Fractal Grid #61</div>
+          <span class="km-gallery-item__cat">GEOMETRIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4254&amp;art=km-art-38"
+         class="km-gallery-item" data-cat="blue" role="listitem">
+        <div class="km-gallery-item__thumb km-art-38" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4254</div>
+          <div class="km-gallery-item__name">Void Echo #35</div>
+          <span class="km-gallery-item__cat">ABSTRACT</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4253&amp;art=km-art-39"
+         class="km-gallery-item" data-cat="red" role="listitem">
+        <div class="km-gallery-item__thumb km-art-39" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4253</div>
+          <div class="km-gallery-item__name">Neural Mask #27</div>
+          <span class="km-gallery-item__cat">PORTRAIT</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4252&amp;art=km-art-40"
+         class="km-gallery-item" data-cat="green" role="listitem">
+        <div class="km-gallery-item__thumb km-art-40" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4252</div>
+          <div class="km-gallery-item__name">Root System #19</div>
+          <span class="km-gallery-item__cat">ORGANIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4251&amp;art=km-art-41"
+         class="km-gallery-item" data-cat="purple" role="listitem">
+        <div class="km-gallery-item__thumb km-art-41" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4251</div>
+          <div class="km-gallery-item__name">Glyph Matrix #44</div>
+          <span class="km-gallery-item__cat">TYPOGRAPHIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4250&amp;art=km-art-42"
+         class="km-gallery-item" data-cat="orange" role="listitem">
+        <div class="km-gallery-item__thumb km-art-42" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4250</div>
+          <div class="km-gallery-item__name">Ridge Line #17</div>
+          <span class="km-gallery-item__cat">LANDSCAPE</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4249&amp;art=km-art-43"
+         class="km-gallery-item" data-cat="yellow" role="listitem">
+        <div class="km-gallery-item__thumb km-art-43" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4249</div>
+          <div class="km-gallery-item__name">Polygon Stack #28</div>
+          <span class="km-gallery-item__cat">GEOMETRIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4248&amp;art=km-art-44"
+         class="km-gallery-item" data-cat="blue" role="listitem">
+        <div class="km-gallery-item__thumb km-art-44" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4248</div>
+          <div class="km-gallery-item__name">Phase Shift #53</div>
+          <span class="km-gallery-item__cat">ABSTRACT</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4247&amp;art=km-art-45"
+         class="km-gallery-item" data-cat="red" role="listitem">
+        <div class="km-gallery-item__thumb km-art-45" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4247</div>
+          <div class="km-gallery-item__name">Contour Study #39</div>
+          <span class="km-gallery-item__cat">PORTRAIT</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4246&amp;art=km-art-46"
+         class="km-gallery-item" data-cat="green" role="listitem">
+        <div class="km-gallery-item__thumb km-art-46" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4246</div>
+          <div class="km-gallery-item__name">Cell Division #24</div>
+          <span class="km-gallery-item__cat">ORGANIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4245&amp;art=km-art-47"
+         class="km-gallery-item" data-cat="purple" role="listitem">
+        <div class="km-gallery-item__thumb km-art-47" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4245</div>
+          <div class="km-gallery-item__name">Letter Press #56</div>
+          <span class="km-gallery-item__cat">TYPOGRAPHIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4244&amp;art=km-art-48"
+         class="km-gallery-item" data-cat="orange" role="listitem">
+        <div class="km-gallery-item__thumb km-art-48" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4244</div>
+          <div class="km-gallery-item__name">Plateau Scan #11</div>
+          <span class="km-gallery-item__cat">LANDSCAPE</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4243&amp;art=km-art-49"
+         class="km-gallery-item" data-cat="yellow" role="listitem">
+        <div class="km-gallery-item__thumb km-art-49" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4243</div>
+          <div class="km-gallery-item__name">Angular Drift #76</div>
+          <span class="km-gallery-item__cat">GEOMETRIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4242&amp;art=km-art-50"
+         class="km-gallery-item" data-cat="blue" role="listitem">
+        <div class="km-gallery-item__thumb km-art-50" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4242</div>
+          <div class="km-gallery-item__name">Entropy Flow #40</div>
+          <span class="km-gallery-item__cat">ABSTRACT</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4241&amp;art=km-art-51"
+         class="km-gallery-item" data-cat="red" role="listitem">
+        <div class="km-gallery-item__thumb km-art-51" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4241</div>
+          <div class="km-gallery-item__name">Shadow Profile #15</div>
+          <span class="km-gallery-item__cat">PORTRAIT</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4240&amp;art=km-art-52"
+         class="km-gallery-item" data-cat="green" role="listitem">
+        <div class="km-gallery-item__thumb km-art-52" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4240</div>
+          <div class="km-gallery-item__name">Coral Form #32</div>
+          <span class="km-gallery-item__cat">ORGANIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4239&amp;art=km-art-53"
+         class="km-gallery-item" data-cat="purple" role="listitem">
+        <div class="km-gallery-item__thumb km-art-53" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4239</div>
+          <div class="km-gallery-item__name">Font Decay #21</div>
+          <span class="km-gallery-item__cat">TYPOGRAPHIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4238&amp;art=km-art-54"
+         class="km-gallery-item" data-cat="orange" role="listitem">
+        <div class="km-gallery-item__thumb km-art-54" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4238</div>
+          <div class="km-gallery-item__name">Basin Echo #46</div>
+          <span class="km-gallery-item__cat">LANDSCAPE</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4237&amp;art=km-art-55"
+         class="km-gallery-item" data-cat="yellow" role="listitem">
+        <div class="km-gallery-item__thumb km-art-55" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4237</div>
+          <div class="km-gallery-item__name">Vertex Map #83</div>
+          <span class="km-gallery-item__cat">GEOMETRIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4236&amp;art=km-art-56"
+         class="km-gallery-item" data-cat="blue" role="listitem">
+        <div class="km-gallery-item__thumb km-art-56" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4236</div>
+          <div class="km-gallery-item__name">Signal Noise #67</div>
+          <span class="km-gallery-item__cat">ABSTRACT</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4235&amp;art=km-art-57"
+         class="km-gallery-item" data-cat="red" role="listitem">
+        <div class="km-gallery-item__thumb km-art-57" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4235</div>
+          <div class="km-gallery-item__name">Pixel Identity #51</div>
+          <span class="km-gallery-item__cat">PORTRAIT</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4234&amp;art=km-art-58"
+         class="km-gallery-item" data-cat="green" role="listitem">
+        <div class="km-gallery-item__thumb km-art-58" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4234</div>
+          <div class="km-gallery-item__name">Moss Pattern #9</div>
+          <span class="km-gallery-item__cat">ORGANIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4233&amp;art=km-art-59"
+         class="km-gallery-item" data-cat="purple" role="listitem">
+        <div class="km-gallery-item__thumb km-art-59" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4233</div>
+          <div class="km-gallery-item__name">Kerning Error #33</div>
+          <span class="km-gallery-item__cat">TYPOGRAPHIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4232&amp;art=km-art-60"
+         class="km-gallery-item" data-cat="orange" role="listitem">
+        <div class="km-gallery-item__thumb km-art-60" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4232</div>
+          <div class="km-gallery-item__name">Thermal Map #22</div>
+          <span class="km-gallery-item__cat">LANDSCAPE</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4231&amp;art=km-art-61"
+         class="km-gallery-item" data-cat="yellow" role="listitem">
+        <div class="km-gallery-item__thumb km-art-61" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4231</div>
+          <div class="km-gallery-item__name">Prism Array #14</div>
+          <span class="km-gallery-item__cat">GEOMETRIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4230&amp;art=km-art-62"
+         class="km-gallery-item" data-cat="blue" role="listitem">
+        <div class="km-gallery-item__thumb km-art-62" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4230</div>
+          <div class="km-gallery-item__name">Flux State #88</div>
+          <span class="km-gallery-item__cat">ABSTRACT</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4229&amp;art=km-art-63"
+         class="km-gallery-item" data-cat="red" role="listitem">
+        <div class="km-gallery-item__thumb km-art-63" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4229</div>
+          <div class="km-gallery-item__name">Contour Study #72</div>
+          <span class="km-gallery-item__cat">PORTRAIT</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4228&amp;art=km-art-64"
+         class="km-gallery-item" data-cat="green" role="listitem">
+        <div class="km-gallery-item__thumb km-art-64" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4228</div>
+          <div class="km-gallery-item__name">Root System #45</div>
+          <span class="km-gallery-item__cat">ORGANIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4227&amp;art=km-art-65"
+         class="km-gallery-item" data-cat="purple" role="listitem">
+        <div class="km-gallery-item__thumb km-art-65" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4227</div>
+          <div class="km-gallery-item__name">Glyph Matrix #58</div>
+          <span class="km-gallery-item__cat">TYPOGRAPHIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4226&amp;art=km-art-66"
+         class="km-gallery-item" data-cat="orange" role="listitem">
+        <div class="km-gallery-item__thumb km-art-66" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4226</div>
+          <div class="km-gallery-item__name">Ridge Line #34</div>
+          <span class="km-gallery-item__cat">LANDSCAPE</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4225&amp;art=km-art-67"
+         class="km-gallery-item" data-cat="yellow" role="listitem">
+        <div class="km-gallery-item__thumb km-art-67" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4225</div>
+          <div class="km-gallery-item__name">Fractal Grid #90</div>
+          <span class="km-gallery-item__cat">GEOMETRIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4224&amp;art=km-art-68"
+         class="km-gallery-item" data-cat="blue" role="listitem">
+        <div class="km-gallery-item__thumb km-art-68" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4224</div>
+          <div class="km-gallery-item__name">Void Echo #73</div>
+          <span class="km-gallery-item__cat">ABSTRACT</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4223&amp;art=km-art-69"
+         class="km-gallery-item" data-cat="red" role="listitem">
+        <div class="km-gallery-item__thumb km-art-69" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4223</div>
+          <div class="km-gallery-item__name">Neural Mask #64</div>
+          <span class="km-gallery-item__cat">PORTRAIT</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4222&amp;art=km-art-70"
+         class="km-gallery-item" data-cat="green" role="listitem">
+        <div class="km-gallery-item__thumb km-art-70" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4222</div>
+          <div class="km-gallery-item__name">Cell Division #57</div>
+          <span class="km-gallery-item__cat">ORGANIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4221&amp;art=km-art-71"
+         class="km-gallery-item" data-cat="purple" role="listitem">
+        <div class="km-gallery-item__thumb km-art-71" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4221</div>
+          <div class="km-gallery-item__name">Letter Press #82</div>
+          <span class="km-gallery-item__cat">TYPOGRAPHIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4220&amp;art=km-art-72"
+         class="km-gallery-item" data-cat="orange" role="listitem">
+        <div class="km-gallery-item__thumb km-art-72" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4220</div>
+          <div class="km-gallery-item__name">Plateau Scan #29</div>
+          <span class="km-gallery-item__cat">LANDSCAPE</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4219&amp;art=km-art-73"
+         class="km-gallery-item" data-cat="yellow" role="listitem">
+        <div class="km-gallery-item__thumb km-art-73" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4219</div>
+          <div class="km-gallery-item__name">Angular Drift #47</div>
+          <span class="km-gallery-item__cat">GEOMETRIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4218&amp;art=km-art-74"
+         class="km-gallery-item" data-cat="blue" role="listitem">
+        <div class="km-gallery-item__thumb km-art-74" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4218</div>
+          <div class="km-gallery-item__name">Phase Shift #16</div>
+          <span class="km-gallery-item__cat">ABSTRACT</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4217&amp;art=km-art-75"
+         class="km-gallery-item" data-cat="red" role="listitem">
+        <div class="km-gallery-item__thumb km-art-75" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4217</div>
+          <div class="km-gallery-item__name">Shadow Profile #86</div>
+          <span class="km-gallery-item__cat">PORTRAIT</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4216&amp;art=km-art-76"
+         class="km-gallery-item" data-cat="green" role="listitem">
+        <div class="km-gallery-item__thumb km-art-76" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4216</div>
+          <div class="km-gallery-item__name">Coral Form #63</div>
+          <span class="km-gallery-item__cat">ORGANIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4215&amp;art=km-art-77"
+         class="km-gallery-item" data-cat="purple" role="listitem">
+        <div class="km-gallery-item__thumb km-art-77" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4215</div>
+          <div class="km-gallery-item__name">Font Decay #49</div>
+          <span class="km-gallery-item__cat">TYPOGRAPHIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4214&amp;art=km-art-78"
+         class="km-gallery-item" data-cat="orange" role="listitem">
+        <div class="km-gallery-item__thumb km-art-78" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4214</div>
+          <div class="km-gallery-item__name">Basin Echo #71</div>
+          <span class="km-gallery-item__cat">LANDSCAPE</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4213&amp;art=km-art-79"
+         class="km-gallery-item" data-cat="yellow" role="listitem">
+        <div class="km-gallery-item__thumb km-art-79" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4213</div>
+          <div class="km-gallery-item__name">Vertex Map #36</div>
+          <span class="km-gallery-item__cat">GEOMETRIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4212&amp;art=km-art-80"
+         class="km-gallery-item" data-cat="blue" role="listitem">
+        <div class="km-gallery-item__thumb km-art-80" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4212</div>
+          <div class="km-gallery-item__name">Entropy Flow #95</div>
+          <span class="km-gallery-item__cat">ABSTRACT</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4211&amp;art=km-art-81"
+         class="km-gallery-item" data-cat="red" role="listitem">
+        <div class="km-gallery-item__thumb km-art-81" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4211</div>
+          <div class="km-gallery-item__name">Pixel Identity #30</div>
+          <span class="km-gallery-item__cat">PORTRAIT</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4210&amp;art=km-art-82"
+         class="km-gallery-item" data-cat="green" role="listitem">
+        <div class="km-gallery-item__thumb km-art-82" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4210</div>
+          <div class="km-gallery-item__name">Moss Pattern #78</div>
+          <span class="km-gallery-item__cat">ORGANIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4209&amp;art=km-art-83"
+         class="km-gallery-item" data-cat="purple" role="listitem">
+        <div class="km-gallery-item__thumb km-art-83" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4209</div>
+          <div class="km-gallery-item__name">Kerning Error #65</div>
+          <span class="km-gallery-item__cat">TYPOGRAPHIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4208&amp;art=km-art-84"
+         class="km-gallery-item" data-cat="orange" role="listitem">
+        <div class="km-gallery-item__thumb km-art-84" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4208</div>
+          <div class="km-gallery-item__name">Thermal Map #54</div>
+          <span class="km-gallery-item__cat">LANDSCAPE</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4207&amp;art=km-art-85"
+         class="km-gallery-item" data-cat="yellow" role="listitem">
+        <div class="km-gallery-item__thumb km-art-85" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4207</div>
+          <div class="km-gallery-item__name">Prism Array #69</div>
+          <span class="km-gallery-item__cat">GEOMETRIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4206&amp;art=km-art-86"
+         class="km-gallery-item" data-cat="blue" role="listitem">
+        <div class="km-gallery-item__thumb km-art-86" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4206</div>
+          <div class="km-gallery-item__name">Signal Noise #42</div>
+          <span class="km-gallery-item__cat">ABSTRACT</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4205&amp;art=km-art-87"
+         class="km-gallery-item" data-cat="red" role="listitem">
+        <div class="km-gallery-item__thumb km-art-87" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4205</div>
+          <div class="km-gallery-item__name">Neural Mask #93</div>
+          <span class="km-gallery-item__cat">PORTRAIT</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4204&amp;art=km-art-88"
+         class="km-gallery-item" data-cat="green" role="listitem">
+        <div class="km-gallery-item__thumb km-art-88" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4204</div>
+          <div class="km-gallery-item__name">Root System #81</div>
+          <span class="km-gallery-item__cat">ORGANIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4203&amp;art=km-art-89"
+         class="km-gallery-item" data-cat="purple" role="listitem">
+        <div class="km-gallery-item__thumb km-art-89" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4203</div>
+          <div class="km-gallery-item__name">Glyph Matrix #77</div>
+          <span class="km-gallery-item__cat">TYPOGRAPHIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4202&amp;art=km-art-90"
+         class="km-gallery-item" data-cat="orange" role="listitem">
+        <div class="km-gallery-item__thumb km-art-90" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4202</div>
+          <div class="km-gallery-item__name">Ridge Line #60</div>
+          <span class="km-gallery-item__cat">LANDSCAPE</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4201&amp;art=km-art-91"
+         class="km-gallery-item" data-cat="yellow" role="listitem">
+        <div class="km-gallery-item__thumb km-art-91" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4201</div>
+          <div class="km-gallery-item__name">Polygon Stack #55</div>
+          <span class="km-gallery-item__cat">GEOMETRIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4200&amp;art=km-art-92"
+         class="km-gallery-item" data-cat="blue" role="listitem">
+        <div class="km-gallery-item__thumb km-art-92" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4200</div>
+          <div class="km-gallery-item__name">Flux State #37</div>
+          <span class="km-gallery-item__cat">ABSTRACT</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4199&amp;art=km-art-93"
+         class="km-gallery-item" data-cat="red" role="listitem">
+        <div class="km-gallery-item__thumb km-art-93" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4199</div>
+          <div class="km-gallery-item__name">Contour Study #84</div>
+          <span class="km-gallery-item__cat">PORTRAIT</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4198&amp;art=km-art-94"
+         class="km-gallery-item" data-cat="green" role="listitem">
+        <div class="km-gallery-item__thumb km-art-94" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4198</div>
+          <div class="km-gallery-item__name">Cell Division #70</div>
+          <span class="km-gallery-item__cat">ORGANIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4197&amp;art=km-art-95"
+         class="km-gallery-item" data-cat="purple" role="listitem">
+        <div class="km-gallery-item__thumb km-art-95" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4197</div>
+          <div class="km-gallery-item__name">Letter Press #91</div>
+          <span class="km-gallery-item__cat">TYPOGRAPHIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4196&amp;art=km-art-96"
+         class="km-gallery-item" data-cat="orange" role="listitem">
+        <div class="km-gallery-item__thumb km-art-96" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4196</div>
+          <div class="km-gallery-item__name">Plateau Scan #48</div>
+          <span class="km-gallery-item__cat">LANDSCAPE</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4195&amp;art=km-art-97"
+         class="km-gallery-item" data-cat="yellow" role="listitem">
+        <div class="km-gallery-item__thumb km-art-97" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4195</div>
+          <div class="km-gallery-item__name">Fractal Grid #26</div>
+          <span class="km-gallery-item__cat">GEOMETRIC</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4194&amp;art=km-art-98"
+         class="km-gallery-item" data-cat="blue" role="listitem">
+        <div class="km-gallery-item__thumb km-art-98" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4194</div>
+          <div class="km-gallery-item__name">Void Echo #59</div>
+          <span class="km-gallery-item__cat">ABSTRACT</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4193&amp;art=km-art-99"
+         class="km-gallery-item" data-cat="red" role="listitem">
+        <div class="km-gallery-item__thumb km-art-99" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4193</div>
+          <div class="km-gallery-item__name">Shadow Profile #43</div>
+          <span class="km-gallery-item__cat">PORTRAIT</span>
+        </div>
+      </a>
+
+      <a href="gallery-detail.html?id=KM-4192&amp;art=km-art-100"
+         class="km-gallery-item" data-cat="green" role="listitem">
+        <div class="km-gallery-item__thumb km-art-100" aria-hidden="true"></div>
+        <div class="km-gallery-item__meta">
+          <div class="km-gallery-item__id">KM-4192</div>
+          <div class="km-gallery-item__name">Moss Pattern #38</div>
+          <span class="km-gallery-item__cat">ORGANIC</span>
+        </div>
+      </a>
+
+    </div><!-- /gallery-grid -->
+
+  </main>
+
+  <script src="js/nav.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/icons.js"></script>
+  <script>
+    // Gallery filter
+    const filters = document.querySelectorAll('.km-gallery-filter');
+    const items = document.querySelectorAll('.km-gallery-item');
+    const countEl = document.getElementById('km-count');
+
+    const catMap = {
+      yellow: 'yellow',
+      blue: 'blue',
+      red: 'red',
+      green: 'green',
+      purple: 'purple',
+      orange: 'orange'
+    };
+
+    filters.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        const filter = btn.getAttribute('data-filter');
+
+        filters.forEach(function(b) { b.classList.remove('km-gallery-filter--active'); });
+        btn.classList.add('km-gallery-filter--active');
+
+        let visible = 0;
+        items.forEach(function(item) {
+          const cat = item.getAttribute('data-cat');
+          const show = filter === 'all' || cat === filter;
+          item.setAttribute('data-hidden', show ? 'false' : 'true');
+          if (show) visible++;
+        });
+
+        countEl.textContent = visible + ' WORK' + (visible !== 1 ? 'S' : '');
+      });
+    });
+  </script>
+</body>
+</html>

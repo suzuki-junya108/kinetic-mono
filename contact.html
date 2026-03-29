@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en" data-accent="single">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KINETIC MONO — Contact</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <style>
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: var(--sp-4);
+      padding: var(--sp-4) var(--sp-5);
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-3);
+    }
+
+    .km-form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-3);
+    }
+
+    .km-form-help {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--c-text-2);
+      margin-top: var(--sp-1);
+    }
+
+    .priority-group {
+      display: flex;
+      gap: var(--sp-3);
+      align-items: center;
+      padding: var(--sp-2) 0;
+    }
+
+    .priority-group .priority-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--c-text-2);
+      margin-right: var(--sp-2);
+    }
+
+    .contact-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: var(--sp-2);
+      border-top: 1px solid var(--c-border);
+    }
+
+    .contact-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-3);
+    }
+
+    .info-card {
+      background: var(--c-surface-0);
+      padding: var(--sp-4);
+      box-shadow: var(--shadow-card);
+      border-radius: 0px;
+    }
+
+    .info-card .micro-label {
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--c-text-2);
+      margin-bottom: var(--sp-3);
+    }
+
+    .info-row {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-1);
+      margin-bottom: var(--sp-3);
+    }
+
+    .info-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .info-row__label {
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--c-text-2);
+    }
+
+    .info-row__value {
+      font-size: 14px;
+      color: var(--c-text-0);
+    }
+
+    .info-row__value--mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+    }
+
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--sp-1) 0;
+      border-bottom: 1px solid var(--c-border);
+    }
+
+    .hours-row:last-child {
+      border-bottom: none;
+    }
+
+    .hours-row__day {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--c-text-0);
+    }
+
+    .hours-row__time {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--c-text-1);
+    }
+
+    .hours-row__time--closed {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--c-text-2);
+    }
+
+    .response-stat {
+      background: var(--c-surface-0);
+      padding: var(--sp-4);
+      box-shadow: var(--shadow-card);
+      border-radius: 0px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .response-stat .km-stat__value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--c-text-0);
+      line-height: 1;
+      margin-bottom: var(--sp-1);
+    }
+
+    .response-stat .km-stat__label {
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--c-text-2);
+    }
+
+    .response-stat::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--c-accent);
+    }
+
+    @media (max-width: 900px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+        padding-left: var(--sp-3);
+        padding-right: var(--sp-3);
+      }
+
+      .contact-sidebar {
+        order: -1;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .contact-grid {
+        padding-left: var(--sp-2);
+        padding-right: var(--sp-2);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .km-form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .priority-group {
+        flex-wrap: wrap;
+      }
+
+      .contact-actions {
+        flex-direction: column;
+        gap: var(--sp-2);
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body data-page="contact">
+  <div id="km-nav"></div>
+
+  <main class="km-main">
+    <div class="km-page-header">
+      <h1 class="km-page-title" data-i18n="contact.title">CONTACT</h1>
+      <p class="km-page-sub" data-i18n="contact.subtitle">Get in touch with our team</p>
+    </div>
+
+    <div class="contact-grid">
+      <!-- Left Column: Form -->
+      <div class="contact-form">
+        <div class="km-form-group">
+          <label class="km-form-label" data-i18n="contact.label_subject">Subject</label>
+          <select class="km-form-select">
+            <option value="" data-i18n="contact.subject_placeholder">Select a topic...</option>
+            <option value="general" data-i18n="contact.subject_general">General Inquiry</option>
+            <option value="technical" data-i18n="contact.subject_technical">Technical Support</option>
+            <option value="partnership" data-i18n="contact.subject_partnership">Partnership</option>
+            <option value="billing" data-i18n="contact.subject_billing">Billing</option>
+            <option value="other" data-i18n="contact.subject_other">Other</option>
+          </select>
+        </div>
+
+        <div class="km-form-row">
+          <div class="km-form-group">
+            <label class="km-form-label" data-i18n="contact.label_name">Name</label>
+            <input type="text" class="km-form-input" placeholder="Full name" data-i18n-placeholder="contact.placeholder_name">
+          </div>
+          <div class="km-form-group">
+            <label class="km-form-label" data-i18n="contact.label_email">Email</label>
+            <input type="email" class="km-form-input" placeholder="you@example.com" data-i18n-placeholder="contact.placeholder_email">
+          </div>
+        </div>
+
+        <div class="km-form-group">
+          <label class="km-form-label" data-i18n="contact.label_phone">Phone</label>
+          <input type="tel" class="km-form-input" placeholder="+81 3-XXXX-XXXX" data-i18n-placeholder="contact.placeholder_phone">
+          <span class="km-form-help" data-i18n="contact.phone_help">Optional — for urgent inquiries only</span>
+        </div>
+
+        <div class="km-form-group">
+          <label class="km-form-label" data-i18n="contact.label_message">Message</label>
+          <textarea class="km-form-textarea" rows="6" placeholder="Describe your inquiry..." data-i18n-placeholder="contact.placeholder_message"></textarea>
+        </div>
+
+        <div class="km-form-group">
+          <span class="km-form-label" data-i18n="contact.label_priority">Priority</span>
+          <div class="priority-group">
+            <label class="km-radio">
+              <input type="radio" name="priority" value="low">
+              <span class="km-radio__box"></span>
+              <span data-i18n="contact.priority_low">Low</span>
+            </label>
+            <label class="km-radio">
+              <input type="radio" name="priority" value="normal" checked>
+              <span class="km-radio__box"></span>
+              <span data-i18n="contact.priority_normal">Normal</span>
+            </label>
+            <label class="km-radio">
+              <input type="radio" name="priority" value="high">
+              <span class="km-radio__box"></span>
+              <span data-i18n="contact.priority_high">High</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="contact-actions">
+          <label class="km-checkbox">
+            <input type="checkbox">
+            <span class="km-checkbox__box"></span>
+            <span data-i18n="contact.send_copy">Send me a copy of this message</span>
+          </label>
+          <button class="km-btn km-btn--primary"><span data-i18n="contact.btn_send">SEND MESSAGE</span> <svg class="km-icon" aria-hidden="true"><use href="#km-icon-arrow-right"></use></svg></button>
+        </div>
+      </div>
+
+      <!-- Right Column: Info Sidebar -->
+      <div class="contact-sidebar">
+        <div class="info-card">
+          <div class="micro-label" data-i18n="contact.info_title">CONTACT INFO</div>
+          <div class="info-row">
+            <span class="info-row__label" data-i18n="contact.info_address_label">ADDRESS</span>
+            <span class="info-row__value" data-i18n="contact.info_address_value">Tokyo, Japan</span>
+          </div>
+          <div class="info-row">
+            <span class="info-row__label" data-i18n="contact.info_email_label">EMAIL</span>
+            <span class="info-row__value info-row__value--mono" data-i18n="contact.info_email_value">hello@kinetic.mono</span>
+          </div>
+          <div class="info-row">
+            <span class="info-row__label" data-i18n="contact.info_phone_label">PHONE</span>
+            <span class="info-row__value info-row__value--mono" data-i18n="contact.info_phone_value">+81 3-XXXX-XXXX</span>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="micro-label" data-i18n="contact.hours_title">OFFICE HOURS</div>
+          <div class="hours-row">
+            <span class="hours-row__day" data-i18n="contact.hours_weekday">Mon — Fri</span>
+            <span class="hours-row__time" data-i18n="contact.hours_weekday_time">09:00 — 18:00</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-row__day" data-i18n="contact.hours_weekend">Sat — Sun</span>
+            <span class="hours-row__time hours-row__time--closed" data-i18n="contact.hours_closed">Closed</span>
+          </div>
+        </div>
+
+        <div class="response-stat">
+          <div class="km-stat__value" data-i18n="contact.response_value">&lt; 4h</div>
+          <div class="km-stat__label" data-i18n="contact.response_label">AVG RESPONSE TIME</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/nav.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/icons.js"></script>
+</body>
+</html>

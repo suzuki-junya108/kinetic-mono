@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en" data-accent="single">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KINETIC MONO — Settings</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <style>
+    .km-settings-body { padding: var(--sp-5); }
+    .km-settings-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-3);
+      margin-bottom: var(--sp-3);
+    }
+    .km-preview-panel {
+      background: var(--surface-0);
+      padding: var(--sp-4);
+      box-shadow: var(--shadow-card);
+      position: sticky;
+      top: var(--sp-4);
+    }
+    .km-preview-mini {
+      background: var(--surface-1);
+      padding: var(--sp-3);
+      margin-top: var(--sp-3);
+      border: 1px solid var(--surface-3);
+    }
+    .km-preview-hero {
+      font-size: 40px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+    .km-preview-hero span {
+      background: var(--a1);
+      color: var(--on-a1);
+      padding: 0 4px;
+    }
+    .km-preview-swatches {
+      display: flex;
+      gap: 4px;
+      margin-top: var(--sp-2);
+    }
+    .km-preview-swatch {
+      flex: 1;
+      height: 24px;
+    }
+    .km-preview-btn {
+      display: inline-flex;
+      padding: 8px 16px;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      background: var(--palette-black);
+      color: var(--a1);
+      margin-top: var(--sp-2);
+    }
+    .km-setting-group {
+      background: var(--surface-0);
+      padding: var(--sp-4);
+      box-shadow: var(--shadow-card);
+      margin-bottom: var(--sp-3);
+    }
+    .km-setting-group__title {
+      font-size: var(--t-lg);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--sp-3);
+      padding-bottom: var(--sp-2);
+      border-bottom: 1px solid var(--surface-3);
+    }
+    .km-accent-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-2);
+    }
+    .km-accent-card {
+      border: 2px solid var(--surface-3);
+      padding: var(--sp-3);
+      cursor: pointer;
+      background: var(--surface-1);
+      transition: border-color var(--dur-instant) var(--ease-kinetic),
+                  transform var(--dur-instant) var(--ease-kinetic);
+    }
+    .km-accent-card:hover { border-color: var(--surface-4); transform: translateX(2px); }
+    .km-accent-card--active { border-color: var(--a1); background: var(--surface-0); }
+    .km-accent-card__dots {
+      display: flex;
+      gap: 4px;
+      margin-bottom: var(--sp-2);
+    }
+    .km-accent-card__dot {
+      width: 16px;
+      height: 16px;
+    }
+    .km-accent-card__name {
+      font-size: var(--t-xs);
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .km-accent-card__desc {
+      font-size: 11px;
+      color: var(--text-3);
+      line-height: 1.4;
+    }
+    .km-about-row {
+      display: flex;
+      justify-content: space-between;
+      padding: var(--sp-1) 0;
+      border-bottom: 1px solid var(--surface-3);
+      font-size: var(--t-sm);
+    }
+    .km-about-key {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--text-3);
+    }
+    .km-about-val {
+      font-family: var(--font-mono);
+      font-size: 11px;
+    }
+
+    @media (max-width: 900px) {
+      .km-settings-row { grid-template-columns: 1fr; }
+      .km-settings-body { padding: var(--sp-3); }
+    }
+
+    @media (max-width: 480px) {
+      .km-settings-body { padding: var(--sp-2); }
+      .km-accent-cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body data-page="settings">
+  <div id="km-nav"></div>
+
+  <main class="km-main">
+
+    <!-- PAGE HEADER -->
+    <div class="km-page-header">
+      <div>
+        <h1 class="km-page-title" data-i18n="settings_page.title">SETTINGS</h1>
+        <p class="km-page-sub" data-i18n="settings_page.subtitle">System configuration — changes apply globally</p>
+      </div>
+      <a href="docs.html" class="km-btn km-btn--outline" data-i18n="settings_page.docs_button">DOCS <svg class="km-icon" aria-hidden="true"><use href="#km-icon-arrow-right"></use></svg></a>
+    </div>
+
+    <div class="km-settings-body">
+      <div class="km-settings-row">
+
+        <!-- LEFT: Configuration -->
+        <div>
+
+          <!-- ACCENT MODE -->
+          <div class="km-setting-group">
+            <div class="km-setting-group__title" data-i18n="settings_page.accent_mode_title">ACCENT MODE</div>
+            <p style="font-size:var(--t-sm);color:var(--text-2);margin-bottom:var(--sp-3);line-height:1.6">
+              <span data-i18n="settings_page.accent_mode_desc">Controls which colors are active across the system. Changes are saved to localStorage and persist across page loads.</span>
+            </p>
+
+            <div class="km-accent-cards" role="radiogroup" aria-label="Accent mode selection">
+
+              <div class="km-accent-card" data-mode="single" tabindex="0"
+                   role="radio" aria-label="Single accent mode: Kinetic Yellow only">
+                <div class="km-accent-card__dots">
+                  <span class="km-accent-card__dot" style="background:var(--palette-yellow)"></span>
+                </div>
+                <span class="km-accent-card__name" data-i18n="settings_page.accent_single_name">SINGLE</span>
+                <span class="km-accent-card__desc" data-i18n="settings_page.accent_single_desc">Kinetic Yellow only. Maximum authority and brand coherence. Ideal for focused, single-product presentations.</span>
+              </div>
+
+              <div class="km-accent-card" data-mode="dual" tabindex="0"
+                   role="radio" aria-label="Dual accent mode: Yellow and Blue">
+                <div class="km-accent-card__dots">
+                  <span class="km-accent-card__dot" style="background:var(--palette-yellow)"></span>
+                  <span class="km-accent-card__dot" style="background:var(--palette-blue)"></span>
+                </div>
+                <span class="km-accent-card__name" data-i18n="settings_page.accent_dual_name">DUAL</span>
+                <span class="km-accent-card__desc" data-i18n="settings_page.accent_dual_desc">Yellow + Blue. Primary actions vs. informational content. Clear functional distinction between color roles.</span>
+              </div>
+
+              <div class="km-accent-card" data-mode="tri" tabindex="0"
+                   role="radio" aria-label="Tri accent mode: Yellow, Blue, Red">
+                <div class="km-accent-card__dots">
+                  <span class="km-accent-card__dot" style="background:var(--palette-yellow)"></span>
+                  <span class="km-accent-card__dot" style="background:var(--palette-blue)"></span>
+                  <span class="km-accent-card__dot" style="background:var(--palette-red)"></span>
+                </div>
+                <span class="km-accent-card__name" data-i18n="settings_page.accent_tri_name">TRI</span>
+                <span class="km-accent-card__desc" data-i18n="settings_page.accent_tri_desc">Yellow + Blue + Red. Action / Information / Alert semantic mapping. Ideal for dashboards and data-heavy UI.</span>
+              </div>
+
+              <div class="km-accent-card" data-mode="full" tabindex="0"
+                   role="radio" aria-label="Full spectrum accent mode: all six colors">
+                <div class="km-accent-card__dots">
+                  <span class="km-accent-card__dot" style="background:var(--palette-yellow)"></span>
+                  <span class="km-accent-card__dot" style="background:var(--palette-blue)"></span>
+                  <span class="km-accent-card__dot" style="background:var(--palette-red)"></span>
+                  <span class="km-accent-card__dot" style="background:var(--palette-green)"></span>
+                  <span class="km-accent-card__dot" style="background:var(--palette-purple)"></span>
+                  <span class="km-accent-card__dot" style="background:var(--palette-orange)"></span>
+                </div>
+                <span class="km-accent-card__name" data-i18n="settings_page.accent_full_name">FULL SPECTRUM</span>
+                <span class="km-accent-card__desc" data-i18n="settings_page.accent_full_desc">All six colors. Editorial, portfolio, and gallery contexts. Maximum visual variety for multi-category content.</span>
+              </div>
+
+            </div><!-- /accent-cards -->
+          </div>
+
+          <!-- SYSTEM INFO -->
+          <div class="km-setting-group">
+            <div class="km-setting-group__title" data-i18n="settings_page.system_info_title">SYSTEM INFO</div>
+            <div class="km-about-row">
+              <span class="km-about-key" data-i18n="settings_page.info_version_label">VERSION</span>
+              <span class="km-about-val" data-i18n="settings_page.info_version_val">Kinetic Mono v2.0</span>
+            </div>
+            <div class="km-about-row">
+              <span class="km-about-key" data-i18n="settings_page.info_type_scale_label">TYPE SCALE</span>
+              <span class="km-about-val" data-i18n="settings_page.info_type_scale_val">√2 ratio (1.414)</span>
+            </div>
+            <div class="km-about-row">
+              <span class="km-about-key" data-i18n="settings_page.info_spacing_base_label">SPACING BASE</span>
+              <span class="km-about-val" data-i18n="settings_page.info_spacing_base_val">8px grid</span>
+            </div>
+            <div class="km-about-row">
+              <span class="km-about-key" data-i18n="settings_page.info_border_radius_label">BORDER RADIUS</span>
+              <span class="km-about-val" data-i18n="settings_page.info_border_radius_val">0px (strict)</span>
+            </div>
+            <div class="km-about-row">
+              <span class="km-about-key" data-i18n="settings_page.info_font_label">FONT</span>
+              <span class="km-about-val" data-i18n="settings_page.info_font_val">Plus Jakarta Sans</span>
+            </div>
+            <div class="km-about-row">
+              <span class="km-about-key" data-i18n="settings_page.info_concept_label">CONCEPT</span>
+              <span class="km-about-val" data-i18n="settings_page.info_concept_val">The Clinical Curator</span>
+            </div>
+            <div class="km-about-row">
+              <span class="km-about-key" data-i18n="settings_page.info_deploy_label">DEPLOY</span>
+              <span class="km-about-val" data-i18n="settings_page.info_deploy_val">GitHub Pages</span>
+            </div>
+          </div>
+
+          <a href="index.html" class="km-btn km-btn--primary" style="width:100%;justify-content:center" data-i18n="settings_page.back_to_landing">
+            <svg class="km-icon" aria-hidden="true"><use href="#km-icon-arrow-left"></use></svg> BACK TO LANDING
+          </a>
+
+        </div>
+
+        <!-- RIGHT: Live Preview -->
+        <div>
+          <div class="km-preview-panel">
+            <span class="km-micro-label" data-i18n="settings_page.live_preview_label">LIVE PREVIEW</span>
+            <p style="font-size:11px;color:var(--text-3);margin-top:4px;margin-bottom:var(--sp-3)">
+              <span data-i18n="settings_page.live_preview_desc">Updates instantly as you select a mode</span>
+            </p>
+
+            <div class="km-preview-mini">
+              <div class="km-preview-hero">
+                KINETIC <span>MONO</span>
+              </div>
+
+              <div class="km-preview-swatches" id="km-preview-swatches">
+                <div class="km-preview-swatch" style="background:var(--a1)"></div>
+                <div class="km-preview-swatch" style="background:var(--a2)"></div>
+                <div class="km-preview-swatch" style="background:var(--a3)"></div>
+                <div class="km-preview-swatch" style="background:var(--a4)"></div>
+                <div class="km-preview-swatch" style="background:var(--a5)"></div>
+                <div class="km-preview-swatch" style="background:var(--a6)"></div>
+              </div>
+
+              <div style="margin-top:var(--sp-3);display:flex;gap:var(--sp-2);flex-wrap:wrap">
+                <span class="km-tag km-tag--a1" data-i18n="settings_page.preview_tag_active">ACTIVE</span>
+                <span class="km-tag km-tag--a2" data-i18n="settings_page.preview_tag_now">NOW</span>
+                <span class="km-tag km-tag--a3" data-i18n="settings_page.preview_tag_alert">ALERT</span>
+              </div>
+
+              <div style="margin-top:var(--sp-3)">
+                <div class="km-progress">
+                  <div class="km-progress__header">
+                    <span class="km-progress__label" data-i18n="settings_page.preview_system_label">SYSTEM</span>
+                    <span class="km-progress__pct">73%</span>
+                  </div>
+                  <div class="km-progress__track">
+                    <div class="km-progress__fill" style="width:73%"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="km-preview-btn" data-i18n="settings_page.preview_explore_button">EXPLORE SYSTEM <svg class="km-icon" aria-hidden="true"><use href="#km-icon-arrow-right"></use></svg></div>
+            </div>
+
+            <div style="margin-top:var(--sp-3)">
+              <span class="km-micro-label" id="km-mode-display" data-i18n="settings_page.current_mode_label">CURRENT: SINGLE</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- /settings-body -->
+
+  </main>
+
+  <script src="js/nav.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/icons.js"></script>
+  <script>
+    // Sync accent card active state with current mode
+    function syncCards(mode) {
+      document.querySelectorAll('.km-accent-card').forEach(function(card) {
+        card.classList.toggle('km-accent-card--active', card.getAttribute('data-mode') === mode);
+        card.setAttribute('aria-checked', card.getAttribute('data-mode') === mode ? 'true' : 'false');
+      });
+      const display = document.getElementById('km-mode-display');
+      if (display) display.textContent = 'CURRENT: ' + mode.toUpperCase();
+    }
+
+    // Card click handler
+    document.querySelectorAll('.km-accent-card').forEach(function(card) {
+      card.addEventListener('click', function() {
+        const mode = card.getAttribute('data-mode');
+        if (window.KineticMono) window.KineticMono.setAccent(mode);
+        syncCards(mode);
+      });
+      card.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          card.click();
+        }
+      });
+    });
+
+    // Init
+    function init() {
+      const mode = window.KineticMono ? window.KineticMono.getAccent() : 'single';
+      syncCards(mode);
+    }
+
+    // Wait for nav.js to run
+    setTimeout(init, 50);
+  </script>
+</body>
+</html>

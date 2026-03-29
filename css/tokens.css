@@ -1,0 +1,132 @@
+/* ============================================================
+   KINETIC MONO v2.0 — Design Tokens
+   Step A: Revised DESIGN.md implementation
+   Step B: Semantic token + accent mode system
+   ============================================================ */
+
+:root {
+  /* ── Raw Palette (Layer 1 — never changes) ── */
+  --palette-yellow:  #FFEA00;
+  --palette-blue:    #0057FF;
+  --palette-red:     #FF2D2D;
+  --palette-green:   #00C853;
+  --palette-purple:  #8B00FF;
+  --palette-orange:  #FF6B00;
+  --palette-black:   #000000;
+  --palette-white:   #FFFFFF;
+
+  /* ── Surface Scale — White Base (revised) ── */
+  /* Rule: cards float on canvas, canvas floats on page bg */
+  --surface-0:    #FFFFFF;          /* Cards, elevated content */
+  --surface-1:    #F9F9F9;          /* Main canvas */
+  --surface-2:    #F3F3F3;          /* Sidebars, secondary panels */
+  --surface-3:    #EBEBEB;          /* Input fields, sunken elements */
+  --surface-4:    #DEDEDE;          /* Dividers, minimal lines */
+  --surface-glass: rgba(255,255,255,0.75); /* Floating / backdrop */
+  --surface-dark:  #0A0A0A;         /* Inverted sections */
+
+  /* ── Text Scale ── */
+  --text-1: #000000;   /* Primary */
+  --text-2: #3A3A3A;   /* Secondary */
+  --text-3: #777777;   /* Tertiary / metadata */
+  --text-4: #BBBBBB;   /* Disabled */
+  --text-inv: #FFFFFF;  /* On dark surfaces */
+
+  /* ── Accent Semantic (Layer 2 — component-facing) ── */
+  /* Default: Single mode (Kinetic Yellow only)           */
+  /* White bg rule: Yellow/Green as COLOR FIELD only,     */
+  /*   Blue/Red/Purple usable as text too.                */
+  --a1: var(--palette-yellow);  --on-a1: #000000;
+  --a2: var(--palette-yellow);  --on-a2: #000000;
+  --a3: var(--palette-yellow);  --on-a3: #000000;
+  --a4: var(--palette-yellow);  --on-a4: #000000;
+  --a5: var(--palette-yellow);  --on-a5: #000000;
+  --a6: var(--palette-yellow);  --on-a6: #000000;
+
+  /* ── Spacing — 8px base grid ── */
+  --sp-1:  8px;
+  --sp-2:  16px;
+  --sp-3:  24px;
+  --sp-4:  32px;
+  --sp-5:  48px;
+  --sp-6:  64px;
+  --sp-7:  96px;
+  --sp-8: 128px;
+
+  /* ── Typography ── */
+  --font-display: 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+  /* Type scale — √2 ratio (1.414), Step C identity: √2 = A-paper ratio, Japanese origin */
+  --t-xs:    10px;   /* Micro-label — signature ultra-small */
+  --t-sm:    14px;   /* Caption, metadata */
+  --t-base:  16px;   /* Body copy */
+  --t-lg:    20px;   /* Subtitle, callout */
+  --t-xl:    28px;   /* H3 */
+  --t-2xl:   40px;   /* H2 */
+  --t-3xl:   57px;   /* H1 */
+  --t-hero:  80px;   /* Display hero */
+
+  /* ── Motion — Step C identity: 3 named motion curves ── */
+  --ease-kinetic:   cubic-bezier(0.22, 1, 0.36, 1);   /* Snap in, settle */
+  --ease-editorial: cubic-bezier(0.76, 0, 0.24, 1);   /* Deliberate, slow-fast */
+  --ease-snap:      cubic-bezier(1, 0, 0.5, 1.5);     /* Overshoot pop */
+
+  --dur-instant:   80ms;
+  --dur-quick:    200ms;
+  --dur-moderate: 400ms;
+  --dur-slow:     700ms;
+
+  /* ── Elevation — shadow only on floating elements ── */
+  --shadow-float:  0px 24px 48px rgba(0,0,0,0.04);
+  --shadow-raised: 0px  8px 24px rgba(0,0,0,0.06);
+  --shadow-card:   0px  2px  8px rgba(0,0,0,0.04);
+
+  /* ── Layout ── */
+  --nav-w:  240px;
+  --radius: 0px;    /* Kinetic Mono rule: zero radius always */
+}
+
+/* ============================================================
+   ACCENT MODES (Layer 3 — toggled via data-accent on <html>)
+   ============================================================ */
+
+/* SINGLE — Kinetic Yellow (authority, NOW, action) */
+html[data-accent="single"] {
+  --a1: var(--palette-yellow);  --on-a1: #000;
+  --a2: var(--palette-yellow);  --on-a2: #000;
+  --a3: var(--palette-yellow);  --on-a3: #000;
+  --a4: var(--palette-yellow);  --on-a4: #000;
+  --a5: var(--palette-yellow);  --on-a5: #000;
+  --a6: var(--palette-yellow);  --on-a6: #000;
+}
+
+/* DUAL — Yellow + Blue (action vs. information) */
+html[data-accent="dual"] {
+  --a1: var(--palette-yellow);  --on-a1: #000;
+  --a2: var(--palette-blue);    --on-a2: #fff;
+  --a3: var(--palette-yellow);  --on-a3: #000;
+  --a4: var(--palette-blue);    --on-a4: #fff;
+  --a5: var(--palette-yellow);  --on-a5: #000;
+  --a6: var(--palette-blue);    --on-a6: #fff;
+}
+
+/* TRI — Yellow + Blue + Red (action / info / alert) */
+html[data-accent="tri"] {
+  --a1: var(--palette-yellow);  --on-a1: #000;
+  --a2: var(--palette-blue);    --on-a2: #fff;
+  --a3: var(--palette-red);     --on-a3: #fff;
+  --a4: var(--palette-yellow);  --on-a4: #000;
+  --a5: var(--palette-blue);    --on-a5: #fff;
+  --a6: var(--palette-red);     --on-a6: #fff;
+}
+
+/* FULL — All six (editorial / portfolio / spectrum) */
+html[data-accent="full"] {
+  --a1: var(--palette-yellow);  --on-a1: #000;
+  --a2: var(--palette-blue);    --on-a2: #fff;
+  --a3: var(--palette-red);     --on-a3: #fff;
+  --a4: var(--palette-green);   --on-a4: #000;
+  --a5: var(--palette-purple);  --on-a5: #fff;
+  --a6: var(--palette-orange);  --on-a6: #000;
+}

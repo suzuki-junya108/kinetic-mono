@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en" data-accent="single">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KINETIC MONO — Pricing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <style>
+    /* ── Toggle ── */
+    .km-pricing-toggle {
+      display: flex;
+      gap: var(--sp-1);
+      padding: var(--sp-3) var(--sp-5);
+      border-bottom: 1px solid var(--surface-3);
+    }
+    .km-pricing-toggle .km-gallery-filter--active {
+      background: var(--palette-black);
+      color: var(--palette-white);
+    }
+    .km-pricing-save {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--a1);
+      align-self: center;
+      margin-left: var(--sp-1);
+    }
+
+    /* ── Pricing Cards ── */
+    .km-pricing-grid {
+      padding: var(--sp-4) var(--sp-5);
+    }
+    .km-pricing-card {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-2);
+      padding: var(--sp-4);
+      min-height: 520px;
+    }
+    .km-pricing-card__price {
+      font-family: var(--font-mono);
+      font-size: var(--t-3xl);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+    .km-pricing-card__period {
+      font-size: var(--t-sm);
+      color: var(--text-3);
+      margin-top: 4px;
+    }
+    .km-pricing-card--a1 .km-pricing-card__period {
+      color: var(--on-a1);
+      opacity: 0.6;
+    }
+    .km-pricing-card--accent .km-pricing-card__period {
+      color: rgba(255,255,255,0.5);
+    }
+    .km-pricing-card__features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-1);
+      margin-top: var(--sp-2);
+      flex: 1;
+    }
+    .km-pricing-card__features li {
+      font-size: var(--t-sm);
+      line-height: 1.6;
+      color: var(--text-2);
+      padding-left: var(--sp-3);
+      position: relative;
+    }
+    .km-pricing-card__features li::before {
+      content: '\2192';
+      position: absolute;
+      left: 0;
+      color: var(--text-4);
+    }
+    .km-pricing-card--a1 .km-pricing-card__features li {
+      color: var(--on-a1);
+      opacity: 0.85;
+    }
+    .km-pricing-card--a1 .km-pricing-card__features li::before {
+      color: var(--on-a1);
+      opacity: 0.5;
+    }
+    .km-pricing-card--accent .km-pricing-card__features li {
+      color: rgba(255,255,255,0.75);
+    }
+    .km-pricing-card--accent .km-pricing-card__features li::before {
+      color: rgba(255,255,255,0.3);
+    }
+    .km-pricing-card .km-btn {
+      margin-top: auto;
+      width: 100%;
+      justify-content: center;
+    }
+    .km-pricing-card .km-tag {
+      align-self: flex-start;
+    }
+
+    /* ── Comparison Table ── */
+    .km-comparison {
+      padding: var(--sp-6) var(--sp-5);
+      border-top: 1px solid var(--surface-3);
+    }
+    .km-comparison .km-section-header {
+      margin-bottom: var(--sp-3);
+    }
+    .km-comparison .km-table td:not(:first-child),
+    .km-comparison .km-table th:not(:first-child) {
+      text-align: center;
+      width: 18%;
+    }
+    .km-comparison .km-table td:first-child {
+      font-weight: 600;
+      color: var(--text-1);
+    }
+    .km-check {
+      color: var(--palette-black);
+      font-weight: 700;
+    }
+    .km-dash {
+      color: var(--text-4);
+    }
+
+    /* ── FAQ ── */
+    .km-faq {
+      padding: var(--sp-6) var(--sp-5);
+      border-top: 1px solid var(--surface-3);
+    }
+    .km-faq .km-section-header {
+      margin-bottom: var(--sp-3);
+    }
+    .km-faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-2);
+    }
+    .km-faq-item {
+      background: var(--surface-0);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+    }
+    .km-faq-item summary {
+      padding: var(--sp-3);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-1);
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background var(--dur-instant) var(--ease-kinetic);
+    }
+    .km-faq-item summary::-webkit-details-marker { display: none; }
+    .km-faq-item summary::after {
+      content: '+';
+      font-family: var(--font-mono);
+      font-size: var(--t-lg);
+      font-weight: 400;
+      color: var(--text-3);
+      transition: transform var(--dur-quick) var(--ease-kinetic);
+    }
+    .km-faq-item[open] summary::after {
+      transform: rotate(45deg);
+    }
+    .km-faq-item summary:hover {
+      background: var(--surface-2);
+    }
+    .km-faq-item__body {
+      padding: 0 var(--sp-3) var(--sp-3);
+      font-size: var(--t-sm);
+      line-height: 1.7;
+      color: var(--text-2);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .km-pricing-grid .km-bento--3col {
+        grid-template-columns: 1fr;
+      }
+      .km-pricing-card { min-height: auto; }
+      .km-comparison { overflow-x: auto; }
+      .km-comparison .km-table { min-width: 600px; }
+    }
+
+    @media (max-width: 600px) {
+      .km-pricing-toggle { padding: var(--sp-2) var(--sp-3); }
+      .km-pricing-grid { padding: var(--sp-3) var(--sp-2); }
+      .km-comparison { padding: var(--sp-3) var(--sp-2); }
+      .km-faq { padding: var(--sp-3) var(--sp-2); }
+      .km-pricing-card__price { font-size: var(--t-2xl); }
+    }
+  </style>
+</head>
+<body data-page="pricing">
+  <div id="km-nav"></div>
+
+  <main class="km-main">
+
+    <!-- PAGE HEADER -->
+    <div class="km-page-header">
+      <div>
+        <h1 style="font-size:var(--t-3xl);font-weight:800;letter-spacing:-0.04em;line-height:1" data-i18n="pricing.title">PRICING</h1>
+        <p style="font-size:var(--t-sm);color:var(--text-3);margin-top:var(--sp-1)" data-i18n="pricing.subtitle">Simple, transparent pricing for teams of all sizes</p>
+      </div>
+    </div>
+
+    <!-- TOGGLE -->
+    <div class="km-pricing-toggle">
+      <button class="km-gallery-filter km-gallery-filter--active" data-billing="monthly" data-i18n="pricing.toggle_monthly">MONTHLY</button>
+      <button class="km-gallery-filter" data-billing="annual" data-i18n="pricing.toggle_annual">ANNUAL</button>
+      <span class="km-pricing-save" data-i18n="pricing.save_badge">SAVE 20%</span>
+    </div>
+
+    <!-- PRICING CARDS -->
+    <div class="km-pricing-grid">
+      <div class="km-bento km-bento--3col">
+
+        <!-- STARTER -->
+        <div class="km-cell km-pricing-card">
+          <span class="km-micro-label" data-i18n="pricing.plan_starter">STARTER</span>
+          <div>
+            <div class="km-pricing-card__price" data-i18n="pricing.price_starter">$29</div>
+            <div class="km-pricing-card__period" data-i18n="pricing.period">/month per seat</div>
+          </div>
+          <ul class="km-pricing-card__features">
+            <li data-i18n="pricing.starter_feature_1">Up to 5 team members</li>
+            <li data-i18n="pricing.starter_feature_2">10 GB data storage</li>
+            <li data-i18n="pricing.starter_feature_3">Basic real-time sync</li>
+            <li data-i18n="pricing.starter_feature_4">Community support</li>
+            <li data-i18n="pricing.starter_feature_5">Standard API access</li>
+          </ul>
+          <a href="#" class="km-btn km-btn--outline" data-i18n="pricing.btn_get_started">GET STARTED</a>
+        </div>
+
+        <!-- PRO -->
+        <div class="km-cell km-cell--a1 km-pricing-card km-pricing-card--a1">
+          <span class="km-tag" data-i18n="pricing.tag_recommended">RECOMMENDED</span>
+          <span class="km-micro-label" data-i18n="pricing.plan_pro">PRO</span>
+          <div>
+            <div class="km-pricing-card__price" data-i18n="pricing.price_pro">$79</div>
+            <div class="km-pricing-card__period" data-i18n="pricing.period_pro">/month per seat</div>
+          </div>
+          <ul class="km-pricing-card__features">
+            <li data-i18n="pricing.pro_feature_1">Up to 50 team members</li>
+            <li data-i18n="pricing.pro_feature_2">100 GB data storage</li>
+            <li data-i18n="pricing.pro_feature_3">Advanced real-time sync</li>
+            <li data-i18n="pricing.pro_feature_4">Priority email support</li>
+            <li data-i18n="pricing.pro_feature_5">Full API access</li>
+            <li data-i18n="pricing.pro_feature_6">Visual query builder</li>
+            <li data-i18n="pricing.pro_feature_7">Custom dashboards</li>
+            <li data-i18n="pricing.pro_feature_8">Edge computing (12 regions)</li>
+          </ul>
+          <a href="#" class="km-btn km-btn--primary"><span data-i18n="pricing.btn_free_trial">START FREE TRIAL</span> <svg class="km-icon" aria-hidden="true"><use href="#km-icon-arrow-right"></use></svg></a>
+        </div>
+
+        <!-- ENTERPRISE -->
+        <div class="km-cell km-cell--accent km-pricing-card km-pricing-card--accent">
+          <span class="km-micro-label" data-i18n="pricing.plan_enterprise">ENTERPRISE</span>
+          <div>
+            <div class="km-pricing-card__price" style="color:var(--a1)" data-i18n="pricing.price_enterprise">CUSTOM</div>
+            <div class="km-pricing-card__period" data-i18n="pricing.period_enterprise">tailored to your needs</div>
+          </div>
+          <ul class="km-pricing-card__features">
+            <li data-i18n="pricing.enterprise_feature_1">Unlimited team members</li>
+            <li data-i18n="pricing.enterprise_feature_2">Unlimited data storage</li>
+            <li data-i18n="pricing.enterprise_feature_3">Advanced real-time sync</li>
+            <li data-i18n="pricing.enterprise_feature_4">Dedicated account manager</li>
+            <li data-i18n="pricing.enterprise_feature_5">Full API + webhooks</li>
+            <li data-i18n="pricing.enterprise_feature_6">Visual query builder</li>
+            <li data-i18n="pricing.enterprise_feature_7">Custom dashboards</li>
+            <li data-i18n="pricing.enterprise_feature_8">Edge computing (42 regions)</li>
+            <li data-i18n="pricing.enterprise_feature_9">SSO / SAML integration</li>
+            <li data-i18n="pricing.enterprise_feature_10">Custom SLA &amp; uptime guarantee</li>
+          </ul>
+          <a href="#" class="km-btn km-btn--accent" data-i18n="pricing.btn_contact_sales">CONTACT SALES</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- COMPARISON TABLE -->
+    <div class="km-comparison">
+      <div class="km-section-header">
+        <span class="km-micro-label" data-i18n="pricing.comparison_title">FEATURE COMPARISON</span>
+        <span class="km-micro-label" style="color:var(--text-4)" data-i18n="pricing.comparison_subtitle">FULL BREAKDOWN</span>
+      </div>
+
+      <div class="km-table-wrap">
+        <table class="km-table">
+          <thead>
+            <tr>
+              <th data-i18n="pricing.table_feature">Feature</th>
+              <th data-i18n="pricing.table_starter">Starter</th>
+              <th data-i18n="pricing.table_pro">Pro</th>
+              <th data-i18n="pricing.table_enterprise">Enterprise</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-i18n="pricing.feature_realtime_sync">Real-Time Sync</td>
+              <td><span class="km-check">&#10003;</span></td>
+              <td><span class="km-check">&#10003;</span></td>
+              <td><span class="km-check">&#10003;</span></td>
+            </tr>
+            <tr>
+              <td data-i18n="pricing.feature_edge_computing">Edge Computing</td>
+              <td><span class="km-dash">&mdash;</span></td>
+              <td><span class="km-check">&#10003;</span></td>
+              <td><span class="km-check">&#10003;</span></td>
+            </tr>
+            <tr>
+              <td data-i18n="pricing.feature_query_builder">Visual Query Builder</td>
+              <td><span class="km-dash">&mdash;</span></td>
+              <td><span class="km-check">&#10003;</span></td>
+              <td><span class="km-check">&#10003;</span></td>
+            </tr>
+            <tr>
+              <td data-i18n="pricing.feature_dashboards">Custom Dashboards</td>
+              <td><span class="km-dash">&mdash;</span></td>
+              <td><span class="km-check">&#10003;</span></td>
+              <td><span class="km-check">&#10003;</span></td>
+            </tr>
+            <tr>
+              <td data-i18n="pricing.feature_api">API Access</td>
+              <td><span class="km-check">&#10003;</span></td>
+              <td><span class="km-check">&#10003;</span></td>
+              <td><span class="km-check">&#10003;</span></td>
+            </tr>
+            <tr>
+              <td data-i18n="pricing.feature_webhooks">Webhooks</td>
+              <td><span class="km-dash">&mdash;</span></td>
+              <td><span class="km-dash">&mdash;</span></td>
+              <td><span class="km-check">&#10003;</span></td>
+            </tr>
+            <tr>
+              <td data-i18n="pricing.feature_sso">SSO / SAML</td>
+              <td><span class="km-dash">&mdash;</span></td>
+              <td><span class="km-dash">&mdash;</span></td>
+              <td><span class="km-check">&#10003;</span></td>
+            </tr>
+            <tr>
+              <td data-i18n="pricing.feature_auto_scaling">Auto Scaling</td>
+              <td><span class="km-dash">&mdash;</span></td>
+              <td><span class="km-check">&#10003;</span></td>
+              <td><span class="km-check">&#10003;</span></td>
+            </tr>
+            <tr>
+              <td data-i18n="pricing.feature_encryption">Encryption at Rest</td>
+              <td><span class="km-check">&#10003;</span></td>
+              <td><span class="km-check">&#10003;</span></td>
+              <td><span class="km-check">&#10003;</span></td>
+            </tr>
+            <tr>
+              <td data-i18n="pricing.feature_sla">Custom SLA</td>
+              <td><span class="km-dash">&mdash;</span></td>
+              <td><span class="km-dash">&mdash;</span></td>
+              <td><span class="km-check">&#10003;</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="km-faq">
+      <div class="km-section-header">
+        <span class="km-micro-label" data-i18n="pricing.faq_title">FREQUENTLY ASKED</span>
+        <span class="km-micro-label" style="color:var(--text-4)" data-i18n="pricing.faq_count">05 QUESTIONS</span>
+      </div>
+
+      <div class="km-faq-list">
+
+        <details class="km-faq-item">
+          <summary data-i18n="pricing.faq_q1">CAN I SWITCH PLANS AT ANY TIME?</summary>
+          <div class="km-faq-item__body" data-i18n="pricing.faq_a1">
+            Yes. You can upgrade or downgrade your plan at any time from your account settings. When upgrading, you'll be charged the prorated difference for the remainder of your billing cycle. Downgrades take effect at the start of your next billing period.
+          </div>
+        </details>
+
+        <details class="km-faq-item">
+          <summary data-i18n="pricing.faq_q2">WHAT HAPPENS WHEN MY FREE TRIAL ENDS?</summary>
+          <div class="km-faq-item__body" data-i18n="pricing.faq_a2">
+            Your 14-day free trial includes full access to all Pro features. When it ends, you can choose to subscribe to any plan. If you don't subscribe, your account will be moved to a read-only state. Your data is retained for 30 days before deletion.
+          </div>
+        </details>
+
+        <details class="km-faq-item">
+          <summary data-i18n="pricing.faq_q3">DO YOU OFFER DISCOUNTS FOR STARTUPS OR NON-PROFITS?</summary>
+          <div class="km-faq-item__body" data-i18n="pricing.faq_a3">
+            We offer a 50% discount for verified non-profit organizations and a startup program with 12 months free on the Pro plan for companies with less than $1M in funding. Contact our sales team to learn more about eligibility requirements.
+          </div>
+        </details>
+
+        <details class="km-faq-item">
+          <summary data-i18n="pricing.faq_q4">HOW IS DATA STORAGE CALCULATED?</summary>
+          <div class="km-faq-item__body" data-i18n="pricing.faq_a4">
+            Data storage is calculated based on the total size of your active datasets, including indexes and metadata. Archived data and backups do not count toward your storage limit. Storage usage is monitored in real-time and visible in your dashboard.
+          </div>
+        </details>
+
+        <details class="km-faq-item">
+          <summary data-i18n="pricing.faq_q5">WHAT PAYMENT METHODS DO YOU ACCEPT?</summary>
+          <div class="km-faq-item__body" data-i18n="pricing.faq_a5">
+            We accept all major credit cards (Visa, Mastercard, American Express), bank transfers for annual plans, and wire transfers for Enterprise accounts. All payments are processed securely through Stripe. Invoicing is available for annual Enterprise plans.
+          </div>
+        </details>
+
+      </div>
+    </div>
+
+  </main>
+
+  <script src="js/nav.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/icons.js"></script>
+</body>
+</html>

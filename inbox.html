@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en" data-accent="single">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KINETIC MONO — Inbox</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <style>
+    .km-inbox-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: calc(100vh - 120px);
+    }
+    .km-inbox-list {
+      overflow-y: auto;
+      border-right: 1px solid var(--surface-3);
+    }
+    .km-inbox-item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--sp-2);
+      padding: var(--sp-3) var(--sp-3);
+      border-bottom: 1px solid var(--surface-2);
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .km-inbox-item:hover { background: var(--surface-1); }
+    .km-inbox-item--selected { background: var(--surface-1); border-left: 3px solid var(--a1); }
+    .km-inbox-item--unread .km-inbox-item__sender,
+    .km-inbox-item--unread .km-inbox-item__subject { font-weight: 700; }
+    .km-inbox-item__dot {
+      width: 4px;
+      min-width: 4px;
+      align-self: stretch;
+      background: var(--a1);
+      flex-shrink: 0;
+    }
+    .km-inbox-item__dot--a2 { background: var(--a2); }
+    .km-inbox-item__dot--a3 { background: var(--a3); }
+    .km-inbox-item__dot--a4 { background: var(--a4); }
+    .km-inbox-item__content { flex: 1; min-width: 0; }
+    .km-inbox-item__sender {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-1);
+      margin-bottom: 2px;
+    }
+    .km-inbox-item__subject {
+      font-size: 13px;
+      color: var(--text-1);
+      margin-bottom: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .km-inbox-item__preview {
+      font-size: 11px;
+      color: var(--text-3);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .km-inbox-item__time {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-4);
+      white-space: nowrap;
+      flex-shrink: 0;
+      padding-top: 2px;
+    }
+    .km-inbox-detail {
+      padding: var(--sp-4);
+      overflow-y: auto;
+    }
+    .km-inbox-detail__header {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-3);
+      margin-bottom: var(--sp-4);
+    }
+    .km-inbox-detail__sender-name {
+      font-size: var(--t-base);
+      font-weight: 700;
+      color: var(--text-1);
+    }
+    .km-inbox-detail__timestamp {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-3);
+    }
+    .km-inbox-detail__subject {
+      font-size: var(--t-lg);
+      font-weight: 800;
+      color: var(--text-0);
+      margin-bottom: var(--sp-4);
+      line-height: 1.3;
+    }
+    .km-inbox-detail__body { color: var(--text-2); font-size: 14px; line-height: 1.7; }
+    .km-inbox-detail__body p { margin-bottom: var(--sp-3); }
+    .km-inbox-detail__body code {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      background: var(--surface-1);
+      padding: 2px 6px;
+    }
+    .km-inbox-detail__accent-line {
+      width: 100%;
+      height: 4px;
+      background: var(--a3);
+      margin: var(--sp-4) 0;
+    }
+    .km-inbox-detail__actions {
+      display: flex;
+      gap: var(--sp-2);
+      margin-top: var(--sp-4);
+    }
+    .km-inbox-mini-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: var(--sp-3) 0;
+      font-size: 13px;
+    }
+    .km-inbox-mini-table th,
+    .km-inbox-mini-table td {
+      text-align: left;
+      padding: var(--sp-1) var(--sp-2);
+      border-bottom: 1px solid var(--surface-2);
+    }
+    .km-inbox-mini-table th {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--text-3);
+    }
+    .km-inbox-mini-table td {
+      font-family: var(--font-mono);
+      font-size: 12px;
+    }
+    .km-inbox-mini-table .status-ok { color: var(--palette-green); }
+    .km-inbox-mini-table .status-err { color: var(--a3); }
+    .km-inbox-mini-table .status-warn { color: var(--a4); }
+    .km-page-header__right {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-2);
+    }
+    .km-filter-group {
+      display: flex;
+      gap: 0;
+    }
+
+    @media (max-width: 900px) {
+      .km-inbox-layout {
+        grid-template-columns: 1fr;
+        height: auto;
+      }
+      .km-inbox-list {
+        border-right: none;
+        border-bottom: 1px solid var(--surface-3);
+        max-height: 40vh;
+      }
+    }
+    @media (max-width: 600px) {
+      .km-inbox-detail { padding: var(--sp-2); }
+      .km-inbox-detail__actions { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body data-page="inbox">
+  <div id="km-nav"></div>
+
+  <main class="km-main">
+
+    <!-- PAGE HEADER -->
+    <div class="km-page-header" style="display:flex;justify-content:space-between;align-items:center;padding:var(--sp-3) var(--sp-5)">
+      <h1 class="km-page-title" data-i18n="inbox.title">INBOX</h1>
+      <div class="km-page-header__right">
+        <span class="km-tag km-tag--a3" style="font-family:var(--font-mono)" data-i18n="inbox.new_count">12 NEW</span>
+        <div class="km-filter-group">
+          <button class="km-gallery-filter km-gallery-filter--active" data-i18n="inbox.filter_all">ALL</button>
+          <button class="km-gallery-filter" data-i18n="inbox.filter_unread">UNREAD</button>
+          <button class="km-gallery-filter" data-i18n="inbox.filter_flagged">FLAGGED</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TWO-COLUMN LAYOUT -->
+    <div class="km-inbox-layout">
+
+      <!-- LEFT: Message List -->
+      <div class="km-inbox-list">
+
+        <!-- 1. Unread, selected, red dot -->
+        <div class="km-inbox-item km-inbox-item--unread km-inbox-item--selected">
+          <div class="km-inbox-item__dot km-inbox-item__dot--a3"></div>
+          <div class="km-inbox-item__content">
+            <div class="km-inbox-item__sender" data-i18n="inbox.sender_system_alert">System Alert</div>
+            <div class="km-inbox-item__subject" data-i18n="inbox.subject_db_failover">Database failover detected</div>
+            <div class="km-inbox-item__preview" data-i18n="inbox.preview_db_failover">Primary node unresponsive — automatic failover initiated...</div>
+          </div>
+          <div class="km-inbox-item__time">09:14</div>
+        </div>
+
+        <!-- 2. Unread, blue dot -->
+        <div class="km-inbox-item km-inbox-item--unread">
+          <div class="km-inbox-item__dot km-inbox-item__dot--a2"></div>
+          <div class="km-inbox-item__content">
+            <div class="km-inbox-item__sender" data-i18n="inbox.sender_deploy_bot">Deploy Bot</div>
+            <div class="km-inbox-item__subject" data-i18n="inbox.subject_deployment">Deployment v2.4.1 complete</div>
+            <div class="km-inbox-item__preview" data-i18n="inbox.preview_deployment">All services healthy — zero-downtime rollout finished...</div>
+          </div>
+          <div class="km-inbox-item__time">08:47</div>
+        </div>
+
+        <!-- 3. Unread, green dot -->
+        <div class="km-inbox-item km-inbox-item--unread">
+          <div class="km-inbox-item__dot km-inbox-item__dot--a4"></div>
+          <div class="km-inbox-item__content">
+            <div class="km-inbox-item__sender" data-i18n="inbox.sender_ci_pipeline">CI Pipeline</div>
+            <div class="km-inbox-item__subject" data-i18n="inbox.subject_build_passed">Build #4291 passed</div>
+            <div class="km-inbox-item__preview" data-i18n="inbox.preview_build_passed">All 847 tests passed in 3m 12s — coverage at 94.2%...</div>
+          </div>
+          <div class="km-inbox-item__time">08:12</div>
+        </div>
+
+        <!-- 4. Unread, yellow dot -->
+        <div class="km-inbox-item km-inbox-item--unread">
+          <div class="km-inbox-item__dot" style="background:var(--a4)"></div>
+          <div class="km-inbox-item__content">
+            <div class="km-inbox-item__sender" data-i18n="inbox.sender_team_update">Team Update</div>
+            <div class="km-inbox-item__subject" data-i18n="inbox.subject_sprint_retro">Sprint 14 retrospective notes</div>
+            <div class="km-inbox-item__preview" data-i18n="inbox.preview_sprint_retro">Key takeaways from Friday's retro — action items assigned...</div>
+          </div>
+          <div class="km-inbox-item__time">07:30</div>
+        </div>
+
+        <!-- 5. Read -->
+        <div class="km-inbox-item">
+          <div class="km-inbox-item__dot"></div>
+          <div class="km-inbox-item__content">
+            <div class="km-inbox-item__sender" data-i18n="inbox.sender_sarah_chen">Sarah Chen</div>
+            <div class="km-inbox-item__subject" data-i18n="inbox.subject_design_review">Design review: new dashboard components</div>
+            <div class="km-inbox-item__preview" data-i18n="inbox.preview_design_review">I've pushed the updated Figma frames for the analytics widgets...</div>
+          </div>
+          <div class="km-inbox-item__time">YDY</div>
+        </div>
+
+        <!-- 6. Read -->
+        <div class="km-inbox-item">
+          <div class="km-inbox-item__dot km-inbox-item__dot--a2"></div>
+          <div class="km-inbox-item__content">
+            <div class="km-inbox-item__sender" data-i18n="inbox.sender_api_monitor">API Monitor</div>
+            <div class="km-inbox-item__subject" data-i18n="inbox.subject_latency_report">Weekly latency report — P99 within SLA</div>
+            <div class="km-inbox-item__preview" data-i18n="inbox.preview_latency_report">All endpoints under 200ms P99 — full report attached...</div>
+          </div>
+          <div class="km-inbox-item__time">YDY</div>
+        </div>
+
+        <!-- 7. Read -->
+        <div class="km-inbox-item">
+          <div class="km-inbox-item__dot km-inbox-item__dot--a3"></div>
+          <div class="km-inbox-item__content">
+            <div class="km-inbox-item__sender" data-i18n="inbox.sender_security">Security</div>
+            <div class="km-inbox-item__subject" data-i18n="inbox.subject_ssl_renewal">SSL certificate renewal reminder</div>
+            <div class="km-inbox-item__preview" data-i18n="inbox.preview_ssl_renewal">The wildcard cert for *.kinetic.dev expires in 14 days...</div>
+          </div>
+          <div class="km-inbox-item__time">MAR 27</div>
+        </div>
+
+        <!-- 8. Read -->
+        <div class="km-inbox-item">
+          <div class="km-inbox-item__dot"></div>
+          <div class="km-inbox-item__content">
+            <div class="km-inbox-item__sender" data-i18n="inbox.sender_billing">Billing</div>
+            <div class="km-inbox-item__subject" data-i18n="inbox.subject_march_invoice">March invoice #INV-2025-0329</div>
+            <div class="km-inbox-item__preview" data-i18n="inbox.preview_march_invoice">Your compute usage for March — $4,291.00 total...</div>
+          </div>
+          <div class="km-inbox-item__time">MAR 27</div>
+        </div>
+
+        <!-- 9. Read -->
+        <div class="km-inbox-item">
+          <div class="km-inbox-item__dot km-inbox-item__dot--a2"></div>
+          <div class="km-inbox-item__content">
+            <div class="km-inbox-item__sender" data-i18n="inbox.sender_marcus_lee">Marcus Lee</div>
+            <div class="km-inbox-item__subject" data-i18n="inbox.subject_api_versioning">RE: API versioning strategy</div>
+            <div class="km-inbox-item__preview" data-i18n="inbox.preview_api_versioning">I agree with the header-based approach — let's discuss Monday...</div>
+          </div>
+          <div class="km-inbox-item__time">MAR 26</div>
+        </div>
+
+        <!-- 10. Read -->
+        <div class="km-inbox-item">
+          <div class="km-inbox-item__dot"></div>
+          <div class="km-inbox-item__content">
+            <div class="km-inbox-item__sender" data-i18n="inbox.sender_ops_bot">Ops Bot</div>
+            <div class="km-inbox-item__subject" data-i18n="inbox.subject_autoscaling">Auto-scaling event: +3 instances (us-east)</div>
+            <div class="km-inbox-item__preview" data-i18n="inbox.preview_autoscaling">Traffic spike detected — provisioned additional capacity...</div>
+          </div>
+          <div class="km-inbox-item__time">MAR 26</div>
+        </div>
+
+        <!-- 11. Read -->
+        <div class="km-inbox-item">
+          <div class="km-inbox-item__dot km-inbox-item__dot--a4"></div>
+          <div class="km-inbox-item__content">
+            <div class="km-inbox-item__sender" data-i18n="inbox.sender_yuki_tanaka">Yuki Tanaka</div>
+            <div class="km-inbox-item__subject" data-i18n="inbox.subject_font_license">Font license renewal for JetBrains Mono</div>
+            <div class="km-inbox-item__preview" data-i18n="inbox.preview_font_license">The commercial license is up for renewal — approval needed...</div>
+          </div>
+          <div class="km-inbox-item__time">MAR 25</div>
+        </div>
+
+        <!-- 12. Read -->
+        <div class="km-inbox-item">
+          <div class="km-inbox-item__dot"></div>
+          <div class="km-inbox-item__content">
+            <div class="km-inbox-item__sender" data-i18n="inbox.sender_analytics">Analytics</div>
+            <div class="km-inbox-item__subject" data-i18n="inbox.subject_weekly_digest">Weekly digest: 847K pageviews (+12%)</div>
+            <div class="km-inbox-item__preview" data-i18n="inbox.preview_weekly_digest">Top pages, conversion funnels, and audience breakdown...</div>
+          </div>
+          <div class="km-inbox-item__time">MAR 24</div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT: Message Detail -->
+      <div class="km-inbox-detail">
+
+        <!-- Header -->
+        <div class="km-inbox-detail__header">
+          <div class="km-avatar km-avatar--md" style="background:var(--a3);color:var(--surface-0);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px">SA</div>
+          <div>
+            <div class="km-inbox-detail__sender-name" data-i18n="inbox.detail_sender">System Alert</div>
+            <div class="km-inbox-detail__timestamp" data-i18n="inbox.detail_timestamp">2025.03.29 09:14:02</div>
+          </div>
+        </div>
+
+        <!-- Subject -->
+        <div class="km-inbox-detail__subject" data-i18n="inbox.detail_subject">Database failover detected — immediate action required</div>
+
+        <!-- Accent line -->
+        <div class="km-inbox-detail__accent-line"></div>
+
+        <!-- Body -->
+        <div class="km-inbox-detail__body">
+          <p data-i18n="inbox.detail_body_p1">
+            An automated failover was initiated for the primary database node at
+            <code>2025-03-29T09:14:02.847Z</code>. The primary instance
+            <code>node-primary-east-02</code> became unresponsive after three consecutive
+            health check failures over a 45-second window. The standby replica was promoted
+            to primary within 8.2 seconds, and all active connections were rerouted.
+          </p>
+
+          <p data-i18n="inbox.detail_body_p2">
+            Write operations were paused for approximately 12 seconds during the switchover.
+            No data loss was detected during preliminary integrity checks. The connection pool
+            drained cleanly, with 847 active connections migrated to the new primary. Read
+            replicas across all three availability zones have re-synced and are receiving
+            replication streams normally.
+          </p>
+
+          <table class="km-inbox-mini-table">
+            <thead>
+              <tr>
+                <th data-i18n="inbox.th_node">NODE</th>
+                <th data-i18n="inbox.th_role">ROLE</th>
+                <th data-i18n="inbox.th_status">STATUS</th>
+                <th data-i18n="inbox.th_latency">LATENCY</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>node-primary-east-02</td>
+                <td data-i18n="inbox.role_primary_former">Primary (former)</td>
+                <td class="status-err" data-i18n="inbox.status_offline">OFFLINE</td>
+                <td>---</td>
+              </tr>
+              <tr>
+                <td>node-standby-east-01</td>
+                <td data-i18n="inbox.role_primary_promoted">Primary (promoted)</td>
+                <td class="status-ok" data-i18n="inbox.status_online">ONLINE</td>
+                <td>4ms</td>
+              </tr>
+              <tr>
+                <td>node-failover-west-01</td>
+                <td data-i18n="inbox.role_failover_standby">Failover standby</td>
+                <td class="status-warn" data-i18n="inbox.status_syncing">SYNCING</td>
+                <td>18ms</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p data-i18n="inbox.detail_body_p3">
+            The on-call infrastructure team has been paged. A root cause analysis is underway
+            to determine whether the failure was caused by hardware degradation, network
+            partitioning, or a cascading resource exhaustion event. Please acknowledge this
+            alert and escalate if the former primary node cannot be recovered within the
+            next maintenance window.
+          </p>
+        </div>
+
+        <!-- Actions -->
+        <div class="km-inbox-detail__actions">
+          <button class="km-btn km-btn--primary" data-i18n="inbox.btn_acknowledge">ACKNOWLEDGE</button>
+          <button class="km-btn km-btn--outline" data-i18n="inbox.btn_escalate">ESCALATE</button>
+          <button class="km-btn km-btn--sm" data-i18n="inbox.btn_mute_alert">MUTE ALERT</button>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <script src="js/nav.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/icons.js"></script>
+</body>
+</html>

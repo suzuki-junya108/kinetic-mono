@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en" data-accent="single">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KINETIC MONO — Design Docs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <style>
+    .km-docs-body { padding: 0 var(--sp-5) var(--sp-7); }
+    .km-docs-section {
+      padding: var(--sp-5) 0;
+      border-bottom: 1px solid var(--surface-3);
+    }
+    .km-docs-section:last-child { border-bottom: none; }
+    .km-docs-h2 {
+      font-size: var(--t-2xl);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      margin-bottom: var(--sp-4);
+      display: flex;
+      align-items: baseline;
+      gap: var(--sp-3);
+    }
+    .km-docs-h2 .km-micro-label { margin-bottom: 0; }
+    .km-component-row {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-3);
+      flex-wrap: wrap;
+      padding: var(--sp-3) 0;
+      border-bottom: 1px solid var(--surface-3);
+    }
+    .km-component-row:last-child { border-bottom: none; }
+    .km-component-label {
+      min-width: 120px;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--text-3);
+    }
+    .km-surface-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: var(--sp-2);
+    }
+    .km-surface-block {
+      height: 60px;
+      display: flex;
+      align-items: flex-end;
+      padding: var(--sp-1);
+    }
+    .km-surface-block span {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--text-3);
+    }
+    .km-motion-demo {
+      display: flex;
+      gap: var(--sp-3);
+      flex-wrap: wrap;
+    }
+    .km-motion-box {
+      width: 80px;
+      height: 80px;
+      background: var(--palette-black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition-property: transform, background;
+      transition-duration: var(--dur-quick);
+    }
+    .km-motion-box span {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--palette-white);
+      text-align: center;
+    }
+    .km-motion-box--kinetic {
+      transition-timing-function: var(--ease-kinetic);
+    }
+    .km-motion-box--editorial {
+      transition-timing-function: var(--ease-editorial);
+    }
+    .km-motion-box--snap {
+      transition-timing-function: var(--ease-snap);
+    }
+    .km-motion-box:hover {
+      background: var(--a1);
+      transform: translateX(16px);
+    }
+    .km-motion-box:hover span { color: var(--on-a1); }
+    .km-docs-rules-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-4);
+    }
+
+    @media (max-width: 768px) {
+      .km-docs-body { padding: 0 var(--sp-3) var(--sp-5); }
+    }
+
+    @media (max-width: 600px) {
+      .km-docs-rules-grid { grid-template-columns: 1fr; }
+      .km-surface-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 480px) {
+      .km-docs-body { padding: 0 var(--sp-2) var(--sp-4); }
+    }
+  </style>
+</head>
+<body data-page="docs">
+  <div id="km-nav"></div>
+
+  <main class="km-main">
+
+    <!-- PAGE HEADER -->
+    <div class="km-page-header">
+      <div>
+        <h1 class="km-page-title" data-i18n="docs_page.title">DESIGN<br>DOCS</h1>
+        <p class="km-page-sub" data-i18n="docs_page.subtitle">Kinetic Mono v2.0 — System reference</p>
+      </div>
+      <a href="settings.html" class="km-btn km-btn--outline" data-i18n="docs.settings_btn">SETTINGS <svg class="km-icon" aria-hidden="true"><use href="#km-icon-arrow-right"></use></svg></a>
+    </div>
+
+    <div class="km-docs-body">
+
+      <!-- 1. COLOR SYSTEM -->
+      <div class="km-docs-section">
+        <h2 class="km-docs-h2">
+          <span data-i18n="docs.colors_heading">COLORS</span>
+          <span class="km-micro-label" data-i18n="docs.colors_number">01</span>
+        </h2>
+
+        <p style="font-size:var(--t-sm);color:var(--text-2);margin-bottom:var(--sp-4);max-width:600px" data-i18n="docs.colors_desc">
+          White base system. Accent colors used as <strong>color fields</strong> (backgrounds) on white, never as text on white — except Blue, Red, Purple which meet WCAG AA contrast.
+        </p>
+
+        <!-- Accent Palette -->
+        <div class="km-micro-label" style="margin-bottom:var(--sp-2)" data-i18n="docs.accent_palette_label">ACCENT PALETTE</div>
+        <div class="km-swatch-grid" style="margin-bottom:var(--sp-4)">
+          <div class="km-swatch-card">
+            <div class="km-swatch-card__block" style="background:var(--palette-yellow)"></div>
+            <div class="km-swatch-card__name" data-i18n="docs.color_yellow">KINETIC YELLOW</div>
+            <div class="km-swatch-card__hex">#FFEA00</div>
+          </div>
+          <div class="km-swatch-card">
+            <div class="km-swatch-card__block" style="background:var(--palette-blue)"></div>
+            <div class="km-swatch-card__name" data-i18n="docs.color_blue">KINETIC BLUE</div>
+            <div class="km-swatch-card__hex">#0057FF</div>
+          </div>
+          <div class="km-swatch-card">
+            <div class="km-swatch-card__block" style="background:var(--palette-red)"></div>
+            <div class="km-swatch-card__name" data-i18n="docs.color_red">KINETIC RED</div>
+            <div class="km-swatch-card__hex">#FF2D2D</div>
+          </div>
+          <div class="km-swatch-card">
+            <div class="km-swatch-card__block" style="background:var(--palette-green)"></div>
+            <div class="km-swatch-card__name" data-i18n="docs.color_green">KINETIC GREEN</div>
+            <div class="km-swatch-card__hex">#00C853</div>
+          </div>
+          <div class="km-swatch-card">
+            <div class="km-swatch-card__block" style="background:var(--palette-purple)"></div>
+            <div class="km-swatch-card__name" data-i18n="docs.color_purple">KINETIC PURPLE</div>
+            <div class="km-swatch-card__hex">#8B00FF</div>
+          </div>
+          <div class="km-swatch-card">
+            <div class="km-swatch-card__block" style="background:var(--palette-orange)"></div>
+            <div class="km-swatch-card__name" data-i18n="docs.color_orange">KINETIC ORANGE</div>
+            <div class="km-swatch-card__hex">#FF6B00</div>
+          </div>
+        </div>
+
+        <!-- Surface Scale -->
+        <div class="km-micro-label" style="margin-bottom:var(--sp-2)" data-i18n="docs.surface_scale_label">SURFACE SCALE</div>
+        <div class="km-surface-grid">
+          <div>
+            <div class="km-surface-block" style="background:#FFFFFF;border:1px solid var(--surface-3)">
+              <span>#FFFFFF</span>
+            </div>
+            <div style="font-size:9px;font-weight:700;margin-top:4px;letter-spacing:0.1em" data-i18n="docs.surface_0_name">SURFACE-0</div>
+            <div style="font-size:9px;color:var(--text-3)" data-i18n="docs.surface_0_desc">Cards, elevated</div>
+          </div>
+          <div>
+            <div class="km-surface-block" style="background:#F9F9F9">
+              <span>#F9F9F9</span>
+            </div>
+            <div style="font-size:9px;font-weight:700;margin-top:4px;letter-spacing:0.1em" data-i18n="docs.surface_1_name">SURFACE-1</div>
+            <div style="font-size:9px;color:var(--text-3)" data-i18n="docs.surface_1_desc">Main canvas</div>
+          </div>
+          <div>
+            <div class="km-surface-block" style="background:#F3F3F3">
+              <span>#F3F3F3</span>
+            </div>
+            <div style="font-size:9px;font-weight:700;margin-top:4px;letter-spacing:0.1em" data-i18n="docs.surface_2_name">SURFACE-2</div>
+            <div style="font-size:9px;color:var(--text-3)" data-i18n="docs.surface_2_desc">Sidebars, nav</div>
+          </div>
+          <div>
+            <div class="km-surface-block" style="background:#EBEBEB">
+              <span>#EBEBEB</span>
+            </div>
+            <div style="font-size:9px;font-weight:700;margin-top:4px;letter-spacing:0.1em" data-i18n="docs.surface_3_name">SURFACE-3</div>
+            <div style="font-size:9px;color:var(--text-3)" data-i18n="docs.surface_3_desc">Input fields</div>
+          </div>
+          <div>
+            <div class="km-surface-block" style="background:#0A0A0A">
+              <span style="color:#fff">#0A0A0A</span>
+            </div>
+            <div style="font-size:9px;font-weight:700;margin-top:4px;letter-spacing:0.1em" data-i18n="docs.surface_dark_name">SURFACE-DARK</div>
+            <div style="font-size:9px;color:var(--text-3)" data-i18n="docs.surface_dark_desc">Inverted sections</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. TYPOGRAPHY -->
+      <div class="km-docs-section">
+        <h2 class="km-docs-h2">
+          <span data-i18n="docs.typography_heading">TYPOGRAPHY</span>
+          <span class="km-micro-label" data-i18n="docs.typography_number">02</span>
+        </h2>
+
+        <p style="font-size:var(--t-sm);color:var(--text-2);margin-bottom:var(--sp-4);max-width:600px" data-i18n="docs.typography_desc">
+          Plus Jakarta Sans exclusively. √2 ratio scale (1.414) — derived from A-series paper dimensions. Weight and tracking create hierarchy, not font diversity.
+        </p>
+
+        <div class="km-type-demo">
+          <div class="km-type-row">
+            <div class="km-type-row__meta">
+              <div class="km-type-row__size">80px</div>
+              <div class="km-micro-label" data-i18n="docs.type_hero_label">HERO</div>
+            </div>
+            <div class="km-type-row__sample" style="font-size:80px;font-weight:800;letter-spacing:-0.05em;line-height:0.9" data-i18n="docs.type_hero_sample">KM</div>
+          </div>
+          <div class="km-type-row">
+            <div class="km-type-row__meta">
+              <div class="km-type-row__size">57px</div>
+              <div class="km-micro-label" data-i18n="docs.type_h1_label">H1</div>
+            </div>
+            <div class="km-type-row__sample" style="font-size:57px;font-weight:800;letter-spacing:-0.04em" data-i18n="docs.type_h1_sample">Display Title</div>
+          </div>
+          <div class="km-type-row">
+            <div class="km-type-row__meta">
+              <div class="km-type-row__size">40px</div>
+              <div class="km-micro-label" data-i18n="docs.type_h2_label">H2</div>
+            </div>
+            <div class="km-type-row__sample" style="font-size:40px;font-weight:800;letter-spacing:-0.03em" data-i18n="docs.type_h2_sample">Section Heading</div>
+          </div>
+          <div class="km-type-row">
+            <div class="km-type-row__meta">
+              <div class="km-type-row__size">28px</div>
+              <div class="km-micro-label" data-i18n="docs.type_h3_label">H3</div>
+            </div>
+            <div class="km-type-row__sample" style="font-size:28px;font-weight:700;letter-spacing:-0.02em" data-i18n="docs.type_h3_sample">Subsection Title</div>
+          </div>
+          <div class="km-type-row">
+            <div class="km-type-row__meta">
+              <div class="km-type-row__size">20px</div>
+              <div class="km-micro-label" data-i18n="docs.type_subtitle_label">SUBTITLE</div>
+            </div>
+            <div class="km-type-row__sample" style="font-size:20px;font-weight:600" data-i18n="docs.type_subtitle_sample">Callout or lead text</div>
+          </div>
+          <div class="km-type-row">
+            <div class="km-type-row__meta">
+              <div class="km-type-row__size">16px</div>
+              <div class="km-micro-label" data-i18n="docs.type_body_label">BODY</div>
+            </div>
+            <div class="km-type-row__sample" style="font-size:16px;line-height:1.6;max-width:480px" data-i18n="docs.type_body_sample">Body copy at 16px with relaxed line-height (1.6) for readability in dense content. Light weight for extended reading.</div>
+          </div>
+          <div class="km-type-row">
+            <div class="km-type-row__meta">
+              <div class="km-type-row__size">14px</div>
+              <div class="km-micro-label" data-i18n="docs.type_caption_label">CAPTION</div>
+            </div>
+            <div class="km-type-row__sample" style="font-size:14px;color:var(--text-3)" data-i18n="docs.type_caption_sample">Caption and supporting text at 14px</div>
+          </div>
+          <div class="km-type-row">
+            <div class="km-type-row__meta">
+              <div class="km-type-row__size">10px</div>
+              <div class="km-micro-label" data-i18n="docs.type_micro_label">MICRO-LABEL</div>
+            </div>
+            <div class="km-type-row__sample" style="font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase" data-i18n="docs.type_micro_sample">METADATA · UPPERCASE · TRACKED</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. MOTION -->
+      <div class="km-docs-section">
+        <h2 class="km-docs-h2">
+          <span data-i18n="docs.motion_heading">MOTION</span>
+          <span class="km-micro-label" data-i18n="docs.motion_number">03</span>
+        </h2>
+
+        <p style="font-size:var(--t-sm);color:var(--text-2);margin-bottom:var(--sp-4)" data-i18n="docs.motion_desc">
+          Three named easing curves. Hover each box to experience the difference.
+        </p>
+
+        <div class="km-motion-demo">
+          <div>
+            <div class="km-motion-box km-motion-box--kinetic">
+              <span data-i18n="docs.motion_kinetic_box">KINETIC</span>
+            </div>
+            <div style="font-size:9px;font-weight:700;letter-spacing:0.1em;margin-top:var(--sp-1)" data-i18n="docs.motion_kinetic_name">KINETIC</div>
+            <div style="font-family:var(--font-mono);font-size:9px;color:var(--text-3)">cubic-bezier(0.22,1,0.36,1)</div>
+            <div style="font-size:9px;color:var(--text-3)" data-i18n="docs.motion_kinetic_desc">Snap in, settle</div>
+          </div>
+          <div>
+            <div class="km-motion-box km-motion-box--editorial">
+              <span data-i18n="docs.motion_editorial_box">EDITORIAL</span>
+            </div>
+            <div style="font-size:9px;font-weight:700;letter-spacing:0.1em;margin-top:var(--sp-1)" data-i18n="docs.motion_editorial_name">EDITORIAL</div>
+            <div style="font-family:var(--font-mono);font-size:9px;color:var(--text-3)">cubic-bezier(0.76,0,0.24,1)</div>
+            <div style="font-size:9px;color:var(--text-3)" data-i18n="docs.motion_editorial_desc">Deliberate, weight</div>
+          </div>
+          <div>
+            <div class="km-motion-box km-motion-box--snap">
+              <span data-i18n="docs.motion_snap_box">SNAP</span>
+            </div>
+            <div style="font-size:9px;font-weight:700;letter-spacing:0.1em;margin-top:var(--sp-1)" data-i18n="docs.motion_snap_name">SNAP</div>
+            <div style="font-family:var(--font-mono);font-size:9px;color:var(--text-3)">cubic-bezier(1,0,0.5,1.5)</div>
+            <div style="font-size:9px;color:var(--text-3)" data-i18n="docs.motion_snap_desc">Overshoot pop</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. COMPONENTS -->
+      <div class="km-docs-section">
+        <h2 class="km-docs-h2">
+          <span data-i18n="docs.components_heading">COMPONENTS</span>
+          <span class="km-micro-label" data-i18n="docs.components_number">04</span>
+        </h2>
+
+        <!-- Buttons -->
+        <div class="km-micro-label" style="margin-bottom:var(--sp-2)" data-i18n="docs.buttons_label">BUTTONS</div>
+        <div class="km-component-row">
+          <span class="km-component-label" data-i18n="docs.btn_primary_label">PRIMARY</span>
+          <button class="km-btn km-btn--primary" data-i18n="docs.btn_primary_text">PRIMARY ACTION</button>
+        </div>
+        <div class="km-component-row">
+          <span class="km-component-label" data-i18n="docs.btn_outline_label">OUTLINE</span>
+          <button class="km-btn km-btn--outline" data-i18n="docs.btn_secondary_text">SECONDARY ACTION</button>
+        </div>
+        <div class="km-component-row">
+          <span class="km-component-label" data-i18n="docs.btn_accent_label">ACCENT</span>
+          <button class="km-btn km-btn--accent" data-i18n="docs.btn_accent_text">ACCENT ACTION <svg class="km-icon" aria-hidden="true"><use href="#km-icon-arrow-right"></use></svg></button>
+        </div>
+        <div class="km-component-row">
+          <span class="km-component-label" data-i18n="docs.btn_small_label">SMALL</span>
+          <button class="km-btn km-btn--sm km-btn--primary" data-i18n="docs.btn_sm_primary_text">SM PRIMARY</button>
+          <button class="km-btn km-btn--sm km-btn--outline" data-i18n="docs.btn_sm_outline_text">SM OUTLINE</button>
+        </div>
+
+        <!-- Tags -->
+        <div class="km-micro-label" style="margin:var(--sp-4) 0 var(--sp-2)" data-i18n="docs.tags_label">TAGS</div>
+        <div class="km-component-row">
+          <span class="km-component-label" data-i18n="docs.tags_accent_label">ACCENT</span>
+          <span class="km-tag km-tag--a1" data-i18n="docs.tag_accent_1">ACCENT 1</span>
+          <span class="km-tag km-tag--a2" data-i18n="docs.tag_accent_2">ACCENT 2</span>
+          <span class="km-tag km-tag--a3" data-i18n="docs.tag_accent_3">ACCENT 3</span>
+          <span class="km-tag km-tag--a4" data-i18n="docs.tag_accent_4">ACCENT 4</span>
+          <span class="km-tag km-tag--a5" data-i18n="docs.tag_accent_5">ACCENT 5</span>
+          <span class="km-tag km-tag--a6" data-i18n="docs.tag_accent_6">ACCENT 6</span>
+        </div>
+        <div class="km-component-row">
+          <span class="km-component-label" data-i18n="docs.tags_outline_label">OUTLINE</span>
+          <span class="km-tag km-tag--outline" data-i18n="docs.tag_outline">OUTLINE TAG</span>
+          <span class="km-tag km-tag--outline" data-i18n="docs.tag_another">ANOTHER TAG</span>
+        </div>
+
+        <!-- Status -->
+        <div class="km-micro-label" style="margin:var(--sp-4) 0 var(--sp-2)" data-i18n="docs.status_indicators_label">STATUS INDICATORS</div>
+        <div class="km-component-row">
+          <span class="km-component-label" data-i18n="docs.progress_label">PROGRESS</span>
+          <div style="width:300px">
+            <div class="km-progress">
+              <div class="km-progress__header">
+                <span class="km-progress__label" data-i18n="docs.completion_label">COMPLETION</span>
+                <span class="km-progress__pct">73%</span>
+              </div>
+              <div class="km-progress__track">
+                <div class="km-progress__fill" style="width:73%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. DO / DON'T -->
+      <div class="km-docs-section">
+        <h2 class="km-docs-h2">
+          <span data-i18n="docs.rules_heading">RULES</span>
+          <span class="km-micro-label" data-i18n="docs.rules_number">05</span>
+        </h2>
+
+        <div class="km-docs-rules-grid">
+          <div>
+            <div class="km-micro-label" style="color:var(--palette-green);margin-bottom:var(--sp-2)" data-i18n="docs.rules_do_label"><svg class="km-icon km-icon--sm" aria-hidden="true"><use href="#km-icon-check"></use></svg> DO</div>
+            <div class="km-feed">
+              <div class="km-feed__item">
+                <div class="km-feed__dot" style="background:var(--palette-green)"></div>
+                <div class="km-feed__content"><div class="km-feed__title" data-i18n="docs.do_item_1">Uppercase Micro-Labels for all metadata</div></div>
+              </div>
+              <div class="km-feed__item">
+                <div class="km-feed__dot" style="background:var(--palette-green)"></div>
+                <div class="km-feed__content"><div class="km-feed__title" data-i18n="docs.do_item_2">Asymmetric layouts, 70% hero title widths</div></div>
+              </div>
+              <div class="km-feed__item">
+                <div class="km-feed__dot" style="background:var(--palette-green)"></div>
+                <div class="km-feed__content"><div class="km-feed__title" data-i18n="docs.do_item_3">Use Yellow as color field on dark or black</div></div>
+              </div>
+              <div class="km-feed__item">
+                <div class="km-feed__dot" style="background:var(--palette-green)"></div>
+                <div class="km-feed__content"><div class="km-feed__title" data-i18n="docs.do_item_4">Background shifts for visual sectioning</div></div>
+              </div>
+              <div class="km-feed__item">
+                <div class="km-feed__dot" style="background:var(--palette-green)"></div>
+                <div class="km-feed__content"><div class="km-feed__title" data-i18n="docs.do_item_5">Kinetic Hover: color snap + translateX(4px)</div></div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="km-micro-label" style="color:var(--palette-red);margin-bottom:var(--sp-2)" data-i18n="docs.rules_dont_label">✗ DON'T</div>
+            <div class="km-feed">
+              <div class="km-feed__item">
+                <div class="km-feed__dot" style="background:var(--palette-red)"></div>
+                <div class="km-feed__content"><div class="km-feed__title" data-i18n="docs.dont_item_1">Use border-radius (pills, rounded corners)</div></div>
+              </div>
+              <div class="km-feed__item">
+                <div class="km-feed__dot" style="background:var(--palette-red)"></div>
+                <div class="km-feed__content"><div class="km-feed__title" data-i18n="docs.dont_item_2">Yellow text on white/gray backgrounds</div></div>
+              </div>
+              <div class="km-feed__item">
+                <div class="km-feed__dot" style="background:var(--palette-red)"></div>
+                <div class="km-feed__content"><div class="km-feed__title" data-i18n="docs.dont_item_3">1px borders for layout containment</div></div>
+              </div>
+              <div class="km-feed__item">
+                <div class="km-feed__dot" style="background:var(--palette-red)"></div>
+                <div class="km-feed__content"><div class="km-feed__title" data-i18n="docs.dont_item_4">Gradients for depth (use surface shifts)</div></div>
+              </div>
+              <div class="km-feed__item">
+                <div class="km-feed__dot" style="background:var(--palette-red)"></div>
+                <div class="km-feed__content"><div class="km-feed__title" data-i18n="docs.dont_item_5">Circular progress rings (use horizontal bars)</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /docs-body -->
+  </main>
+
+  <script src="js/nav.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/icons.js"></script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" data-accent="single">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KINETIC MONO — Item Detail</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <style>
+    .km-detail-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--sp-3) var(--sp-5);
+      border-bottom: 1px solid var(--surface-3);
+    }
+    .km-detail-nav {
+      display: flex;
+      gap: var(--sp-2);
+    }
+    .km-detail__artwork {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--palette-black);
+    }
+    .km-detail__artwork-inner {
+      width: 100%;
+      height: 100%;
+      min-height: 400px;
+    }
+    .km-log-section {
+      border-top: 1px solid var(--surface-3);
+      padding-top: var(--sp-3);
+    }
+  </style>
+</head>
+<body data-page="gallery-detail">
+  <div id="km-nav"></div>
+
+  <main class="km-main">
+
+    <!-- DETAIL HEADER -->
+    <div class="km-detail-header">
+      <div>
+        <a href="gallery.html" class="km-micro-label" style="display:inline-flex;align-items:center;gap:4px">
+          <svg class="km-icon" aria-hidden="true"><use href="#km-icon-arrow-left"></use></svg> <span data-i18n="common.back_to_gallery">BACK TO GALLERY</span>
+        </a>
+      </div>
+      <div class="km-detail-nav">
+        <button class="km-btn km-btn--sm km-btn--outline"><svg class="km-icon" aria-hidden="true"><use href="#km-icon-arrow-left"></use></svg> <span data-i18n="common.prev">PREV</span></button>
+        <button class="km-btn km-btn--sm km-btn--outline"><span data-i18n="common.next">NEXT</span> <svg class="km-icon" aria-hidden="true"><use href="#km-icon-arrow-right"></use></svg></button>
+      </div>
+    </div>
+
+    <!-- DETAIL LAYOUT -->
+    <div class="km-detail">
+
+      <!-- ARTWORK -->
+      <div class="km-detail__artwork">
+        <div class="km-detail__artwork-inner km-art-1" id="km-detail-art"
+             role="img" aria-label="Geometric Flow #48 — generative artwork"></div>
+      </div>
+
+      <!-- SIDEBAR -->
+      <div class="km-detail__sidebar">
+
+        <div>
+          <div class="km-detail__id" id="km-detail-id">KM-4291</div>
+          <h1 class="km-detail__title" id="km-detail-title">Geometric<br>Flow #48</h1>
+        </div>
+
+        <div>
+          <span class="km-tag km-tag--a1" id="km-detail-cat">GEOMETRIC</span>
+        </div>
+
+        <p class="km-detail__desc" data-i18n="gallery_detail.description">
+          A study in diagonal tension and chromatic weight. Generated using a constrained stochastic field traversal algorithm with seeded noise distribution across a 4096×4096 canvas.
+        </p>
+
+        <!-- METADATA -->
+        <div class="km-detail__meta">
+          <div class="km-detail__meta-row">
+            <span class="km-detail__meta-key" data-i18n="gallery_detail.meta_dimensions">DIMENSIONS</span>
+            <span class="km-detail__meta-val">4096 × 4096</span>
+          </div>
+          <div class="km-detail__meta-row">
+            <span class="km-detail__meta-key" data-i18n="gallery_detail.meta_format">FORMAT</span>
+            <span class="km-detail__meta-val">PNG / TIFF</span>
+          </div>
+          <div class="km-detail__meta-row">
+            <span class="km-detail__meta-key" data-i18n="gallery_detail.meta_model">MODEL</span>
+            <span class="km-detail__meta-val">flux.1-schnell</span>
+          </div>
+          <div class="km-detail__meta-row">
+            <span class="km-detail__meta-key" data-i18n="gallery_detail.meta_seed">SEED</span>
+            <span class="km-detail__meta-val">7,291,048</span>
+          </div>
+          <div class="km-detail__meta-row">
+            <span class="km-detail__meta-key" data-i18n="gallery_detail.meta_steps">STEPS</span>
+            <span class="km-detail__meta-val">24</span>
+          </div>
+          <div class="km-detail__meta-row">
+            <span class="km-detail__meta-key" data-i18n="gallery_detail.meta_cfg_scale">CFG SCALE</span>
+            <span class="km-detail__meta-val">7.5</span>
+          </div>
+          <div class="km-detail__meta-row">
+            <span class="km-detail__meta-key" data-i18n="gallery_detail.meta_created">CREATED</span>
+            <span class="km-detail__meta-val">2025-03-29</span>
+          </div>
+          <div class="km-detail__meta-row">
+            <span class="km-detail__meta-key" data-i18n="gallery_detail.meta_status">STATUS</span>
+            <span class="km-detail__meta-val" style="color:var(--palette-green)" data-i18n="gallery_detail.status_live">LIVE</span>
+          </div>
+        </div>
+
+        <!-- ACTIONS -->
+        <div style="display:flex;flex-direction:column;gap:var(--sp-1)">
+          <button class="km-btn km-btn--accent" style="justify-content:center">
+            <span data-i18n="gallery_detail.action_purchase_print">PURCHASE PRINT</span> <svg class="km-icon" aria-hidden="true"><use href="#km-icon-arrow-right"></use></svg>
+          </button>
+          <button class="km-btn km-btn--outline" style="justify-content:center">
+            <span data-i18n="gallery_detail.action_download_preview">DOWNLOAD PREVIEW</span>
+          </button>
+          <button class="km-btn km-btn--outline" style="justify-content:center">
+            <span data-i18n="gallery_detail.action_view_prompt">VIEW PROMPT</span>
+          </button>
+        </div>
+
+        <!-- LOG STREAM -->
+        <div class="km-log-section">
+          <span class="km-micro-label" data-i18n="gallery_detail.generation_log">GENERATION LOG</span>
+          <div class="km-log-stream" style="margin-top:var(--sp-2)">
+            <div class="km-log-stream__line">
+              <span class="km-log-stream__time">09:14:02</span>
+              <span class="km-log-stream__tag" data-i18n="gallery_detail.log_tag_start">[START]</span>
+              <span class="km-log-stream__msg" data-i18n="gallery_detail.log_msg_start">Initializing pipeline</span>
+            </div>
+            <div class="km-log-stream__line">
+              <span class="km-log-stream__time">09:14:04</span>
+              <span class="km-log-stream__tag" data-i18n="gallery_detail.log_tag_model">[MODEL]</span>
+              <span class="km-log-stream__msg" data-i18n="gallery_detail.log_msg_model">flux.1-schnell loaded</span>
+            </div>
+            <div class="km-log-stream__line">
+              <span class="km-log-stream__time">09:14:18</span>
+              <span class="km-log-stream__tag" data-i18n="gallery_detail.log_tag_steps">[STEPS]</span>
+              <span class="km-log-stream__msg" data-i18n="gallery_detail.log_msg_steps">24/24 complete</span>
+            </div>
+            <div class="km-log-stream__line">
+              <span class="km-log-stream__time">09:14:21</span>
+              <span class="km-log-stream__tag" data-i18n="gallery_detail.log_tag_done">[DONE]</span>
+              <span class="km-log-stream__msg" data-i18n="gallery_detail.log_msg_done">Saved to output/</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- RELATED -->
+        <div>
+          <span class="km-micro-label" data-i18n="gallery_detail.from_this_series">FROM THIS SERIES</span>
+          <div class="km-detail__related" style="margin-top:var(--sp-2)">
+            <a href="gallery-detail.html" class="km-detail__related-item km-art-7" aria-label="Stratum #22"></a>
+            <a href="gallery-detail.html" class="km-detail__related-item km-art-4" aria-label="Bloom Sequence #7"></a>
+            <a href="gallery-detail.html" class="km-detail__related-item km-art-11" aria-label="Glitch Type #31"></a>
+          </div>
+        </div>
+
+      </div><!-- /sidebar -->
+    </div><!-- /detail -->
+
+  </main>
+
+  <script src="js/nav.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/icons.js"></script>
+  <script>
+    // Load work data from URL params
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+    const art = params.get('art');
+    if (id) {
+      const el = document.getElementById('km-detail-id');
+      if (el) el.textContent = id;
+
+      const artEl = document.getElementById('km-detail-art');
+      if (art) {
+        // Use the exact art class passed from the gallery
+        artEl.className = 'km-detail__artwork-inner ' + art;
+      } else {
+        // Fallback: extract art number from ID (KM-4291 → art-1 = index 0 in gallery)
+        const num = parseInt(id.replace('KM-', '')) || 0;
+        artEl.className = 'km-detail__artwork-inner km-art-' + ((num % 100) || 1);
+      }
+    }
+  </script>
+</body>
+</html>

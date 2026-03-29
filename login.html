@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" data-accent="single">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KINETIC MONO — Login</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <style>
+    .km-auth-wrap {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--surface-2);
+      padding: var(--sp-4);
+    }
+
+    .km-auth-card {
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-radius: 0px;
+      padding: var(--sp-6);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .km-auth-logo {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-align: center;
+      margin-bottom: var(--sp-4);
+      width: 64px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--palette-black);
+      color: var(--a1);
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .km-micro-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-3);
+      text-align: center;
+      margin-bottom: var(--sp-4);
+    }
+
+    .km-form-group {
+      margin-bottom: var(--sp-3);
+    }
+
+    .km-remember-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--sp-4);
+    }
+
+    .km-forgot-link {
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .km-forgot-link:hover {
+      text-decoration: underline;
+    }
+
+    .km-btn--primary {
+      width: 100%;
+      margin-bottom: var(--sp-3);
+    }
+
+    .km-btn--outline {
+      width: 100%;
+    }
+
+    .km-form-divider {
+      margin: var(--sp-4) 0;
+    }
+
+    .km-auth-footer {
+      font-size: 13px;
+      color: var(--text-3);
+      text-align: center;
+      margin-bottom: var(--sp-3);
+    }
+
+    @media (max-width: 600px) {
+      .km-auth-card {
+        padding: var(--sp-3);
+      }
+    }
+  </style>
+</head>
+<body data-page="login">
+  <div id="km-nav"></div>
+  <main class="km-main">
+    <div class="km-auth-wrap">
+      <div class="km-auth-card">
+        <div class="km-auth-logo">KM</div>
+        <p class="km-micro-label" data-i18n="login.SIGN_IN_HEADING">SIGN IN TO YOUR ACCOUNT</p>
+
+        <div class="km-form-group">
+          <label class="km-form-label" data-i18n="login.EMAIL_LABEL">Email</label>
+          <input type="email" class="km-form-input" placeholder="you@company.com" data-i18n-placeholder="login.EMAIL_PLACEHOLDER">
+        </div>
+
+        <div class="km-form-group">
+          <label class="km-form-label" data-i18n="login.PASSWORD_LABEL">Password</label>
+          <input type="password" class="km-form-input">
+        </div>
+
+        <div class="km-remember-row">
+          <label class="km-checkbox">
+            <input type="checkbox">
+            <span class="km-checkbox__box"></span>
+            <span data-i18n="login.REMEMBER_ME">Remember me</span>
+          </label>
+          <a href="#" class="km-forgot-link" data-i18n="login.FORGOT_PASSWORD">FORGOT PASSWORD?</a>
+        </div>
+
+        <button class="km-btn km-btn--primary" data-i18n="login.SIGN_IN_BUTTON">SIGN IN &rarr;</button>
+
+        <div class="km-form-divider"></div>
+
+        <p class="km-auth-footer" data-i18n="login.NO_ACCOUNT">Don't have an account?</p>
+        <a href="register.html" class="km-btn km-btn--outline" data-i18n="login.CREATE_ACCOUNT">CREATE ACCOUNT</a>
+      </div>
+    </div>
+  </main>
+  <script src="js/nav.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/icons.js"></script>
+</body>
+</html>

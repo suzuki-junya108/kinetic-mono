@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en" data-accent="single">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KINETIC MONO — Icons</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <style>
+    .km-icons-body { padding: var(--sp-4) var(--sp-5); }
+
+    .km-icon-section {
+      margin-bottom: var(--sp-5);
+    }
+
+    .km-icon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: var(--sp-2);
+    }
+
+    .km-icon-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--sp-1);
+      padding: var(--sp-3) var(--sp-2);
+      background: var(--surface-0);
+      box-shadow: var(--shadow-card);
+      cursor: pointer;
+      transition: background var(--dur-instant) var(--ease-kinetic),
+                  transform var(--dur-instant) var(--ease-kinetic),
+                  box-shadow var(--dur-instant) var(--ease-kinetic);
+      position: relative;
+      text-align: center;
+    }
+
+    .km-icon-card:hover {
+      background: var(--palette-black);
+      color: var(--palette-white);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-raised);
+    }
+
+    .km-icon-card:hover .km-icon-card__name {
+      color: var(--a1);
+    }
+
+    .km-icon-card:active {
+      transform: translateY(-2px);
+    }
+
+    .km-icon-card__icon {
+      width: 32px;
+      height: 32px;
+    }
+
+    .km-icon-card__name {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 400;
+      color: var(--text-3);
+      transition: color var(--dur-instant) var(--ease-kinetic);
+      word-break: break-all;
+    }
+
+    .km-icon-card__toast {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--on-a1);
+      background: var(--a1);
+      padding: 2px 6px;
+      opacity: 0;
+      transform: translateY(-4px);
+      transition: opacity 0.15s, transform 0.15s;
+      pointer-events: none;
+    }
+
+    .km-icon-card__toast--visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Size showcase */
+    .km-icon-sizes {
+      display: flex;
+      align-items: flex-end;
+      gap: var(--sp-4);
+      padding: var(--sp-4);
+      background: var(--surface-0);
+      box-shadow: var(--shadow-card);
+      margin-bottom: var(--sp-5);
+    }
+
+    .km-icon-size-demo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--sp-1);
+    }
+
+    .km-icon-size-demo .km-micro-label {
+      white-space: nowrap;
+    }
+
+    /* Usage code block */
+    .km-code-block {
+      background: var(--palette-black);
+      color: var(--palette-white);
+      padding: var(--sp-3);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      line-height: 1.6;
+      overflow-x: auto;
+      margin-top: var(--sp-2);
+    }
+
+    .km-code-block .km-code-tag { color: var(--palette-red); }
+    .km-code-block .km-code-attr { color: var(--palette-yellow); }
+    .km-code-block .km-code-val { color: var(--palette-green); }
+    .km-code-block .km-code-comment { color: rgba(255,255,255,0.3); }
+
+    /* Rules grid */
+    .km-rules-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-3);
+      margin-bottom: var(--sp-5);
+    }
+
+    .km-rule-card {
+      background: var(--surface-0);
+      padding: var(--sp-3);
+      box-shadow: var(--shadow-card);
+    }
+
+    .km-rule-card__title {
+      font-size: var(--t-xs);
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      margin-bottom: var(--sp-1);
+    }
+
+    .km-rule-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .km-rule-list li {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-2);
+      padding: 4px 0;
+      border-bottom: 1px solid var(--surface-3);
+    }
+
+    .km-rule-list li:last-child { border-bottom: none; }
+
+    .km-rule-list li::before {
+      content: "■ ";
+      color: var(--a1);
+      font-size: 8px;
+    }
+
+    /* Info banner */
+    .km-info-banner {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-2);
+      padding: var(--sp-2) var(--sp-3);
+      background: var(--surface-2);
+      font-size: var(--t-sm);
+      color: var(--text-3);
+      margin-bottom: var(--sp-3);
+    }
+
+    .km-info-banner svg { flex-shrink: 0; }
+
+    @media (max-width: 900px) {
+      .km-icons-body { padding: var(--sp-3); }
+      .km-icon-grid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); }
+      .km-rules-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .km-icon-grid { grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); }
+    }
+
+    @media (max-width: 480px) {
+      .km-icons-body { padding: var(--sp-2); }
+      .km-icon-grid { grid-template-columns: repeat(3, 1fr); gap: var(--sp-1); }
+      .km-icon-card { padding: var(--sp-2) var(--sp-1); }
+    }
+  </style>
+</head>
+<body data-page="icons">
+  <div id="km-nav"></div>
+
+  <main class="km-main">
+    <div class="km-icons-body">
+
+      <!-- PAGE HEADER -->
+      <div class="km-page-header">
+        <div>
+          <h1 class="km-page-title" data-i18n="icons_page.title">KINETIC GLYPHS</h1>
+          <p class="km-page-sub" data-i18n="icons_page.subtitle">オリジナルアイコンシステム — 全72アイコン</p>
+        </div>
+        <div style="display:flex;align-items:center;gap:var(--sp-3)">
+          <span class="km-gallery-count" style="font-family:var(--font-mono);font-size:11px;color:var(--text-3)" data-i18n="icons_page.total">72 アイコン</span>
+        </div>
+      </div>
+
+      <!-- INFO BANNER -->
+      <div class="km-info-banner">
+        <svg class="km-icon" aria-hidden="true"><use href="#km-icon-info"></use></svg>
+        <span data-i18n="icons_page.click_to_copy">クリックでコード名をコピー</span>
+      </div>
+
+      <!-- SIZE SHOWCASE -->
+      <div class="km-icon-section">
+        <div class="km-section-header">
+          <span class="km-micro-label" data-i18n="icons_page.sizes">サイズ</span>
+        </div>
+        <div class="km-icon-sizes">
+          <div class="km-icon-size-demo">
+            <svg class="km-icon km-icon--xs" aria-hidden="true"><use href="#km-icon-arrow-right"></use></svg>
+            <span class="km-micro-label">XS (12px)</span>
+          </div>
+          <div class="km-icon-size-demo">
+            <svg class="km-icon" aria-hidden="true"><use href="#km-icon-arrow-right"></use></svg>
+            <span class="km-micro-label">DEFAULT (16px)</span>
+          </div>
+          <div class="km-icon-size-demo">
+            <svg class="km-icon km-icon--lg" aria-hidden="true"><use href="#km-icon-arrow-right"></use></svg>
+            <span class="km-micro-label">LG (24px)</span>
+          </div>
+          <div class="km-icon-size-demo">
+            <svg style="width:32px;height:32px" class="km-icon" aria-hidden="true"><use href="#km-icon-arrow-right"></use></svg>
+            <span class="km-micro-label">32px</span>
+          </div>
+          <div class="km-icon-size-demo">
+            <svg style="width:48px;height:48px" class="km-icon" aria-hidden="true"><use href="#km-icon-arrow-right"></use></svg>
+            <span class="km-micro-label">48px</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- A. NAVIGATION -->
+      <div class="km-icon-section">
+        <div class="km-section-header">
+          <span class="km-micro-label" data-i18n="icons_page.cat_navigation">ナビゲーション</span>
+          <span class="km-micro-label" style="color:var(--text-4)">A — 8</span>
+        </div>
+        <div class="km-icon-grid">
+          <div class="km-icon-card" data-icon="arrow-right">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-arrow-right"></use></svg>
+            <span class="km-icon-card__name">arrow-right</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="arrow-left">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-arrow-left"></use></svg>
+            <span class="km-icon-card__name">arrow-left</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="arrow-up">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-arrow-up"></use></svg>
+            <span class="km-icon-card__name">arrow-up</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="arrow-down">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-arrow-down"></use></svg>
+            <span class="km-icon-card__name">arrow-down</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="chevron-right">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-chevron-right"></use></svg>
+            <span class="km-icon-card__name">chevron-right</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="chevron-down">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-chevron-down"></use></svg>
+            <span class="km-icon-card__name">chevron-down</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="external">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-external"></use></svg>
+            <span class="km-icon-card__name">external</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="menu">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-menu"></use></svg>
+            <span class="km-icon-card__name">menu</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- B. STATUS -->
+      <div class="km-icon-section">
+        <div class="km-section-header">
+          <span class="km-micro-label" data-i18n="icons_page.cat_status">ステータス</span>
+          <span class="km-micro-label" style="color:var(--text-4)">B — 6</span>
+        </div>
+        <div class="km-icon-grid">
+          <div class="km-icon-card" data-icon="check">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-check"></use></svg>
+            <span class="km-icon-card__name">check</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="close">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-close"></use></svg>
+            <span class="km-icon-card__name">close</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="warning">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-warning"></use></svg>
+            <span class="km-icon-card__name">warning</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="info">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-info"></use></svg>
+            <span class="km-icon-card__name">info</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="dot">
+            <svg class="km-icon-card__icon km-icon km-icon--fill" style="color:var(--a1)" aria-hidden="true"><use href="#km-icon-dot"></use></svg>
+            <span class="km-icon-card__name">dot</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="live">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-live"></use></svg>
+            <span class="km-icon-card__name">live</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- C. ACTION -->
+      <div class="km-icon-section">
+        <div class="km-section-header">
+          <span class="km-micro-label" data-i18n="icons_page.cat_action">アクション</span>
+          <span class="km-micro-label" style="color:var(--text-4)">C — 9</span>
+        </div>
+        <div class="km-icon-grid">
+          <div class="km-icon-card" data-icon="search">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-search"></use></svg>
+            <span class="km-icon-card__name">search</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="filter">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-filter"></use></svg>
+            <span class="km-icon-card__name">filter</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="sort">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-sort"></use></svg>
+            <span class="km-icon-card__name">sort</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="refresh">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-refresh"></use></svg>
+            <span class="km-icon-card__name">refresh</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="copy">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-copy"></use></svg>
+            <span class="km-icon-card__name">copy</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="edit">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-edit"></use></svg>
+            <span class="km-icon-card__name">edit</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="delete">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-delete"></use></svg>
+            <span class="km-icon-card__name">delete</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="add">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-add"></use></svg>
+            <span class="km-icon-card__name">add</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="download">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-download"></use></svg>
+            <span class="km-icon-card__name">download</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- D. DATA / CONTENT -->
+      <div class="km-icon-section">
+        <div class="km-section-header">
+          <span class="km-micro-label" data-i18n="icons_page.cat_data">データ / コンテンツ</span>
+          <span class="km-micro-label" style="color:var(--text-4)">D — 6</span>
+        </div>
+        <div class="km-icon-grid">
+          <div class="km-icon-card" data-icon="trend-up">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-trend-up"></use></svg>
+            <span class="km-icon-card__name">trend-up</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="trend-down">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-trend-down"></use></svg>
+            <span class="km-icon-card__name">trend-down</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="chart">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-chart"></use></svg>
+            <span class="km-icon-card__name">chart</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="grid">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-grid"></use></svg>
+            <span class="km-icon-card__name">grid</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="list">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-list"></use></svg>
+            <span class="km-icon-card__name">list</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="calendar">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-calendar"></use></svg>
+            <span class="km-icon-card__name">calendar</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- E. SYSTEM / UI -->
+      <div class="km-icon-section">
+        <div class="km-section-header">
+          <span class="km-micro-label" data-i18n="icons_page.cat_system">システム / UI</span>
+          <span class="km-micro-label" style="color:var(--text-4)">E — 8</span>
+        </div>
+        <div class="km-icon-grid">
+          <div class="km-icon-card" data-icon="settings">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-settings"></use></svg>
+            <span class="km-icon-card__name">settings</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="user">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-user"></use></svg>
+            <span class="km-icon-card__name">user</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="mail">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-mail"></use></svg>
+            <span class="km-icon-card__name">mail</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="lock">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-lock"></use></svg>
+            <span class="km-icon-card__name">lock</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="eye">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-eye"></use></svg>
+            <span class="km-icon-card__name">eye</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="upload">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-upload"></use></svg>
+            <span class="km-icon-card__name">upload</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="link">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-link"></use></svg>
+            <span class="km-icon-card__name">link</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="notification">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-notification"></use></svg>
+            <span class="km-icon-card__name">notification</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- F. FEEDBACK / STATE -->
+      <div class="km-icon-section">
+        <div class="km-section-header">
+          <span class="km-micro-label" data-i18n="icons_page.cat_feedback">フィードバック / 状態</span>
+          <span class="km-micro-label" style="color:var(--text-4)">F — 3</span>
+        </div>
+        <div class="km-icon-grid">
+          <div class="km-icon-card" data-icon="loading">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-loading"></use></svg>
+            <span class="km-icon-card__name">loading</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="empty">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-empty"></use></svg>
+            <span class="km-icon-card__name">empty</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="error-page">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-error-page"></use></svg>
+            <span class="km-icon-card__name">error-page</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- G. SOCIAL / COMMUNICATION -->
+      <div class="km-icon-section">
+        <div class="km-section-header">
+          <span class="km-micro-label" data-i18n="icons_page.cat_social">ソーシャル / コミュニケーション</span>
+          <span class="km-micro-label" style="color:var(--text-4)">G — 6</span>
+        </div>
+        <div class="km-icon-grid">
+          <div class="km-icon-card" data-icon="heart">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-heart"></use></svg>
+            <span class="km-icon-card__name">heart</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="bookmark">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-bookmark"></use></svg>
+            <span class="km-icon-card__name">bookmark</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="share">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-share"></use></svg>
+            <span class="km-icon-card__name">share</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="comment">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-comment"></use></svg>
+            <span class="km-icon-card__name">comment</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="send">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-send"></use></svg>
+            <span class="km-icon-card__name">send</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="at">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-at"></use></svg>
+            <span class="km-icon-card__name">at</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- H. FILE / DOCUMENT -->
+      <div class="km-icon-section">
+        <div class="km-section-header">
+          <span class="km-micro-label" data-i18n="icons_page.cat_file">ファイル / ドキュメント</span>
+          <span class="km-micro-label" style="color:var(--text-4)">H — 5</span>
+        </div>
+        <div class="km-icon-grid">
+          <div class="km-icon-card" data-icon="file">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-file"></use></svg>
+            <span class="km-icon-card__name">file</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="folder">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-folder"></use></svg>
+            <span class="km-icon-card__name">folder</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="image">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-image"></use></svg>
+            <span class="km-icon-card__name">image</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="archive">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-archive"></use></svg>
+            <span class="km-icon-card__name">archive</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="clipboard">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-clipboard"></use></svg>
+            <span class="km-icon-card__name">clipboard</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- I. TIME / SCHEDULE -->
+      <div class="km-icon-section">
+        <div class="km-section-header">
+          <span class="km-micro-label" data-i18n="icons_page.cat_time">時間 / スケジュール</span>
+          <span class="km-micro-label" style="color:var(--text-4)">I — 3</span>
+        </div>
+        <div class="km-icon-grid">
+          <div class="km-icon-card" data-icon="clock">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-clock"></use></svg>
+            <span class="km-icon-card__name">clock</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="timer">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-timer"></use></svg>
+            <span class="km-icon-card__name">timer</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="history">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-history"></use></svg>
+            <span class="km-icon-card__name">history</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- J. TOGGLE / CONTROLS -->
+      <div class="km-icon-section">
+        <div class="km-section-header">
+          <span class="km-micro-label" data-i18n="icons_page.cat_controls">トグル / コントロール</span>
+          <span class="km-micro-label" style="color:var(--text-4)">J — 6</span>
+        </div>
+        <div class="km-icon-grid">
+          <div class="km-icon-card" data-icon="toggle-on">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-toggle-on"></use></svg>
+            <span class="km-icon-card__name">toggle-on</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="toggle-off">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-toggle-off"></use></svg>
+            <span class="km-icon-card__name">toggle-off</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="sliders">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-sliders"></use></svg>
+            <span class="km-icon-card__name">sliders</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="expand">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-expand"></use></svg>
+            <span class="km-icon-card__name">expand</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="collapse">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-collapse"></use></svg>
+            <span class="km-icon-card__name">collapse</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="minus">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-minus"></use></svg>
+            <span class="km-icon-card__name">minus</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- K. SECURITY / AUTH -->
+      <div class="km-icon-section">
+        <div class="km-section-header">
+          <span class="km-micro-label" data-i18n="icons_page.cat_security">セキュリティ / 認証</span>
+          <span class="km-micro-label" style="color:var(--text-4)">K — 4</span>
+        </div>
+        <div class="km-icon-grid">
+          <div class="km-icon-card" data-icon="shield">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-shield"></use></svg>
+            <span class="km-icon-card__name">shield</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="key">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-key"></use></svg>
+            <span class="km-icon-card__name">key</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="unlock">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-unlock"></use></svg>
+            <span class="km-icon-card__name">unlock</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="logout">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-logout"></use></svg>
+            <span class="km-icon-card__name">logout</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- L. DEVICE / DISPLAY -->
+      <div class="km-icon-section">
+        <div class="km-section-header">
+          <span class="km-micro-label" data-i18n="icons_page.cat_device">デバイス / ディスプレイ</span>
+          <span class="km-micro-label" style="color:var(--text-4)">L — 3</span>
+        </div>
+        <div class="km-icon-grid">
+          <div class="km-icon-card" data-icon="monitor">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-monitor"></use></svg>
+            <span class="km-icon-card__name">monitor</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="phone">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-phone"></use></svg>
+            <span class="km-icon-card__name">phone</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="printer">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-printer"></use></svg>
+            <span class="km-icon-card__name">printer</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- M. DEVELOPMENT / CODE -->
+      <div class="km-icon-section">
+        <div class="km-section-header">
+          <span class="km-micro-label" data-i18n="icons_page.cat_dev">開発 / コード</span>
+          <span class="km-micro-label" style="color:var(--text-4)">M — 4</span>
+        </div>
+        <div class="km-icon-grid">
+          <div class="km-icon-card" data-icon="code">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-code"></use></svg>
+            <span class="km-icon-card__name">code</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="terminal">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-terminal"></use></svg>
+            <span class="km-icon-card__name">terminal</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="database">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-database"></use></svg>
+            <span class="km-icon-card__name">database</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="server">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-server"></use></svg>
+            <span class="km-icon-card__name">server</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- N. LAYOUT / VIEW -->
+      <div class="km-icon-section">
+        <div class="km-section-header">
+          <span class="km-micro-label" data-i18n="icons_page.cat_layout">レイアウト / ビュー</span>
+          <span class="km-micro-label" style="color:var(--text-4)">N — 4</span>
+        </div>
+        <div class="km-icon-grid">
+          <div class="km-icon-card" data-icon="sidebar">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-sidebar"></use></svg>
+            <span class="km-icon-card__name">sidebar</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="columns">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-columns"></use></svg>
+            <span class="km-icon-card__name">columns</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="layers">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-layers"></use></svg>
+            <span class="km-icon-card__name">layers</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="maximize">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-maximize"></use></svg>
+            <span class="km-icon-card__name">maximize</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- O. INDICATORS / MISC -->
+      <div class="km-icon-section">
+        <div class="km-section-header">
+          <span class="km-micro-label" data-i18n="icons_page.cat_misc">インジケーター / その他</span>
+          <span class="km-micro-label" style="color:var(--text-4)">O — 11</span>
+        </div>
+        <div class="km-icon-grid">
+          <div class="km-icon-card" data-icon="star">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-star"></use></svg>
+            <span class="km-icon-card__name">star</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="pin">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-pin"></use></svg>
+            <span class="km-icon-card__name">pin</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="tag">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-tag"></use></svg>
+            <span class="km-icon-card__name">tag</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="hash">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-hash"></use></svg>
+            <span class="km-icon-card__name">hash</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="zap">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-zap"></use></svg>
+            <span class="km-icon-card__name">zap</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="compass">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-compass"></use></svg>
+            <span class="km-icon-card__name">compass</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="crop">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-crop"></use></svg>
+            <span class="km-icon-card__name">crop</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="palette">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-palette"></use></svg>
+            <span class="km-icon-card__name">palette</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="eye-off">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-eye-off"></use></svg>
+            <span class="km-icon-card__name">eye-off</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="power">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-power"></use></svg>
+            <span class="km-icon-card__name">power</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+          <div class="km-icon-card" data-icon="globe">
+            <svg class="km-icon-card__icon km-icon" aria-hidden="true"><use href="#km-icon-globe"></use></svg>
+            <span class="km-icon-card__name">globe</span>
+            <span class="km-icon-card__toast" data-i18n="common.copied">コピー済み</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONSTRUCTION RULES -->
+      <div class="km-icon-section">
+        <div class="km-section-header">
+          <span class="km-micro-label" data-i18n="icons_page.construction">構成ルール</span>
+        </div>
+        <div class="km-rules-grid">
+          <div class="km-rule-card">
+            <ul class="km-rule-list">
+              <li data-i18n="icons_page.rule_viewbox">viewBox: 0 0 24 24、1px内側セーフゾーン</li>
+              <li data-i18n="icons_page.rule_stroke">stroke-width: 1.5（デフォルト）/ 2（強調）</li>
+              <li data-i18n="icons_page.rule_cap">stroke-linecap: square（丸は使わない）</li>
+              <li data-i18n="icons_page.rule_join">stroke-linejoin: miter（丸は使わない）</li>
+            </ul>
+          </div>
+          <div class="km-rule-card">
+            <ul class="km-rule-list">
+              <li data-i18n="icons_page.rule_fill">fill: none（デフォルト）、currentColor（ステータスのみ）</li>
+              <li data-i18n="icons_page.rule_grid">全座標は整数または0.5グリッド上</li>
+              <li data-i18n="icons_page.rule_angles">角度: 0°、45°、90° のみ</li>
+              <li data-i18n="icons_page.rule_notch">構造アイコンに2pxノッチ（右上）</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- USAGE -->
+      <div class="km-icon-section">
+        <div class="km-section-header">
+          <span class="km-micro-label" data-i18n="icons_page.usage_title">使用方法</span>
+        </div>
+        <p class="km-page-sub" style="margin-bottom:var(--sp-2)" data-i18n="icons_page.usage_desc">SVGスプライトシステムを使用。以下のコードでアイコンを表示できます。</p>
+        <div class="km-code-block"><span class="km-code-comment">&lt;!-- Basic usage --&gt;</span>
+<span class="km-code-tag">&lt;svg</span> <span class="km-code-attr">class</span>=<span class="km-code-val">"km-icon"</span><span class="km-code-tag">&gt;</span>
+  <span class="km-code-tag">&lt;use</span> <span class="km-code-attr">href</span>=<span class="km-code-val">"#km-icon-arrow-right"</span><span class="km-code-tag">&gt;&lt;/use&gt;</span>
+<span class="km-code-tag">&lt;/svg&gt;</span>
+
+<span class="km-code-comment">&lt;!-- With size variant --&gt;</span>
+<span class="km-code-tag">&lt;svg</span> <span class="km-code-attr">class</span>=<span class="km-code-val">"km-icon km-icon--lg"</span><span class="km-code-tag">&gt;</span>
+  <span class="km-code-tag">&lt;use</span> <span class="km-code-attr">href</span>=<span class="km-code-val">"#km-icon-search"</span><span class="km-code-tag">&gt;&lt;/use&gt;</span>
+<span class="km-code-tag">&lt;/svg&gt;</span>
+
+<span class="km-code-comment">&lt;!-- Filled variant (status dots) --&gt;</span>
+<span class="km-code-tag">&lt;svg</span> <span class="km-code-attr">class</span>=<span class="km-code-val">"km-icon km-icon--fill"</span> <span class="km-code-attr">style</span>=<span class="km-code-val">"color:var(--a1)"</span><span class="km-code-tag">&gt;</span>
+  <span class="km-code-tag">&lt;use</span> <span class="km-code-attr">href</span>=<span class="km-code-val">"#km-icon-dot"</span><span class="km-code-tag">&gt;&lt;/use&gt;</span>
+<span class="km-code-tag">&lt;/svg&gt;</span>
+
+<span class="km-code-comment">&lt;!-- JavaScript API --&gt;</span>
+<span class="km-code-attr">KineticMono</span>.<span class="km-code-val">icon</span>(<span class="km-code-val">'arrow-right'</span>, { <span class="km-code-attr">size</span>: <span class="km-code-val">'lg'</span> })</div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="js/icons.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/i18n.js"></script>
+  <script>
+    /* ── Click-to-copy icon name ── */
+    document.addEventListener('click', function (e) {
+      var card = e.target.closest('.km-icon-card');
+      if (!card) return;
+
+      var iconName = card.getAttribute('data-icon');
+      if (!iconName) return;
+
+      var copyText = 'km-icon-' + iconName;
+
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(copyText);
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = copyText;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+      }
+
+      var toast = card.querySelector('.km-icon-card__toast');
+      if (toast) {
+        toast.classList.add('km-icon-card__toast--visible');
+        setTimeout(function () {
+          toast.classList.remove('km-icon-card__toast--visible');
+        }, 1200);
+      }
+    });
+  </script>
+</body>
+</html>

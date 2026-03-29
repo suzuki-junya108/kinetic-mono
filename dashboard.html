@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en" data-accent="single">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KINETIC MONO — Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <style>
+    .km-dashboard-body { padding: var(--sp-4) var(--sp-5); }
+    .km-stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--sp-3);
+      margin-bottom: var(--sp-3);
+    }
+    .km-dashboard-bento {
+      display: grid;
+      grid-template-columns: 1fr 1fr 320px;
+      grid-template-rows: auto auto;
+      gap: var(--sp-3);
+    }
+    .km-chart-cell { grid-column: span 2; }
+    .km-status-cell { grid-row: span 2; }
+    .km-table-cell { grid-column: span 2; }
+    .km-live-dot {
+      display: inline-block;
+      width: 6px; height: 6px;
+      background: var(--palette-green);
+      border-radius: 50%;
+      margin-right: 6px;
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    .km-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--sp-2) var(--sp-5);
+      background: var(--surface-0);
+      border-bottom: 1px solid var(--surface-3);
+      box-shadow: var(--shadow-float);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .km-topbar__title {
+      font-size: var(--t-xs);
+      font-weight: 700;
+      letter-spacing: 0.2em;
+    }
+    .km-topbar__right {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-3);
+    }
+    .km-timestamp {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-3);
+    }
+
+    @media (max-width: 900px) {
+      .km-dashboard-body { padding: var(--sp-3); }
+      .km-stats-row { grid-template-columns: repeat(2, 1fr); }
+      .km-dashboard-bento {
+        grid-template-columns: 1fr 1fr;
+      }
+      .km-status-cell { grid-row: auto; grid-column: span 2; }
+      .km-chart-cell { grid-column: span 2; }
+      .km-table-cell { grid-column: span 2; }
+    }
+
+    @media (max-width: 600px) {
+      .km-dashboard-bento { grid-template-columns: 1fr; }
+      .km-chart-cell, .km-status-cell, .km-table-cell { grid-column: span 1; }
+      .km-topbar { flex-wrap: wrap; gap: var(--sp-1); padding: var(--sp-2) var(--sp-3); }
+      .km-topbar__right { flex-wrap: wrap; gap: var(--sp-1); }
+    }
+
+    @media (max-width: 480px) {
+      .km-dashboard-body { padding: var(--sp-2); }
+      .km-stats-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body data-page="dashboard">
+  <div id="km-nav"></div>
+
+  <main class="km-main">
+
+    <!-- TOP BAR -->
+    <div class="km-topbar">
+      <div>
+        <span class="km-micro-label">
+          <span class="km-live-dot" aria-label="Live"></span>
+          <span data-i18n="nav.dashboard">DASHBOARD</span>
+        </span>
+      </div>
+      <div class="km-topbar__right">
+        <span class="km-timestamp" id="km-clock">--:--:--</span>
+        <button class="km-btn km-btn--sm km-btn--outline" data-i18n="common.refresh">REFRESH</button>
+        <a href="settings.html" class="km-btn km-btn--sm km-btn--accent"><span data-i18n="common.settings">SETTINGS</span> <svg class="km-icon" aria-hidden="true"><use href="#km-icon-arrow-right"></use></svg></a>
+      </div>
+    </div>
+
+    <div class="km-dashboard-body">
+
+      <!-- PAGE HEADER -->
+      <div style="margin-bottom:var(--sp-4)">
+        <h1 class="km-page-title" data-i18n="dashboard.title">OVERVIEW</h1>
+        <p class="km-page-sub" data-i18n="dashboard.subtitle">System performance — real-time snapshot</p>
+      </div>
+
+      <!-- STATS ROW -->
+      <div class="km-stats-row">
+
+        <div class="km-stat">
+          <div class="km-stat__label" data-i18n="dashboard.total_works">TOTAL WORKS</div>
+          <div class="km-stat__value">4,291</div>
+          <div class="km-stat__delta km-stat__delta--up"><svg class="km-icon km-icon--xs" aria-hidden="true"><use href="#km-icon-trend-up"></use></svg> 12.4% <span data-i18n="dashboard.vs_last_month">vs last month</span></div>
+          <div class="km-stat__accent-line"></div>
+        </div>
+
+        <div class="km-stat">
+          <div class="km-stat__label" data-i18n="dashboard.active_series">ACTIVE SERIES</div>
+          <div class="km-stat__value">38</div>
+          <div class="km-stat__delta">+3 <span data-i18n="dashboard.new_this_week">new this week</span></div>
+          <div class="km-stat__accent-line" style="background:var(--a2)"></div>
+        </div>
+
+        <div class="km-stat">
+          <div class="km-stat__label" data-i18n="dashboard.uptime">UPTIME</div>
+          <div class="km-stat__value">99.8%</div>
+          <div class="km-stat__delta km-stat__delta--up"><svg class="km-icon km-icon--xs" aria-hidden="true"><use href="#km-icon-trend-up"></use></svg> <span data-i18n="dashboard.stable">Stable</span></div>
+          <div class="km-stat__accent-line" style="background:var(--a3)"></div>
+        </div>
+
+        <div class="km-stat">
+          <div class="km-stat__label" data-i18n="dashboard.processing">PROCESSING</div>
+          <div class="km-stat__value">127</div>
+          <div class="km-stat__delta km-stat__delta--down"><svg class="km-icon km-icon--xs" aria-hidden="true"><use href="#km-icon-trend-down"></use></svg> <span data-i18n="dashboard.queue_growing">Queue growing</span></div>
+          <div class="km-stat__accent-line" style="background:var(--a4)"></div>
+        </div>
+
+      </div>
+
+      <!-- MAIN DASHBOARD BENTO -->
+      <div class="km-dashboard-bento">
+
+        <!-- BAR CHART -->
+        <div class="km-cell km-chart-cell">
+          <div style="display:flex;justify-content:space-between;align-items:baseline">
+            <span class="km-micro-label" data-i18n="dashboard.output_by_series">OUTPUT BY SERIES</span>
+            <span class="km-micro-label" style="color:var(--text-4)" data-i18n="dashboard.last_30_days">LAST 30 DAYS</span>
+          </div>
+
+          <div class="km-chart" style="margin-top:var(--sp-3)">
+            <div class="km-chart__row">
+              <div class="km-chart__label" data-i18n="dashboard.series_geometric">GEOMETRIC</div>
+              <div class="km-chart__track"><div class="km-chart__bar" style="width:92%"></div></div>
+              <div class="km-chart__val">921</div>
+            </div>
+            <div class="km-chart__row">
+              <div class="km-chart__label" data-i18n="dashboard.series_organic">ORGANIC</div>
+              <div class="km-chart__track"><div class="km-chart__bar km-chart__bar--a2" style="width:76%"></div></div>
+              <div class="km-chart__val">763</div>
+            </div>
+            <div class="km-chart__row">
+              <div class="km-chart__label" data-i18n="dashboard.series_typographic">TYPOGRAPHIC</div>
+              <div class="km-chart__track"><div class="km-chart__bar km-chart__bar--a3" style="width:64%"></div></div>
+              <div class="km-chart__val">641</div>
+            </div>
+            <div class="km-chart__row">
+              <div class="km-chart__label" data-i18n="dashboard.series_abstract">ABSTRACT</div>
+              <div class="km-chart__track"><div class="km-chart__bar km-chart__bar--a4" style="width:51%"></div></div>
+              <div class="km-chart__val">512</div>
+            </div>
+            <div class="km-chart__row">
+              <div class="km-chart__label" data-i18n="dashboard.series_portrait">PORTRAIT</div>
+              <div class="km-chart__track"><div class="km-chart__bar km-chart__bar--a5" style="width:38%"></div></div>
+              <div class="km-chart__val">384</div>
+            </div>
+            <div class="km-chart__row">
+              <div class="km-chart__label" data-i18n="dashboard.series_landscape">LANDSCAPE</div>
+              <div class="km-chart__track"><div class="km-chart__bar km-chart__bar--a6" style="width:27%"></div></div>
+              <div class="km-chart__val">270</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STATUS PANEL -->
+        <div class="km-cell km-status-cell">
+          <span class="km-micro-label" data-i18n="dashboard.system_status">SYSTEM STATUS</span>
+
+          <div class="km-progress" style="margin-top:var(--sp-2)">
+            <div class="km-progress__header">
+              <span class="km-progress__label" data-i18n="dashboard.storage">STORAGE</span>
+              <span class="km-progress__pct">82%</span>
+            </div>
+            <div class="km-progress__track">
+              <div class="km-progress__fill" style="width:82%"></div>
+            </div>
+          </div>
+
+          <div class="km-progress">
+            <div class="km-progress__header">
+              <span class="km-progress__label" data-i18n="dashboard.gpu_vram">GPU VRAM</span>
+              <span class="km-progress__pct">68%</span>
+            </div>
+            <div class="km-progress__track">
+              <div class="km-progress__fill km-progress__fill--a2" style="width:68%"></div>
+            </div>
+          </div>
+
+          <div class="km-progress">
+            <div class="km-progress__header">
+              <span class="km-progress__label" data-i18n="dashboard.ram">RAM</span>
+              <span class="km-progress__pct">41%</span>
+            </div>
+            <div class="km-progress__track">
+              <div class="km-progress__fill km-progress__fill--a3" style="width:41%"></div>
+            </div>
+          </div>
+
+          <div class="km-progress">
+            <div class="km-progress__header">
+              <span class="km-progress__label" data-i18n="dashboard.cpu">CPU</span>
+              <span class="km-progress__pct">24%</span>
+            </div>
+            <div class="km-progress__track">
+              <div class="km-progress__fill" style="width:24%;background:var(--palette-green)"></div>
+            </div>
+          </div>
+
+          <div style="margin-top:var(--sp-3);border-top:1px solid var(--surface-3);padding-top:var(--sp-2)">
+            <span class="km-micro-label" data-i18n="dashboard.active_pipelines">ACTIVE PIPELINES</span>
+          </div>
+
+          <div class="km-feed" style="margin-top:var(--sp-1)">
+            <div class="km-feed__item">
+              <div class="km-feed__dot"></div>
+              <div class="km-feed__content">
+                <div class="km-feed__title">flux-schnell-001</div>
+                <div class="km-feed__desc"><span data-i18n="dashboard.status_running">RUNNING</span> — 48/100 <span data-i18n="dashboard.steps">steps</span></div>
+              </div>
+              <div class="km-feed__time" data-i18n="dashboard.time_now">NOW</div>
+            </div>
+            <div class="km-feed__item">
+              <div class="km-feed__dot km-feed__dot--a2"></div>
+              <div class="km-feed__content">
+                <div class="km-feed__title">upscale-queue</div>
+                <div class="km-feed__desc"><span data-i18n="dashboard.status_queued">QUEUED</span> — 12 <span data-i18n="dashboard.items">items</span></div>
+              </div>
+              <div class="km-feed__time">02m</div>
+            </div>
+            <div class="km-feed__item">
+              <div class="km-feed__dot km-feed__dot--a3"></div>
+              <div class="km-feed__content">
+                <div class="km-feed__title">metadata-sync</div>
+                <div class="km-feed__desc" data-i18n="dashboard.status_idle">IDLE</div>
+              </div>
+              <div class="km-feed__time">15m</div>
+            </div>
+          </div>
+
+          <div style="margin-top:auto">
+            <a href="settings.html" class="km-btn km-btn--primary" style="width:100%;justify-content:center">
+              <span data-i18n="dashboard.configure">CONFIGURE</span> <svg class="km-icon" aria-hidden="true"><use href="#km-icon-arrow-right"></use></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- DATA TABLE -->
+        <div class="km-cell km-table-cell">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:var(--sp-3)">
+            <span class="km-micro-label" data-i18n="dashboard.recent_works">RECENT WORKS</span>
+            <a href="gallery.html" class="km-btn km-btn--sm km-btn--outline"><span data-i18n="dashboard.view_all">VIEW ALL</span> <svg class="km-icon" aria-hidden="true"><use href="#km-icon-arrow-right"></use></svg></a>
+          </div>
+
+          <div class="km-table-wrap">
+            <table class="km-table">
+              <thead>
+                <tr>
+                  <th data-i18n="dashboard.th_id">ID</th>
+                  <th data-i18n="dashboard.th_title">TITLE</th>
+                  <th data-i18n="dashboard.th_series">SERIES</th>
+                  <th data-i18n="dashboard.th_status">STATUS</th>
+                  <th data-i18n="dashboard.th_date">DATE</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code style="font-family:var(--font-mono);font-size:11px">KM-4291</code></td>
+                  <td>Geometric Flow #48</td>
+                  <td><span class="km-tag km-tag--a1" data-i18n="dashboard.series_geometric">GEOMETRIC</span></td>
+                  <td><span class="km-table__status"><span class="km-table__status-dot km-table__status-dot--active"></span><span data-i18n="dashboard.status_live">LIVE</span></span></td>
+                  <td style="font-family:var(--font-mono);font-size:11px">2025-03-29</td>
+                </tr>
+                <tr>
+                  <td><code style="font-family:var(--font-mono);font-size:11px">KM-4290</code></td>
+                  <td>Void Portrait III</td>
+                  <td><span class="km-tag km-tag--a2" data-i18n="dashboard.series_portrait">PORTRAIT</span></td>
+                  <td><span class="km-table__status"><span class="km-table__status-dot km-table__status-dot--active"></span><span data-i18n="dashboard.status_live">LIVE</span></span></td>
+                  <td style="font-family:var(--font-mono);font-size:11px">2025-03-28</td>
+                </tr>
+                <tr>
+                  <td><code style="font-family:var(--font-mono);font-size:11px">KM-4289</code></td>
+                  <td>Cipher Grid #12</td>
+                  <td><span class="km-tag km-tag--a3" data-i18n="dashboard.series_typographic">TYPOGRAPHIC</span></td>
+                  <td><span class="km-table__status"><span class="km-table__status-dot km-table__status-dot--pending"></span><span data-i18n="dashboard.status_pending">PENDING</span></span></td>
+                  <td style="font-family:var(--font-mono);font-size:11px">2025-03-28</td>
+                </tr>
+                <tr>
+                  <td><code style="font-family:var(--font-mono);font-size:11px">KM-4288</code></td>
+                  <td>Organic Bloom #7</td>
+                  <td><span class="km-tag km-tag--a4" data-i18n="dashboard.series_organic">ORGANIC</span></td>
+                  <td><span class="km-table__status"><span class="km-table__status-dot km-table__status-dot--active"></span><span data-i18n="dashboard.status_live">LIVE</span></span></td>
+                  <td style="font-family:var(--font-mono);font-size:11px">2025-03-27</td>
+                </tr>
+                <tr>
+                  <td><code style="font-family:var(--font-mono);font-size:11px">KM-4287</code></td>
+                  <td>Abstract Drift #23</td>
+                  <td><span class="km-tag km-tag--a5" data-i18n="dashboard.series_abstract">ABSTRACT</span></td>
+                  <td><span class="km-table__status"><span class="km-table__status-dot km-table__status-dot--error"></span><span data-i18n="dashboard.status_error">ERROR</span></span></td>
+                  <td style="font-family:var(--font-mono);font-size:11px">2025-03-27</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div><!-- /dashboard bento -->
+    </div><!-- /body -->
+  </main>
+
+  <script src="js/nav.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/icons.js"></script>
+  <script>
+    // Live clock
+    function updateClock() {
+      const el = document.getElementById('km-clock');
+      if (el) {
+        const now = new Date();
+        el.textContent = now.toTimeString().slice(0, 8);
+      }
+    }
+    updateClock();
+    setInterval(updateClock, 1000);
+  </script>
+</body>
+</html>

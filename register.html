@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en" data-accent="single">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KINETIC MONO — Register</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <style>
+    .km-auth-wrap {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--surface-2);
+      padding: var(--sp-4);
+    }
+
+    .km-auth-card {
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-radius: 0px;
+      padding: var(--sp-6);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .km-auth-card--wide {
+      max-width: 480px;
+    }
+
+    .km-auth-logo {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-align: center;
+      margin-bottom: var(--sp-4);
+      width: 64px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--palette-black);
+      color: var(--a1);
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .km-steps {
+      display: flex;
+      gap: var(--sp-2);
+      margin-bottom: var(--sp-4);
+      justify-content: center;
+    }
+
+    .km-step {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-1);
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-4);
+    }
+
+    .km-step--active {
+      color: var(--accent);
+    }
+
+    .km-step__num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      width: 20px;
+      height: 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      border-radius: 0px;
+      color: var(--text-4);
+    }
+
+    .km-step--active .km-step__num {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--surface-1);
+    }
+
+    .km-micro-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-3);
+      text-align: center;
+      margin-bottom: var(--sp-4);
+    }
+
+    .km-form-group {
+      margin-bottom: var(--sp-3);
+    }
+
+    .km-form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-3);
+    }
+
+    .km-form-row .km-form-group {
+      margin-bottom: var(--sp-3);
+    }
+
+    .km-progress {
+      margin-top: var(--sp-1);
+    }
+
+    .km-strength-help {
+      margin-top: var(--sp-1);
+    }
+
+    .km-checkbox-group {
+      margin-bottom: var(--sp-4);
+    }
+
+    .km-btn--primary {
+      width: 100%;
+      margin-bottom: var(--sp-3);
+    }
+
+    .km-form-divider {
+      margin: var(--sp-4) 0;
+    }
+
+    .km-auth-footer {
+      font-size: 13px;
+      color: var(--text-3);
+      text-align: center;
+    }
+
+    .km-auth-footer a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .km-auth-footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .km-auth-card {
+        padding: var(--sp-3);
+      }
+
+      .km-form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body data-page="register">
+  <div id="km-nav"></div>
+  <main class="km-main">
+    <div class="km-auth-wrap">
+      <div class="km-auth-card km-auth-card--wide">
+        <div class="km-auth-logo">KM</div>
+
+        <div class="km-steps">
+          <div class="km-step km-step--active">
+            <span class="km-step__num">01</span> <span data-i18n="register.STEP_DETAILS">DETAILS</span>
+          </div>
+          <div class="km-step">
+            <span class="km-step__num">02</span> <span data-i18n="register.STEP_ORGANIZATION">ORGANIZATION</span>
+          </div>
+          <div class="km-step">
+            <span class="km-step__num">03</span> <span data-i18n="register.STEP_VERIFY">VERIFY</span>
+          </div>
+        </div>
+
+        <p class="km-micro-label" data-i18n="register.CREATE_HEADING">CREATE YOUR ACCOUNT</p>
+
+        <div class="km-form-row">
+          <div class="km-form-group">
+            <label class="km-form-label" data-i18n="register.FIRST_NAME_LABEL">First Name</label>
+            <input type="text" class="km-form-input" placeholder="Jane" data-i18n-placeholder="register.FIRST_NAME_PLACEHOLDER">
+          </div>
+          <div class="km-form-group">
+            <label class="km-form-label" data-i18n="register.LAST_NAME_LABEL">Last Name</label>
+            <input type="text" class="km-form-input" placeholder="Doe" data-i18n-placeholder="register.LAST_NAME_PLACEHOLDER">
+          </div>
+        </div>
+
+        <div class="km-form-group">
+          <label class="km-form-label" data-i18n="register.EMAIL_LABEL">Email</label>
+          <input type="email" class="km-form-input" placeholder="you@company.com" data-i18n-placeholder="register.EMAIL_PLACEHOLDER">
+        </div>
+
+        <div class="km-form-row">
+          <div class="km-form-group">
+            <label class="km-form-label" data-i18n="register.PASSWORD_LABEL">Password</label>
+            <input type="password" class="km-form-input">
+          </div>
+          <div class="km-form-group">
+            <label class="km-form-label" data-i18n="register.CONFIRM_PASSWORD_LABEL">Confirm Password</label>
+            <input type="password" class="km-form-input">
+          </div>
+        </div>
+
+        <div class="km-progress" style="margin-top:var(--sp-1)">
+          <div class="km-progress__fill" style="width:60%"></div>
+        </div>
+        <p class="km-form-help km-strength-help" data-i18n="register.PASSWORD_STRENGTH">Password strength: <strong data-i18n="register.PASSWORD_STRENGTH_VALUE">MODERATE</strong></p>
+
+        <div class="km-form-group">
+          <label class="km-form-label" data-i18n="register.ORGANIZATION_LABEL">Organization</label>
+          <select class="km-form-select">
+            <option value="" disabled selected data-i18n="register.ORG_SELECT_PLACEHOLDER">Select organization type</option>
+            <option value="startup" data-i18n="register.ORG_STARTUP">Startup</option>
+            <option value="enterprise" data-i18n="register.ORG_ENTERPRISE">Enterprise</option>
+            <option value="agency" data-i18n="register.ORG_AGENCY">Agency</option>
+            <option value="other" data-i18n="register.ORG_OTHER">Other</option>
+          </select>
+        </div>
+
+        <div class="km-form-group">
+          <label class="km-form-label" data-i18n="register.ROLE_LABEL">Role</label>
+          <select class="km-form-select">
+            <option value="" disabled selected data-i18n="register.ROLE_SELECT_PLACEHOLDER">Select your role</option>
+            <option value="developer" data-i18n="register.ROLE_DEVELOPER">Developer</option>
+            <option value="designer" data-i18n="register.ROLE_DESIGNER">Designer</option>
+            <option value="manager" data-i18n="register.ROLE_MANAGER">Manager</option>
+            <option value="executive" data-i18n="register.ROLE_EXECUTIVE">Executive</option>
+          </select>
+        </div>
+
+        <div class="km-checkbox-group">
+          <label class="km-checkbox">
+            <input type="checkbox">
+            <span class="km-checkbox__box"></span>
+            <span data-i18n="register.AGREE_TERMS">I agree to the Terms of Service and Privacy Policy</span>
+          </label>
+        </div>
+
+        <button class="km-btn km-btn--primary" data-i18n="register.CREATE_ACCOUNT_BUTTON">CREATE ACCOUNT &rarr;</button>
+
+        <div class="km-form-divider"></div>
+
+        <p class="km-auth-footer"><span data-i18n="register.HAVE_ACCOUNT">Already have an account?</span> <a href="login.html" data-i18n="register.SIGN_IN_LINK">Sign in</a></p>
+      </div>
+    </div>
+  </main>
+  <script src="js/nav.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/icons.js"></script>
+</body>
+</html>

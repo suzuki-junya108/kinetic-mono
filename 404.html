@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" data-accent="single">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KINETIC MONO — 404</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      background: var(--palette-black);
+      flex-direction: column;
+      gap: var(--sp-4);
+    }
+    .km-404-code {
+      font-size: 160px;
+      font-weight: 800;
+      letter-spacing: -0.06em;
+      line-height: 1;
+      color: var(--surface-dark);
+      position: absolute;
+      user-select: none;
+    }
+    .km-404-content {
+      position: relative;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--sp-3);
+    }
+    .km-404-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      color: var(--a1);
+    }
+    .km-404-title {
+      font-size: 40px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      color: var(--palette-white);
+    }
+    .km-404-sub {
+      font-size: 14px;
+      color: rgba(255,255,255,0.4);
+    }
+    .km-404-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 12px 24px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      background: var(--a1);
+      color: var(--on-a1);
+      transition: transform 0.1s;
+      text-decoration: none;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .km-404-btn:hover { transform: translateX(4px); }
+  </style>
+</head>
+<body>
+  <div class="km-404-code" aria-hidden="true">404</div>
+  <div class="km-404-content">
+    <div class="km-404-label" data-i18n="error_404.label">KINETIC MONO — ERROR</div>
+    <div class="km-404-title" data-i18n="error_404.title">PAGE NOT FOUND</div>
+    <div class="km-404-sub" data-i18n="error_404.subtitle">この先に何もありません。</div>
+    <a href="index.html" class="km-404-btn"><svg class="km-icon" aria-hidden="true"><use href="#km-icon-arrow-left"></use></svg> <span data-i18n="common.return_to_index">RETURN TO INDEX</span></a>
+  </div>
+  <script src="js/icons.js"></script>
+  <script src="js/i18n.js"></script>
+  <script>
+    // Restore accent from localStorage
+    try {
+      const m = localStorage.getItem('km-accent') || 'single';
+      document.documentElement.setAttribute('data-accent', m);
+    } catch(e) {}
+  </script>
+</body>
+</html>

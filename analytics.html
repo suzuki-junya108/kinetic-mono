@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en" data-accent="single">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KINETIC MONO — Analytics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <style>
+    .km-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--sp-2) var(--sp-5);
+      background: var(--surface-0);
+      border-bottom: 1px solid var(--surface-3);
+      box-shadow: var(--shadow-float);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .km-topbar__left {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-2);
+    }
+    .km-topbar__right {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-2);
+    }
+    .km-topbar__right input[type="date"] {
+      width: 140px;
+    }
+    .km-topbar__date-sep {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-3);
+    }
+    .km-analytics-body { padding: var(--sp-4) var(--sp-5); }
+    .km-kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-3);
+      margin-bottom: var(--sp-4);
+    }
+    .km-two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-3);
+      margin-bottom: var(--sp-4);
+    }
+    .km-two-col .km-cell { min-width: 0; }
+    .km-progress-stack { display: flex; flex-direction: column; gap: var(--sp-3); margin-top: var(--sp-3); }
+    .km-progress-stack .km-progress__device-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--text-2);
+      margin-bottom: 4px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    @media (max-width: 900px) {
+      .km-topbar { flex-wrap: wrap; gap: var(--sp-2); padding: var(--sp-2) var(--sp-3); }
+      .km-topbar__right { flex-wrap: wrap; }
+      .km-analytics-body { padding: var(--sp-3); }
+      .km-kpi-grid { grid-template-columns: repeat(2, 1fr); }
+      .km-two-col { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .km-kpi-grid { grid-template-columns: 1fr; }
+      .km-analytics-body { padding: var(--sp-2); }
+      .km-topbar__right input[type="date"] { width: 120px; }
+    }
+  </style>
+</head>
+<body data-page="analytics">
+  <div id="km-nav"></div>
+
+  <main class="km-main">
+
+    <!-- TOP BAR -->
+    <div class="km-topbar">
+      <div class="km-topbar__left">
+        <span class="km-micro-label" data-i18n="analytics.title">ANALYTICS</span>
+        <span class="km-tag km-tag--a1" data-i18n="analytics.live_tag">LIVE</span>
+      </div>
+      <div class="km-topbar__right">
+        <input type="date" class="km-form-input" value="2025-03-01" style="width:140px">
+        <span class="km-topbar__date-sep">—</span>
+        <input type="date" class="km-form-input" value="2025-03-29" style="width:140px">
+        <button class="km-btn km-btn--sm" data-i18n="analytics.export_csv">EXPORT CSV</button>
+        <button class="km-btn km-btn--sm km-btn--outline" data-i18n="analytics.refresh">REFRESH</button>
+      </div>
+    </div>
+
+    <div class="km-analytics-body">
+
+      <!-- KPI ROW -->
+      <div class="km-kpi-grid">
+
+        <div class="km-stat">
+          <div class="km-stat__label" data-i18n="analytics.kpi_pageviews">PAGEVIEWS</div>
+          <div class="km-stat__value">847,291</div>
+          <div class="km-stat__delta km-stat__delta--up"><svg class="km-icon km-icon--xs" aria-hidden="true"><use href="#km-icon-trend-up"></use></svg> <span data-i18n="analytics.delta_pageviews">12.4%</span></div>
+          <div class="km-stat__accent-line"></div>
+        </div>
+
+        <div class="km-stat">
+          <div class="km-stat__label" data-i18n="analytics.kpi_sessions">SESSIONS</div>
+          <div class="km-stat__value">234,891</div>
+          <div class="km-stat__delta km-stat__delta--up"><svg class="km-icon km-icon--xs" aria-hidden="true"><use href="#km-icon-trend-up"></use></svg> <span data-i18n="analytics.delta_sessions">8.2%</span></div>
+          <div class="km-stat__accent-line" style="background:var(--a2)"></div>
+        </div>
+
+        <div class="km-stat">
+          <div class="km-stat__label" data-i18n="analytics.kpi_bounce_rate">BOUNCE RATE</div>
+          <div class="km-stat__value">34.7%</div>
+          <div class="km-stat__delta km-stat__delta--up"><svg class="km-icon km-icon--xs" aria-hidden="true"><use href="#km-icon-trend-down"></use></svg> <span data-i18n="analytics.delta_bounce_rate">2.1%</span></div>
+          <div class="km-stat__accent-line" style="background:var(--palette-green)"></div>
+        </div>
+
+        <div class="km-stat">
+          <div class="km-stat__label" data-i18n="analytics.kpi_avg_duration">AVG DURATION</div>
+          <div class="km-stat__value">4:32</div>
+          <div class="km-stat__delta km-stat__delta--up"><svg class="km-icon km-icon--xs" aria-hidden="true"><use href="#km-icon-trend-up"></use></svg> <span data-i18n="analytics.delta_avg_duration">0.8%</span></div>
+          <div class="km-stat__accent-line" style="background:var(--a3)"></div>
+        </div>
+
+        <div class="km-stat">
+          <div class="km-stat__label" data-i18n="analytics.kpi_conversions">CONVERSIONS</div>
+          <div class="km-stat__value">12,847</div>
+          <div class="km-stat__delta km-stat__delta--up"><svg class="km-icon km-icon--xs" aria-hidden="true"><use href="#km-icon-trend-up"></use></svg> <span data-i18n="analytics.delta_conversions">22.1%</span></div>
+          <div class="km-stat__accent-line" style="background:var(--a4)"></div>
+        </div>
+
+        <div class="km-stat">
+          <div class="km-stat__label" data-i18n="analytics.kpi_revenue">REVENUE</div>
+          <div class="km-stat__value">$1,247,800</div>
+          <div class="km-stat__delta km-stat__delta--up"><svg class="km-icon km-icon--xs" aria-hidden="true"><use href="#km-icon-trend-up"></use></svg> <span data-i18n="analytics.delta_revenue">15.3%</span></div>
+          <div class="km-stat__accent-line" style="background:var(--a5)"></div>
+        </div>
+
+      </div>
+
+      <!-- TWO-COLUMN SECTION -->
+      <div class="km-two-col">
+
+        <!-- LEFT: Traffic Sources -->
+        <div class="km-cell">
+          <span class="km-micro-label" data-i18n="analytics.top_traffic_sources">TOP TRAFFIC SOURCES</span>
+          <div class="km-chart" style="margin-top:var(--sp-3)">
+            <div class="km-chart__row">
+              <div class="km-chart__label" data-i18n="analytics.source_direct">DIRECT</div>
+              <div class="km-chart__track"><div class="km-chart__bar" style="width:34%"></div></div>
+              <div class="km-chart__val">34%</div>
+            </div>
+            <div class="km-chart__row">
+              <div class="km-chart__label" data-i18n="analytics.source_google">GOOGLE</div>
+              <div class="km-chart__track"><div class="km-chart__bar km-chart__bar--a2" style="width:28%"></div></div>
+              <div class="km-chart__val">28%</div>
+            </div>
+            <div class="km-chart__row">
+              <div class="km-chart__label" data-i18n="analytics.source_twitter">TWITTER</div>
+              <div class="km-chart__track"><div class="km-chart__bar km-chart__bar--a3" style="width:12%"></div></div>
+              <div class="km-chart__val">12%</div>
+            </div>
+            <div class="km-chart__row">
+              <div class="km-chart__label" data-i18n="analytics.source_github">GITHUB</div>
+              <div class="km-chart__track"><div class="km-chart__bar km-chart__bar--a4" style="width:9%"></div></div>
+              <div class="km-chart__val">9%</div>
+            </div>
+            <div class="km-chart__row">
+              <div class="km-chart__label" data-i18n="analytics.source_reddit">REDDIT</div>
+              <div class="km-chart__track"><div class="km-chart__bar km-chart__bar--a5" style="width:7%"></div></div>
+              <div class="km-chart__val">7%</div>
+            </div>
+            <div class="km-chart__row">
+              <div class="km-chart__label" data-i18n="analytics.source_hackernews">HACKERNEWS</div>
+              <div class="km-chart__track"><div class="km-chart__bar km-chart__bar--a6" style="width:5%"></div></div>
+              <div class="km-chart__val">5%</div>
+            </div>
+            <div class="km-chart__row">
+              <div class="km-chart__label" data-i18n="analytics.source_linkedin">LINKEDIN</div>
+              <div class="km-chart__track"><div class="km-chart__bar" style="width:3%;background:var(--a2)"></div></div>
+              <div class="km-chart__val">3%</div>
+            </div>
+            <div class="km-chart__row">
+              <div class="km-chart__label" data-i18n="analytics.source_other">OTHER</div>
+              <div class="km-chart__track"><div class="km-chart__bar" style="width:2%;background:var(--a4)"></div></div>
+              <div class="km-chart__val">2%</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Device Breakdown -->
+        <div class="km-cell">
+          <span class="km-micro-label" data-i18n="analytics.device_breakdown">DEVICE BREAKDOWN</span>
+          <div class="km-progress-stack">
+            <div class="km-progress">
+              <div class="km-progress__device-label">
+                <span data-i18n="analytics.device_desktop">DESKTOP</span>
+                <span style="font-family:var(--font-mono)">62%</span>
+              </div>
+              <div class="km-progress__track">
+                <div class="km-progress__fill" style="width:62%"></div>
+              </div>
+            </div>
+            <div class="km-progress">
+              <div class="km-progress__device-label">
+                <span data-i18n="analytics.device_mobile">MOBILE</span>
+                <span style="font-family:var(--font-mono)">31%</span>
+              </div>
+              <div class="km-progress__track">
+                <div class="km-progress__fill km-progress__fill--a2" style="width:31%"></div>
+              </div>
+            </div>
+            <div class="km-progress">
+              <div class="km-progress__device-label">
+                <span data-i18n="analytics.device_tablet">TABLET</span>
+                <span style="font-family:var(--font-mono)">7%</span>
+              </div>
+              <div class="km-progress__track">
+                <div class="km-progress__fill km-progress__fill--a3" style="width:7%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- DATA TABLE -->
+      <div class="km-section" style="margin-bottom:var(--sp-4)">
+        <span class="km-micro-label" style="display:block;margin-bottom:var(--sp-3)" data-i18n="analytics.page_performance">PAGE PERFORMANCE</span>
+        <div class="km-table-wrap">
+          <table class="km-table">
+            <thead>
+              <tr>
+                <th data-i18n="analytics.th_page">PAGE</th>
+                <th data-i18n="analytics.th_views">VIEWS</th>
+                <th data-i18n="analytics.th_unique">UNIQUE</th>
+                <th data-i18n="analytics.th_bounce_pct">BOUNCE %</th>
+                <th data-i18n="analytics.th_avg_time">AVG TIME</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>/dashboard</td>
+                <td style="font-family:var(--font-mono);font-size:11px">148,291</td>
+                <td style="font-family:var(--font-mono);font-size:11px">89,412</td>
+                <td style="font-family:var(--font-mono);font-size:11px">22.4%</td>
+                <td style="font-family:var(--font-mono);font-size:11px">6:14</td>
+              </tr>
+              <tr>
+                <td>/gallery</td>
+                <td style="font-family:var(--font-mono);font-size:11px">124,847</td>
+                <td style="font-family:var(--font-mono);font-size:11px">71,293</td>
+                <td style="font-family:var(--font-mono);font-size:11px">28.1%</td>
+                <td style="font-family:var(--font-mono);font-size:11px">5:47</td>
+              </tr>
+              <tr>
+                <td>/product</td>
+                <td style="font-family:var(--font-mono);font-size:11px">98,412</td>
+                <td style="font-family:var(--font-mono);font-size:11px">62,841</td>
+                <td style="font-family:var(--font-mono);font-size:11px">31.7%</td>
+                <td style="font-family:var(--font-mono);font-size:11px">4:52</td>
+              </tr>
+              <tr>
+                <td>/docs</td>
+                <td style="font-family:var(--font-mono);font-size:11px">87,291</td>
+                <td style="font-family:var(--font-mono);font-size:11px">54,128</td>
+                <td style="font-family:var(--font-mono);font-size:11px">19.3%</td>
+                <td style="font-family:var(--font-mono);font-size:11px">8:21</td>
+              </tr>
+              <tr>
+                <td>/settings</td>
+                <td style="font-family:var(--font-mono);font-size:11px">64,182</td>
+                <td style="font-family:var(--font-mono);font-size:11px">41,927</td>
+                <td style="font-family:var(--font-mono);font-size:11px">42.8%</td>
+                <td style="font-family:var(--font-mono);font-size:11px">3:18</td>
+              </tr>
+              <tr>
+                <td>/generator</td>
+                <td style="font-family:var(--font-mono);font-size:11px">52,847</td>
+                <td style="font-family:var(--font-mono);font-size:11px">38,291</td>
+                <td style="font-family:var(--font-mono);font-size:11px">15.2%</td>
+                <td style="font-family:var(--font-mono);font-size:11px">12:04</td>
+              </tr>
+              <tr>
+                <td>/login</td>
+                <td style="font-family:var(--font-mono);font-size:11px">41,293</td>
+                <td style="font-family:var(--font-mono);font-size:11px">39,847</td>
+                <td style="font-family:var(--font-mono);font-size:11px">58.4%</td>
+                <td style="font-family:var(--font-mono);font-size:11px">1:12</td>
+              </tr>
+              <tr>
+                <td>/contact</td>
+                <td style="font-family:var(--font-mono);font-size:11px">28,412</td>
+                <td style="font-family:var(--font-mono);font-size:11px">21,384</td>
+                <td style="font-family:var(--font-mono);font-size:11px">47.1%</td>
+                <td style="font-family:var(--font-mono);font-size:11px">2:34</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- EVENT LOG -->
+      <div class="km-section">
+        <span class="km-micro-label" style="display:block;margin-bottom:var(--sp-3)" data-i18n="analytics.recent_events">RECENT EVENTS</span>
+        <div class="km-log-stream">
+          <div class="km-log-stream__line">
+            <span class="km-log-stream__time">09:14:02</span>
+            <span class="km-log-stream__tag km-tag km-tag--a3" data-i18n="analytics.tag_error">ERROR</span>
+            <span class="km-log-stream__msg" data-i18n="analytics.event_db_failover">Database failover triggered on node-primary-east-02</span>
+          </div>
+          <div class="km-log-stream__line">
+            <span class="km-log-stream__time">09:12:47</span>
+            <span class="km-log-stream__tag km-tag km-tag--a1" data-i18n="analytics.tag_info">INFO</span>
+            <span class="km-log-stream__msg" data-i18n="analytics.event_deployment">Deployment v2.4.1 rolled out to production cluster</span>
+          </div>
+          <div class="km-log-stream__line">
+            <span class="km-log-stream__time">09:08:21</span>
+            <span class="km-log-stream__tag km-tag km-tag--a4" data-i18n="analytics.tag_warn">WARN</span>
+            <span class="km-log-stream__msg" data-i18n="analytics.event_cache">Cache hit ratio dropped below 85% threshold</span>
+          </div>
+          <div class="km-log-stream__line">
+            <span class="km-log-stream__time">08:54:19</span>
+            <span class="km-log-stream__tag km-tag km-tag--a2" data-i18n="analytics.tag_auth">AUTH</span>
+            <span class="km-log-stream__msg" data-i18n="analytics.event_session_refresh">Bulk session refresh completed — 12,847 tokens rotated</span>
+          </div>
+          <div class="km-log-stream__line">
+            <span class="km-log-stream__time">08:41:33</span>
+            <span class="km-log-stream__tag km-tag km-tag--a5" data-i18n="analytics.tag_perf">PERF</span>
+            <span class="km-log-stream__msg" data-i18n="analytics.event_cdn_latency">CDN edge latency normalized — avg 14ms across all regions</span>
+          </div>
+          <div class="km-log-stream__line">
+            <span class="km-log-stream__time">08:30:00</span>
+            <span class="km-log-stream__tag km-tag km-tag--a1" data-i18n="analytics.tag_cron">CRON</span>
+            <span class="km-log-stream__msg" data-i18n="analytics.event_cron_job">Scheduled analytics aggregation job completed in 4.2s</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="js/nav.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/icons.js"></script>
+</body>
+</html>
